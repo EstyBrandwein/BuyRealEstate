@@ -45,7 +45,7 @@ Planned features for future development:
 
 ## Contact
 
-For inquiries or support, please contact the development team at: **[Your Email Address]**
+For inquiries or support, please contact the development team at the Issue panel here in github
 
 ---
 
