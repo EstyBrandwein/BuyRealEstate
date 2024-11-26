@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Sidebar from './Pages/sideBarPage';
+import MyFields from './Pages/myFeiledPage';
+import EditProfile from './Pages/editProfilePage';
+import Login from './Pages/homePage';
+import MainPage from './Pages/mainPage';
 
 function App() {
+  const handleLogout = () => {
+    // פונקציה להתנתקות
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/my-fields" element={<MyFields />} />
+          <Route path="/edit-profile" element={<EditProfile />} />
+          <Route path="/my-fields" render={() => (
+          <div>
+            <Sidebar username="User123" email="user123@example.com" onLogout={handleLogout} />
+            <MyFields />
+          </div>
+        )} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
