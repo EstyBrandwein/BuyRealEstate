@@ -1,4 +1,9 @@
 import React from "react";
+import Sidebar from './sideBarPage';
+
+  const handleLogout = () => {
+    // פונקציה להתנתקות
+  };
 
 const fields = [
     { id: 1, name: "Field 1", description: "Short description of Field 1", image: "https://via.placeholder.com/150" },
@@ -8,7 +13,10 @@ const fields = [
 
 export default function MainPage() {
     return (
-        <div style={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>
+
+        <div style={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>    
+          <Sidebar username="User123" email="user123@example.com" onLogout={() => handleLogout()} />
+
             <h1 style={{ textAlign: "center" }}>הפרויקטים שלי</h1>
             <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                 {fields.map((field) => (
