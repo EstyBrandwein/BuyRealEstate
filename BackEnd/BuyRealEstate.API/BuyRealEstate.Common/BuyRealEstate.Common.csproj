@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Common\BuyRealEstate.Common.csproj" />
+    <ProjectReference Include="..\BuyRealEstate.API\BuyRealEstate.API.csproj" />
   </ItemGroup>
 
 </Project>
