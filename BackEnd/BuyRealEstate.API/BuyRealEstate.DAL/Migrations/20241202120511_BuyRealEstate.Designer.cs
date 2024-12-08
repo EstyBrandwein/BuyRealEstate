@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BuyRealEstate.DAL.Migrations
 {
     [DbContext(typeof(BuyRealEstateDbContext))]
-    [Migration("20241201131722_BuyRealEstateMirgrtion2")]
-    partial class BuyRealEstateMirgrtion2
+    [Migration("20241202120511_BuyRealEstate")]
+    partial class BuyRealEstate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

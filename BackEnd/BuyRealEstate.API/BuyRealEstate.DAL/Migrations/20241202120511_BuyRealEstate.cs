@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BuyRealEstate.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class BuyRealEstateMirgrtion : Migration
+    public partial class BuyRealEstate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -364,6 +364,7 @@ namespace BuyRealEstate.DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "LegalStatuses");
+
         }
     }
 }

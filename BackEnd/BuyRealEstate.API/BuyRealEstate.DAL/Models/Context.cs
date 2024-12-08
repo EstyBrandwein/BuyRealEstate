@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace BuyRealEstate.DAL.Models
 {
@@ -35,9 +36,12 @@ namespace BuyRealEstate.DAL.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=buyrealestatedb.c1i0c2q8aofb.eu-north-1.rds.amazonaws.com,1433;User Id=BuyRAdmain;Password=liknot_nadlan;");
+            optionsBuilder.ConfigureWarnings(warnings =>
+                warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
+            optionsBuilder.UseSqlServer("Server=buyrealestatedb.c1i0c2q8aofb.eu-north-1.rds.amazonaws.com,1433;Database = BuyRealEstateDB_Dev;User Id=BuyRAdmin;Password=liknot_nadlan;TrustServerCertificate=True;");
         }
-        
+
+
 
 
     }

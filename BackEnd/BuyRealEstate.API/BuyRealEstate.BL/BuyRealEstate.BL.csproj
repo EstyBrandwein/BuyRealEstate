@@ -10,4 +10,8 @@
     <ProjectReference Include="..\BuyRealEstate.DAL\BuyRealEstate.DAL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="BL.Objects\" />
+  </ItemGroup>
+
 </Project>
