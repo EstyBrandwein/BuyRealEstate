@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace BuyRealEstate.DAL.Migrations
+namespace BuyRealEstate.Domain.Migrations
 {
     /// <inheritdoc />
     public partial class BuyRealEstateMirgrtion2 : Migration

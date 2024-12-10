@@ -1,4 +1,4 @@
-﻿namespace BuyRealEstate.DAL
+﻿namespace BuyRealEstate.Domain
 {
     public class Class1
     {

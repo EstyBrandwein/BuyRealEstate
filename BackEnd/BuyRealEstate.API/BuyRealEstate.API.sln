@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35431.28
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuyRealEstate.API", "BuyRealEstate.API\BuyRealEstate.API.csproj", "{DAAFD305-AD3B-4791-9AB8-E3B9839AC70E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuyRealEstate.API", "BuyRealEstate.API\BuyRealEstate.API.csproj", "{DAAFD305-AD3B-4791-9AB8-E3B9839AC70E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuyRealEstate.BL", "BuyRealEstate.BL\BuyRealEstate.BL.csproj", "{BFF9EBE5-A7ED-41D9-8CEA-07D44CE39311}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuyRealEstate.Core", "BuyRealEstate.BL\BuyRealEstate.Core.csproj", "{BFF9EBE5-A7ED-41D9-8CEA-07D44CE39311}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuyRealEstate.DAL", "BuyRealEstate.DAL\BuyRealEstate.DAL.csproj", "{B7625AB3-1D87-42B6-8C82-74A682C5BD38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuyRealEstate.Domain", "BuyRealEstate.DAL\BuyRealEstate.Domain.csproj", "{B7625AB3-1D87-42B6-8C82-74A682C5BD38}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuyRealEstate.UnitTest", "BuyRealEstate.UnitTest\BuyRealEstate.UnitTest.csproj", "{03F60366-7F1A-4B6F-9075-F3F5C6A4B50C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuyRealEstate.Common", "BuyRealEstate.Common\BuyRealEstate.Common.csproj", "{2DA87796-F487-457F-8FD6-D73F0170132A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuyRealEstate.Common", "BuyRealEstate.Common\BuyRealEstate.Common.csproj", "{2DA87796-F487-457F-8FD6-D73F0170132A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

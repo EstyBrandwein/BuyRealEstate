@@ -5,6 +5,7 @@ import MyFields from './Pages/myFeiledPage';
 import EditProfile from './Pages/editProfilePage';
 import Login from './Pages/homePage';
 import MainPage from './Pages/mainPage';
+import EntryPage from './Pages/entryPage';
 
 function App() {
   const handleLogout = () => {
@@ -15,7 +16,8 @@ function App() {
     <Router>
       <div className="app">
         <Routes>
-          <Route path="/" element={<MainPage />} />
+          <Route exact path="/" element={<EntryPage/>} />  
+          <Route path="/mainPage" element={<MainPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/my-fields" element={<MyFields />} />
           <Route path="/edit-profile" element={<EditProfile />} />

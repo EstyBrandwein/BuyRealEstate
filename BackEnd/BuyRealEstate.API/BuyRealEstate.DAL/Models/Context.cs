@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
-namespace BuyRealEstate.DAL.Models
+namespace BuyRealEstate.Domain.Models
 {
 
 

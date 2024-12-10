@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace BuyRealEstate.DAL.Models
+namespace BuyRealEstate.Domain.Models
 {
 
     public class Payment
