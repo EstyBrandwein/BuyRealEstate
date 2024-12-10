@@ -4,17 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BuyRealEstate.DAL.Models
+namespace BuyRealEstate.Domain.Models
 {
-    public class RelationshipCustomersPlots
+    public class RelationshipCustomersPlots:BaseClass
     {
         public int ID { get; set; }
-        public int CustomerID { get; set; }
+        public int UserID { get; set; }
+        public Users User { get; set; }
         public int PlotID { get; set; }
-        public DateTime InsertDate { get; set; }
-        public DateTime UpdateDate { get; set; }
-        public string InsertUser { get; set; }
-        public string UpdateUser { get; set; }
-        public string State { get; set; }
+        public Plot Plot { get; set; }
+
     }
 }

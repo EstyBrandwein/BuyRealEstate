@@ -7,18 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20241201113256_BuyRealEstateMirgrtion.cs" />
-    <Compile Remove="Migrations\20241201113256_BuyRealEstateMirgrtion.Designer.cs" />
-    <Compile Remove="Migrations\20241202113953_BuyRealEstate.cs" />
-    <Compile Remove="Migrations\20241202113953_BuyRealEstate.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.0" />
   </ItemGroup>
 
 </Project>
