@@ -8,6 +8,11 @@ using BuyRealEstate.Domain;
 //using System.Configuration;
 
 
+//public class AppDbContext : DbContext
+//{
+//    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+//    {
+//    }
 public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
@@ -131,13 +136,15 @@ public class AppDbContext : DbContext
         base.OnModelCreating(modelBuilder);
     }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        //string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"]?.ConnectionStrings;
+    //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //    {
+    //        //string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"]?.ConnectionStrings;
 
-        optionsBuilder.ConfigureWarnings(warnings =>
-            warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
-        optionsBuilder.UseSqlServer("Server=buyrealestatedb.c1i0c2q8aofb.eu-north-1.rds.amazonaws.com,1433;Database = BuyRealEstateDB_Dev;User Id=BuyRAdmin;Password=liknot_nadlan;TrustServerCertificate=True;");
-    }
-    
+    //        optionsBuilder.ConfigureWarnings(warnings =>
+    //            warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
+    //        //optionsBuilder.UseSqlServer("Server=buyrealestatedb.c1i0c2q8aofb.eu-north-1.rds.amazonaws.com,1433;Database = BuyRealEstateDB_Dev;User Id=BuyRAdmin;Password=liknot_nadlan;TrustServerCertificate=True;");
+    //        optionsBuilder.UseSqlServer();
+    //    }
+
+    //}
 }
