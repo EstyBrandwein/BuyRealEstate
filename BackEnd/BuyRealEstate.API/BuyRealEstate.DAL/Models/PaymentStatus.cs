@@ -11,7 +11,7 @@ namespace BuyRealEstate.Domain.Models
     {
         public int Id { get; set; }
         public string Status { get; set; }
-        public Payment Payment { get; set; }
-        public int PaymentId { get; set; }
+        public ICollection<Payment> Payment { get; set; }
+        //public int? PaymentId { get; set; }
     }
 }

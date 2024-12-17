@@ -15,10 +15,10 @@ namespace BuyRealEstate.Domain.Models
         public double PlotValue { get; set; }
         public double PlotSize { get; set; }
         public int PlotNumber { get; set; }
-        public Project Project { get; set; }
+        public Project? Project { get; set; }
         public int ProjectId { get; set; }
-        public ICollection<RelationshipCustomersPlots> CustomerPlots { get; set; }
-        public ICollection<RelationshipPaymentsPlots> PaymentPlots { get; set; }
+        public ICollection<RelationshipCustomersPlots>? CustomerPlots { get; set; }
+        public ICollection<RelationshipPaymentsPlots>? PaymentPlots { get; set; }
 
     }
 }

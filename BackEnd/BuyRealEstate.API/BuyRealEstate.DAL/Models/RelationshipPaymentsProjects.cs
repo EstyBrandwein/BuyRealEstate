@@ -10,10 +10,11 @@ namespace BuyRealEstate.Domain.Models
     {
         public int ID { get; set; }
         public int PaymentID { get; set; }
-        public Payment payment { get; set; }
+        public Payment? payment { get; set; }
         public int ProjectID { get; set; }
-        public Project project { get; set; }
-        public PaymentStatus paymentStutus { get; set; }
+        public Project? project { get; set; }
+        public int paymentStutusId {  get; set; }
+        public PaymentStatus? paymentStutus { get; set; }
 
 
     }

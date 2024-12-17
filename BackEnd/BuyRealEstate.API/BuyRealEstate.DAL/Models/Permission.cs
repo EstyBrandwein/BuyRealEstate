@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace BuyRealEstate.Domain.Models
 {
-    public class Permission
+    public class Permission:BaseClass
     {
         public int Id { get; set; }
         public string permission { get; set; }
+        
     }
 }
