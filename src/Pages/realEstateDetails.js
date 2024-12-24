@@ -1,5 +1,4 @@
-<<<<<<< Updated upstream
-=======
+
 // // src/pages/PlotsPage.js
 // import React, { useState } from "react";
 // import Sidebar from "react-sidebar";
@@ -214,4 +213,3 @@ function PlotsPage() {
 }
 
 export default PlotsPage;
->>>>>>> Stashed changes
