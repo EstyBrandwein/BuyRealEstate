@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace BuyRealEstate.DAL.Migrations
+namespace BuyRealEstate.Domain.Migrations
 {
     /// <inheritdoc />
-    public partial class BuyRealEstateMirgrtion1 : Migration
+    public partial class WithOutProoff : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

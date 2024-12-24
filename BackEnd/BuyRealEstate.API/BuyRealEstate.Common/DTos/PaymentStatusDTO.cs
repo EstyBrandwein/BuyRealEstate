@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BuyRealEstate.DAL.Models
+namespace BuyRealEstate.Common.DTos
 {
-
-    public class DevelopmentStatus
+    public class PaymentStatusDTO
     {
         public int Id { get; set; }
         public string Status { get; set; }
-
-        public ICollection<Project>? Project { get; set; }
+        public PaymentDTO Payment { get; set; }
+        public int PaymentId { get; set; }
     }
 }

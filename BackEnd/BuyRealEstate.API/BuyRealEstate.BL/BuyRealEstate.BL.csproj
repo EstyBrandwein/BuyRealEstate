@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< Updated upstream:BackEnd/BuyRealEstate.API/BuyRealEstate.BL/BuyRealEstate.BL.csproj
     <ProjectReference Include="..\BuyRealEstate.DAL\BuyRealEstate.DAL.csproj" />
+=======
+    <ProjectReference Include="..\BuyRealEstate.Common\BuyRealEstate.Common.csproj" />
+    <ProjectReference Include="..\BuyRealEstate.DAL\BuyRealEstate.Domain.csproj" />
+>>>>>>> Stashed changes:BackEnd/BuyRealEstate.API/BuyRealEstate.Core/BuyRealEstate.Core.csproj
   </ItemGroup>
 
 </Project>
