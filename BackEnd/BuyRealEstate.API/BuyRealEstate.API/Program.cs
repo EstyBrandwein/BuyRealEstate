@@ -6,12 +6,35 @@ using BuyRealEstate.Domain.Models;
 using BuyRealEstate.Core.Interfaces;
 using BuyRealEstate.Core.Services;
 using BuyRealEstate.Domain.Interfaces;
+using BuyRealEstate.Core.DTos;
+using BuyRealEstate.Core.DTOs;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddAutoMapper(cfg =>
+{
+    // יצירת מיפויים בין המודלים וה-DTOs שלך
+    cfg.CreateMap<DevelopmentStatus, DevelopmentStatusDTO>();
+    cfg.CreateMap<User, UsersDTO>();
+    cfg.CreateMap<LegalStatus, LegalStatusDTO>();
+    cfg.CreateMap<Image, ImageDTO>();
+    cfg.CreateMap<Document, DocumentDTO>();
+
+    // מיפוי של פרויקט
+    cfg.CreateMap<Project, ProjectDTO>()
+        .ForMember(dest => dest.ProjectManager, opt => opt.MapFrom(src => src.ProjectManager))
+        .ForMember(dest => dest.DeveloperStatus, opt => opt.MapFrom(src => src.DeveloperStatus))
+        .ForMember(dest => dest.LegalStatus, opt => opt.MapFrom(src => src.LegalStatus))
+        .ForMember(dest => dest.Images, opt => opt.MapFrom(src => src.Images))
+        .ForMember(dest => dest.Documents, opt => opt.MapFrom(src => src.Documents));
+
+    // מיפוי של Plot
+    cfg.CreateMap<Plot, PlotDTO>()
+        .ForMember(dest => dest.Project, opt => opt.MapFrom(src => src.Project));
+}, AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped<IPlotRepository, PlotRepository>();
 builder.Services.AddScoped<IPlotService, PlotService>();

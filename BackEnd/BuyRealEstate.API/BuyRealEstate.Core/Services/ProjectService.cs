@@ -22,18 +22,18 @@ namespace BuyRealEstate.Core.Services
             var projects = await _projectRepository.GetAllProjectsAsync();
             return projects.Select(p => new ProjectDTO
             {
-                //Id = p.ID,
-                Documents = (ICollection<DTos.DocumentDTO>)p.Documents,
-                DeveloperStatus = (ICollection<DTos.DevelopmentStatusDTO>)p.DeveloperStatus,
-                GrossProfit = p.GrossProfit,
-                Images = p.Images,
-                LegalStatus = (ICollection<DTos.LegalStatusDTO>)p.LegalStatus,
-                LinkToLead2 = p.LinkToLead2,
-                PaymentProject = p.PaymentProject,
-                ProjectAddress = p.ProjectAddress,
-                //ProjectManager = (DTos.UsersDTO)p.ProjectManager,
-                ProjectName = p.ProjectName,
-                ProjectType = p.ProjectType
+                ////Id = p.ID,
+                //Documents = (ICollection<DTos.DocumentDTO>)p.Documents,
+                //DeveloperStatus = (ICollection<DTos.DevelopmentStatusDTO>)p.DeveloperStatus,
+                //GrossProfit = p.GrossProfit,
+                //Images = p.Images,
+                //LegalStatus = (ICollection<DTos.LegalStatusDTO>)p.LegalStatus,
+                //LinkToLead2 = p.LinkToLead2,
+                //PaymentProject = p.PaymentProject,
+                //ProjectAddress = p.ProjectAddress,
+                ////ProjectManager = (DTos.UsersDTO)p.ProjectManager,
+                //ProjectName = p.ProjectName,
+                //ProjectType = p.ProjectType
             });
         }
 
@@ -44,17 +44,17 @@ namespace BuyRealEstate.Core.Services
 
             return new ProjectDTO
             {
-                Documents = (ICollection<DTos.DocumentDTO>)p.Documents,
-                DeveloperStatus = (ICollection<DTos.DevelopmentStatusDTO>)p.DeveloperStatus,
-                GrossProfit = p.GrossProfit,
-                Images = p.Images,
-                LegalStatus = (ICollection<DTos.LegalStatusDTO>)p.LegalStatus,
-                LinkToLead2 = p.LinkToLead2,
-                PaymentProject = p.PaymentProject,
-                ProjectAddress = p.ProjectAddress,
+                //Documents = (ICollection<DTos.DocumentDTO>)p.Documents,
+                //DeveloperStatus = (ICollection<DTos.DevelopmentStatusDTO>)p.DeveloperStatus,
+                //GrossProfit = p.GrossProfit,
+                //Images = p.Images,
+                //LegalStatus = (ICollection<DTos.LegalStatusDTO>)p.LegalStatus,
+                //LinkToLead2 = p.LinkToLead2,
+                //PaymentProject = p.PaymentProject,
+                //ProjectAddress = p.ProjectAddress,
                 //ProjectManager = (DTos.UsersDTO)p.ProjectManager,
-                ProjectName = p.ProjectName,
-                ProjectType = p.ProjectType
+                //ProjectName = p.ProjectName,
+                //ProjectType = p.ProjectType
             };
         }
 
@@ -65,7 +65,7 @@ namespace BuyRealEstate.Core.Services
                 Documents = (ICollection<Document>)p.Documents,
                 //DeveloperStatus = (ICollection<DevelopmentStatus>)p.DeveloperStatus,
                 GrossProfit = p.GrossProfit,
-                Images = p.Images,
+                //Images = p.Images,
                 //LegalStatus = (ICollection<LegalStatus>)p.LegalStatus,
                 LinkToLead2 = p.LinkToLead2,
                 PaymentProject = p.PaymentProject,
@@ -87,7 +87,7 @@ namespace BuyRealEstate.Core.Services
                 Documents = (ICollection<Document>)p.Documents,
                // DeveloperStatus = (ICollection<DevelopmentStatus>)p.DeveloperStatus,
                 GrossProfit = p.GrossProfit,
-                Images = p.Images,
+                //Images = p.Images,
               //  LegalStatus =p.LegalStatus,
                 LinkToLead2 = p.LinkToLead2,
                 PaymentProject = p.PaymentProject,
