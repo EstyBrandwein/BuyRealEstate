@@ -53,7 +53,9 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DevelopmentStatuses");
+                    b.HasIndex("ProjectID");
+
+                    b.ToTable("DevelopmentStatuses", (string)null);
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.Document", b =>
@@ -69,10 +71,6 @@ namespace BuyRealEstate.Domain.Migrations
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("DocumentDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FileType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -108,7 +106,7 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Documents");
+                    b.ToTable("Documents", (string)null);
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.Image", b =>
@@ -118,10 +116,6 @@ namespace BuyRealEstate.Domain.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<string>("FileType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("ImageData")
                         .IsRequired()
@@ -153,7 +147,7 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasIndex("ProjectID");
 
-                    b.ToTable("Images");
+                    b.ToTable("Images", (string)null);
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.LegalStatus", b =>
@@ -188,7 +182,9 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LegalStatuses");
+                    b.HasIndex("ProjectID");
+
+                    b.ToTable("LegalStatuses", (string)null);
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.Payment", b =>
@@ -202,17 +198,7 @@ namespace BuyRealEstate.Domain.Migrations
                     b.Property<double>("Amount")
                         .HasColumnType("float");
 
-                    b.Property<DateTime>("DataValue")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("Datereference")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Detiels")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HNagainst")
+                    b.Property<string>("Component")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -225,24 +211,11 @@ namespace BuyRealEstate.Domain.Migrations
                     b.Property<DateTime>("LastPaymentDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("PaymentExecutionMethodID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PaymentStatusId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ProfessionalId")
                         .HasColumnType("int");
 
                     b.Property<bool>("State")
                         .HasColumnType("bit");
-
-                    b.Property<int>("Surplus")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
@@ -250,23 +223,11 @@ namespace BuyRealEstate.Domain.Migrations
                     b.Property<int>("UpdateUser")
                         .HasColumnType("int");
 
-                    b.Property<string>("dose")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("movement")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("ID");
-
-                    b.HasIndex("PaymentExecutionMethodID");
-
-                    b.HasIndex("PaymentStatusId");
 
                     b.HasIndex("ProfessionalId");
 
-                    b.ToTable("Payments");
+                    b.ToTable("Payments", (string)null);
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.PaymentExecutionMethod", b =>
@@ -277,14 +238,13 @@ namespace BuyRealEstate.Domain.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("InsertUser")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PaymentExecutionMethodID")
                         .HasColumnType("int");
 
                     b.Property<bool>("State")
@@ -298,7 +258,9 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("PaymentExecutionMethods");
+                    b.HasIndex("PaymentExecutionMethodID");
+
+                    b.ToTable("PaymentExecutionMethods", (string)null);
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.PaymentStatus", b =>
@@ -313,6 +275,9 @@ namespace BuyRealEstate.Domain.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int>("InsertUser")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PaymentId")
                         .HasColumnType("int");
 
                     b.Property<bool>("State")
@@ -330,7 +295,9 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaymentStatuses");
+                    b.HasIndex("PaymentId");
+
+                    b.ToTable("PaymentStatuses", (string)null);
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.Permission", b =>
@@ -341,28 +308,13 @@ namespace BuyRealEstate.Domain.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("InsertDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("InsertUser")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("State")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("UpdateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("UpdateUser")
-                        .HasColumnType("int");
-
                     b.Property<string>("permission")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Permissions");
+                    b.ToTable("Permissions", (string)null);
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.Plot", b =>
@@ -413,7 +365,7 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("Plots");
+                    b.ToTable("Plots", (string)null);
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.Project", b =>
@@ -424,9 +376,6 @@ namespace BuyRealEstate.Domain.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int>("DeveloperStatusID")
-                        .HasColumnType("int");
-
                     b.Property<double>("GrossProfit")
                         .HasColumnType("float");
 
@@ -434,9 +383,6 @@ namespace BuyRealEstate.Domain.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int>("InsertUser")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LegalStatusId")
                         .HasColumnType("int");
 
                     b.Property<string>("LinkToLead2")
@@ -468,13 +414,9 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("DeveloperStatusID");
-
-                    b.HasIndex("LegalStatusId");
-
                     b.HasIndex("ProjectManagerID");
 
-                    b.ToTable("Projects");
+                    b.ToTable("Projects", (string)null);
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.RelationshipCustomersPlots", b =>
@@ -512,7 +454,7 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("CustomerPlots");
+                    b.ToTable("CustomerPlots", (string)null);
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.RelationshipPaymentsPlots", b =>
@@ -544,7 +486,7 @@ namespace BuyRealEstate.Domain.Migrations
                     b.Property<int>("UpdateUser")
                         .HasColumnType("int");
 
-                    b.Property<int>("paymentStutusID")
+                    b.Property<int>("paymentStutusId")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
@@ -553,9 +495,9 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasIndex("PlotID");
 
-                    b.HasIndex("paymentStutusID");
+                    b.HasIndex("paymentStutusId");
 
-                    b.ToTable("PlotPayments");
+                    b.ToTable("PlotPayments", (string)null);
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.RelationshipPaymentsProjects", b =>
@@ -587,7 +529,7 @@ namespace BuyRealEstate.Domain.Migrations
                     b.Property<int>("UpdateUser")
                         .HasColumnType("int");
 
-                    b.Property<int>("paymentStutusID")
+                    b.Property<int>("paymentStutusId")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
@@ -596,12 +538,12 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasIndex("ProjectID");
 
-                    b.HasIndex("paymentStutusID");
+                    b.HasIndex("paymentStutusId");
 
-                    b.ToTable("ProjectPayments");
+                    b.ToTable("ProjectPayments", (string)null);
                 });
 
-            modelBuilder.Entity("BuyRealEstate.Domain.Models.User", b =>
+            modelBuilder.Entity("BuyRealEstate.Domain.Models.Users", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -622,10 +564,6 @@ namespace BuyRealEstate.Domain.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FirstPhone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("InsertDate")
                         .HasColumnType("datetime2");
 
@@ -643,7 +581,8 @@ namespace BuyRealEstate.Domain.Migrations
                     b.Property<int>("PermissionId")
                         .HasColumnType("int");
 
-                    b.Property<string>("SecendPhon")
+                    b.Property<string>("Phone")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("State")
@@ -663,16 +602,16 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasIndex("PermissionId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
 
-                    b.HasDiscriminator().HasValue("User");
+                    b.HasDiscriminator().HasValue("Users");
 
                     b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.Professional", b =>
                 {
-                    b.HasBaseType("BuyRealEstate.Domain.Models.User");
+                    b.HasBaseType("BuyRealEstate.Domain.Models.Users");
 
                     b.Property<string>("Professtion")
                         .IsRequired()
@@ -685,22 +624,30 @@ namespace BuyRealEstate.Domain.Migrations
                     b.HasDiscriminator().HasValue("Professional");
                 });
 
+            modelBuilder.Entity("BuyRealEstate.Domain.Models.DevelopmentStatus", b =>
+                {
+                    b.HasOne("BuyRealEstate.Domain.Models.Project", "Project")
+                        .WithMany("DeveloperStatus")
+                        .HasForeignKey("ProjectID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+                });
+
             modelBuilder.Entity("BuyRealEstate.Domain.Models.Document", b =>
                 {
                     b.HasOne("BuyRealEstate.Domain.Models.Payment", "Payment")
                         .WithMany("PaymentConfirmation")
-                        .HasForeignKey("PamentID")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("PamentID");
 
                     b.HasOne("BuyRealEstate.Domain.Models.Project", "Project")
                         .WithMany("Documents")
-                        .HasForeignKey("ProjectID")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("ProjectID");
 
-                    b.HasOne("BuyRealEstate.Domain.Models.User", "User")
+                    b.HasOne("BuyRealEstate.Domain.Models.Users", "User")
                         .WithMany("Documents")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Payment");
 
@@ -714,7 +661,18 @@ namespace BuyRealEstate.Domain.Migrations
                     b.HasOne("BuyRealEstate.Domain.Models.Project", "Project")
                         .WithMany("Images")
                         .HasForeignKey("ProjectID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("BuyRealEstate.Domain.Models.LegalStatus", b =>
+                {
+                    b.HasOne("BuyRealEstate.Domain.Models.Project", "Project")
+                        .WithMany("LegalStatus")
+                        .HasForeignKey("ProjectID")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Project");
@@ -722,29 +680,35 @@ namespace BuyRealEstate.Domain.Migrations
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.Payment", b =>
                 {
-                    b.HasOne("BuyRealEstate.Domain.Models.PaymentExecutionMethod", "PaymentExecutionMethod")
-                        .WithMany("Payment")
-                        .HasForeignKey("PaymentExecutionMethodID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("BuyRealEstate.Domain.Models.PaymentStatus", "PaymentStatus")
-                        .WithMany("Payments")
-                        .HasForeignKey("PaymentStatusId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("BuyRealEstate.Domain.Models.Professional", "Professional")
                         .WithMany("Payments")
                         .HasForeignKey("ProfessionalId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("PaymentExecutionMethod");
-
-                    b.Navigation("PaymentStatus");
-
                     b.Navigation("Professional");
+                });
+
+            modelBuilder.Entity("BuyRealEstate.Domain.Models.PaymentExecutionMethod", b =>
+                {
+                    b.HasOne("BuyRealEstate.Domain.Models.Payment", "Payment")
+                        .WithMany("PaymentExecutionMethod")
+                        .HasForeignKey("PaymentExecutionMethodID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Payment");
+                });
+
+            modelBuilder.Entity("BuyRealEstate.Domain.Models.PaymentStatus", b =>
+                {
+                    b.HasOne("BuyRealEstate.Domain.Models.Payment", "Payment")
+                        .WithMany("PaymentStatus")
+                        .HasForeignKey("PaymentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Payment");
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.Plot", b =>
@@ -752,7 +716,7 @@ namespace BuyRealEstate.Domain.Migrations
                     b.HasOne("BuyRealEstate.Domain.Models.Project", "Project")
                         .WithMany("Plots")
                         .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Project");
@@ -760,27 +724,11 @@ namespace BuyRealEstate.Domain.Migrations
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.Project", b =>
                 {
-                    b.HasOne("BuyRealEstate.Domain.Models.DevelopmentStatus", "DeveloperStatus")
-                        .WithMany("Project")
-                        .HasForeignKey("DeveloperStatusID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("BuyRealEstate.Domain.Models.LegalStatus", "LegalStatus")
-                        .WithMany("Projects")
-                        .HasForeignKey("LegalStatusId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("BuyRealEstate.Domain.Models.User", "ProjectManager")
+                    b.HasOne("BuyRealEstate.Domain.Models.Users", "ProjectManager")
                         .WithMany()
                         .HasForeignKey("ProjectManagerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("DeveloperStatus");
-
-                    b.Navigation("LegalStatus");
 
                     b.Navigation("ProjectManager");
                 });
@@ -793,7 +741,7 @@ namespace BuyRealEstate.Domain.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("BuyRealEstate.Domain.Models.User", "User")
+                    b.HasOne("BuyRealEstate.Domain.Models.Users", "User")
                         .WithMany("CustomerPlots")
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -820,7 +768,7 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasOne("BuyRealEstate.Domain.Models.PaymentStatus", "paymentStutus")
                         .WithMany()
-                        .HasForeignKey("paymentStutusID")
+                        .HasForeignKey("paymentStutusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -847,7 +795,7 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasOne("BuyRealEstate.Domain.Models.PaymentStatus", "paymentStutus")
                         .WithMany()
-                        .HasForeignKey("paymentStutusID")
+                        .HasForeignKey("paymentStutusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -858,7 +806,7 @@ namespace BuyRealEstate.Domain.Migrations
                     b.Navigation("project");
                 });
 
-            modelBuilder.Entity("BuyRealEstate.Domain.Models.User", b =>
+            modelBuilder.Entity("BuyRealEstate.Domain.Models.Users", b =>
                 {
                     b.HasOne("BuyRealEstate.Domain.Models.Permission", "Permission")
                         .WithMany()
@@ -869,33 +817,17 @@ namespace BuyRealEstate.Domain.Migrations
                     b.Navigation("Permission");
                 });
 
-            modelBuilder.Entity("BuyRealEstate.Domain.Models.DevelopmentStatus", b =>
-                {
-                    b.Navigation("Project");
-                });
-
-            modelBuilder.Entity("BuyRealEstate.Domain.Models.LegalStatus", b =>
-                {
-                    b.Navigation("Projects");
-                });
-
             modelBuilder.Entity("BuyRealEstate.Domain.Models.Payment", b =>
                 {
                     b.Navigation("PaymentConfirmation");
 
+                    b.Navigation("PaymentExecutionMethod");
+
                     b.Navigation("PaymentPlots");
 
                     b.Navigation("PaymentProject");
-                });
 
-            modelBuilder.Entity("BuyRealEstate.Domain.Models.PaymentExecutionMethod", b =>
-                {
-                    b.Navigation("Payment");
-                });
-
-            modelBuilder.Entity("BuyRealEstate.Domain.Models.PaymentStatus", b =>
-                {
-                    b.Navigation("Payments");
+                    b.Navigation("PaymentStatus");
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.Plot", b =>
@@ -907,16 +839,20 @@ namespace BuyRealEstate.Domain.Migrations
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.Project", b =>
                 {
+                    b.Navigation("DeveloperStatus");
+
                     b.Navigation("Documents");
 
                     b.Navigation("Images");
+
+                    b.Navigation("LegalStatus");
 
                     b.Navigation("PaymentProject");
 
                     b.Navigation("Plots");
                 });
 
-            modelBuilder.Entity("BuyRealEstate.Domain.Models.User", b =>
+            modelBuilder.Entity("BuyRealEstate.Domain.Models.Users", b =>
                 {
                     b.Navigation("CustomerPlots");
 

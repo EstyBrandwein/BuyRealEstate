@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BuyRealEstate.Domain.Models
 {
-    public class Professional : Users
+    public class Professional : User
     {
         public string WebsiteAddress { get; set; }
         public string Professtion { get; set; }

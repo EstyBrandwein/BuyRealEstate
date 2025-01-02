@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BuyRealEstate.BL\BuyRealEstate.BLL.csproj" />
+    <ProjectReference Include="..\BuyRealEstate.Common\BuyRealEstate.Common.csproj" />
     <ProjectReference Include="..\BuyRealEstate.Core\BuyRealEstate.Core.csproj" />
   </ItemGroup>
 

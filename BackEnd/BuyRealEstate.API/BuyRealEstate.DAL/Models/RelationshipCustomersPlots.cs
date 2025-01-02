@@ -10,7 +10,7 @@ namespace BuyRealEstate.Domain.Models
     {
         public int ID { get; set; }
         public int UserID { get; set; }
-        public Users User { get; set; }
+        public User User { get; set; }
         public int PlotID { get; set; }
         public Plot Plot { get; set; }
 

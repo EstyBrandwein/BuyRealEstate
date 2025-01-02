@@ -31,23 +31,26 @@ namespace BuyRealEstate.Core.Services
                 PlotNumber = p.PlotNumber,
             });
         }
-
         public async Task<PlotDTO> GetPlotByIdAsync(int id)
         {
-            var plot = await _plotRepository.GetPlotByIdAsync(id);
-            if (plot == null) return null;
-
-            return new PlotDTO
-            {
-                ID = plot.ID,
-                PlotCost = plot.PlotCost,
-                MonthlyFundingCost = plot.MonthlyFundingCost,
-                MonthsForFundingCost = plot.MonthsForFundingCost,
-                PlotValue = plot.PlotValue,
-                PlotSize = plot.PlotSize,
-                PlotNumber = plot.PlotNumber,
-            };
+            throw new NotImplementedException();
         }
+        //public async Task<IEnumerable<PlotDTO>> GetAllPlotByIdAsync(int id)
+        //{
+        //    var plot = await _plotRepository.GetPlotByIdAsync(id);
+        //    if (plot == null) return null;
+
+        //    return new PlotDTO
+        //    {
+        //        ID = plot.ID,
+        //        PlotCost = plot.PlotCost,
+        //        MonthlyFundingCost = plot.MonthlyFundingCost,
+        //        MonthsForFundingCost = plot.MonthsForFundingCost,
+        //        PlotValue = plot.PlotValue,
+        //        PlotSize = plot.PlotSize,
+        //        PlotNumber = plot.PlotNumber,
+        //    };
+        //}
 
         public async Task AddPlotAsync(PlotDTO plotDTO)
         {
