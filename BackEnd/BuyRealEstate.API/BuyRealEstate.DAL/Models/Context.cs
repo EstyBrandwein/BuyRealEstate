@@ -36,20 +36,7 @@ public class AppDbContext : DbContext
     public DbSet<RelationshipPaymentsProjects> ProjectPayments { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        //ConfigureManyToMany<RelationshipCustomersPlots, User, Plot>(
-        //modelBuilder, join => join.User, left => left.CustomerPlots, join => join.Plot,  right => right.CustomerPlots,
-        //join => join.UserID, join => join.PlotID);
 
-        //// Plot <-> Payment via RelationshipPaymentsPlots (Many-to-Many)
-        //ConfigureManyToMany<RelationshipPaymentsPlots, Plot, Payment>(
-        //    modelBuilder,join => join.plot,left => left.PaymentPlots, join => join.payment,
-        //    right => right.PaymentPlots,join => join.PlotID,join => join.PaymentID);
-
-        //// Project <-> Payment via RelationshipPaymentsProjects (Many-to-Many)
-        //ConfigureManyToMany<RelationshipPaymentsProjects, Project, Payment>(
-        //    modelBuilder,join => join.project,left => left.PaymentProject, join => join.payment,
-        //    right => right.PaymentProject, join => join.ProjectID,join => join.PaymentID
-        //);
         modelBuilder.ConfigureManyToMany<RelationshipCustomersPlots, User, Plot>(joinKey: cp => cp.ID, joinToLeft: cp => cp.User,
        leftToJoins: u => u.CustomerPlots, joinToRight: cp => cp.Plot, rightToJoins: p => p.CustomerPlots, leftForeignKey: cp => cp.UserID, rightForeignKey: cp => cp.PlotID);
 
@@ -86,10 +73,7 @@ public class AppDbContext : DbContext
         // Payment -> Professional (One-to-Many)
         ConfigureOneToMany<Professional, Payment>( modelBuilder,child => child.Professional,parent => parent.Payments,child => child.ProfessionalId );
         ConfigureOneToMany<DevelopmentStatus, Project>(modelBuilder, c => c.DeveloperStatus, p => p.Project, c => c.DeveloperStatusID);
-        //modelBuilder.Entity<Payment>()
-        //    .HasOne(u => u.Professional)
-        //    .WithOne(p => p.)
-        //.HasForeignKey(p => p.UserId);
+
        // modelBuilder.SeedMockData();
         base.OnModelCreating(modelBuilder);
     }
@@ -107,39 +91,7 @@ public class AppDbContext : DbContext
             .HasForeignKey(foreignKeyExpression)
             .OnDelete(DeleteBehavior.Restrict); // Default behavior; adjust as needed
     }
-    //private void ConfigureManyToMany<TJoin, TLeft, TRight>(
-    //ModelBuilder modelBuilder,
-    //Expression<Func<TJoin, object>> joinToLeft,
-    //Expression<Func<TLeft, IEnumerable<TJoin>>>? leftToJoins,
-    //Expression<Func<TJoin, object>> joinToRight,
-    //Expression<Func<TRight, IEnumerable<TJoin>>>? rightToJoins,
-    //Expression<Func<TJoin, object>> leftKey,
-    //Expression<Func<TJoin, object>> rightKey,
-    //DeleteBehavior deleteBehavior = DeleteBehavior.Restrict)
-    //where TJoin : class
-    //where TLeft : class
-    //where TRight : class
-    //{
-    //    modelBuilder.Entity<TJoin>()
-    //        .HasKey(joinToLeft); // Ensure the key is properly configured (use ID or composite key)
-
-    //    modelBuilder.Entity<TJoin>()
-    //        .HasOne(joinToLeft)
-    // .WithMany(leftToJoins)
-    // .HasForeignKey(leftKey)
-    // .OnDelete(deleteBehavior);
-
-    //    modelBuilder.Entity<TJoin>()
-    //        .HasOne(joinToRight)
-    //        .WithMany(rightToJoins)
-    //        .HasForeignKey(rightKey)
-    //        .OnDelete(deleteBehavior);
-
-    //}
-
-
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.ConfigureWarnings(warnings =>
             warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
