@@ -34,7 +34,7 @@ namespace BuyRealEstate.Domain.Extentions
                 new LegalStatus { Id = 4, Status = "העסקה רשומה על שימכם", InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
                 );
             modelBuilder.Entity<Payment>().HasData(
-                new Payment { ID = 1, PaymentStatusId = 1,Detiels = "hello",Surplus = 12000,dose ="",movement = "",HNagainst = "",DataValue  = DateTime.Now,Datereference = DateTime.Now, Amount = 360000, PaymentExecutionMethodID = 1,Title = "רשות המיסים", InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, LastPaymentDate = DateTime.Now, State = true }
+                new Payment { ID = 1,ProfessionalId= 4, PaymentStatusId = 1,Detiels = "hello",Surplus = 12000,dose ="",movement = "",HNagainst = "",DataValue  = DateTime.Now,Datereference = DateTime.Now, Amount = 360000, PaymentExecutionMethodID = 1,Title = "רשות המיסים", InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, LastPaymentDate = DateTime.Now, State = true }
                 );
             modelBuilder.Entity<PaymentExecutionMethod>().HasData(
                new PaymentExecutionMethod { ID = 1, Description = "אשראי", InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true },
@@ -48,7 +48,7 @@ namespace BuyRealEstate.Domain.Extentions
                 new PaymentStatus { Id = 3, Status = "שולם", InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
             );
             modelBuilder.Entity<Permission>().HasData(
-               new Permission { Id = 5, permission = "מנהל", InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true },
+               new Permission { Id = 1, permission = "מנהל", InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true },
                new Permission { Id = 2, permission = "מזכירה", InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true },
                new Permission { Id = 3, permission = "לקוח", InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true },
                new Permission { Id = 4, permission = "איש קשר", InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
@@ -58,10 +58,10 @@ namespace BuyRealEstate.Domain.Extentions
                new Plot { ID = 2, PlotCost = 580000, MonthlyFundingCost = 10000, MonthsForFundingCost = 10, PlotValue = 600000, PlotSize = 138, PlotNumber = 11, ProjectId = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true },
                new Plot { ID = 3, PlotCost = 580000, MonthlyFundingCost = 10000, MonthsForFundingCost = 10, PlotValue = 600000, PlotSize = 110, PlotNumber = 13, ProjectId = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
           );
-            //modelBuilder.Entity<Professional>().HasData(
-            //   new Professional { ID = 4, FirstName = "רשות", LastName = "המיסים", Email = "ghj@hjj", Password = "123456", Phone = "050141155", PermissionId = 4, Username = "רשות המיסים", Professtion = "מיסים", WebsiteAddress = "https://www.efshar-nadlan.co.il", InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true },
-            //   new Professional { ID = 5, FirstName = "רועי", LastName = "גרילק", Email = "royi@grilak", Password = "123456", Phone = "0556565626", PermissionId = 4, Username = "עורך דין", Professtion = "עריכת דין", InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
-            //  );
+            modelBuilder.Entity<Professional>().HasData(
+               new Professional { ID = 4, FirstName = "רשות", LastName = "המיסים", Email = "ghj@hjj", Password = "123456", FirstPhone = "050141155", PermissionId = 4, Username = "רשות המיסים", Professtion = "מיסים", WebsiteAddress = "https://www.efshar-nadlan.co.il", InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true },
+               new Professional { ID = 5,WebsiteAddress = "", FirstName = "רועי", LastName = "גרילק", Email = "royi@grilak", Password = "123456", FirstPhone = "0556565626", PermissionId = 4, Username = "עורך דין", Professtion = "עריכת דין", InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
+              );
             modelBuilder.Entity<Project>().HasData(
                new Project { ID = 1, ProjectName = "כרמית 11", ProjectAddress = "כרמית", LegalStatusId = 1, ProjectManagerID = 1, DeveloperStatusID = 1, GrossProfit = 12000, LinkToLead2 = "https://www.efshar-nadlan.co.il/", ProjectType = true, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
 

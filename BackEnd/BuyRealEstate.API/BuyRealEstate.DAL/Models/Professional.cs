@@ -10,6 +10,6 @@ namespace BuyRealEstate.Domain.Models
     {
         public string WebsiteAddress { get; set; }
         public string Professtion { get; set; }
-        public ICollection<Payment> Payments { get; set; } // Correctly define Payments as a collection
+        public ICollection<Payment>? Payments { get; set; } // Correctly define Payments as a collection
     }
 }
