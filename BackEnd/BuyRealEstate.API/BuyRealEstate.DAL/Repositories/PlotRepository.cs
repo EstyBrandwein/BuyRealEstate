@@ -18,6 +18,7 @@ namespace BuyRealEstate.Domain.Repositories
 
         public async Task<IEnumerable<Plot>> GetAllPlotsAsync()
         {
+
             return await _context.Plots.Include(p => p.Project).ToListAsync();
         }
 

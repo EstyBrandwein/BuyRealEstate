@@ -20,9 +20,6 @@ namespace BuyRealEstate.Core.DTos
         public ICollection<RelationshipCustomersPlots> CustomerPlots { get; set; }
         public ICollection<DocumentDTO> Documents { get; set; }
 
-        public static explicit operator UsersDTO(Users v)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

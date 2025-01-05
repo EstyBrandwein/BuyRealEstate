@@ -6,18 +6,97 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BuyRealEstate.Domain.Migrations
 {
     /// <inheritdoc />
-    public partial class FK : Migration
+    public partial class first : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "DevelopmentStatuses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProjectID = table.Column<int>(type: "int", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    InsertUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    State = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DevelopmentStatuses", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LegalStatuses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProjectID = table.Column<int>(type: "int", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    InsertUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    State = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LegalStatuses", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PaymentExecutionMethods",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    InsertUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    State = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PaymentExecutionMethods", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PaymentStatuses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    InsertUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    State = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PaymentStatuses", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Permissions",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    permission = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    permission = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    InsertUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    State = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -36,7 +115,8 @@ namespace BuyRealEstate.Domain.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FirstPhone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SecendPhon = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Discriminator = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
                     WebsiteAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Professtion = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -63,10 +143,19 @@ namespace BuyRealEstate.Domain.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Component = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    movement = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    dose = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HNagainst = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Datereference = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DataValue = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Detiels = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Surplus = table.Column<int>(type: "int", nullable: false),
                     Amount = table.Column<double>(type: "float", nullable: false),
                     ProfessionalId = table.Column<int>(type: "int", nullable: false),
                     LastPaymentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PaymentExecutionMethodID = table.Column<int>(type: "int", nullable: false),
+                    PaymentStatusId = table.Column<int>(type: "int", nullable: false),
                     InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     InsertUser = table.Column<int>(type: "int", nullable: false),
@@ -77,11 +166,23 @@ namespace BuyRealEstate.Domain.Migrations
                 {
                     table.PrimaryKey("PK_Payments", x => x.ID);
                     table.ForeignKey(
+                        name: "FK_Payments_PaymentExecutionMethods_PaymentExecutionMethodID",
+                        column: x => x.PaymentExecutionMethodID,
+                        principalTable: "PaymentExecutionMethods",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Payments_PaymentStatuses_PaymentStatusId",
+                        column: x => x.PaymentStatusId,
+                        principalTable: "PaymentStatuses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_Payments_Users_ProfessionalId",
                         column: x => x.ProfessionalId,
                         principalTable: "Users",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -92,10 +193,12 @@ namespace BuyRealEstate.Domain.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProjectName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProjectAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProjectManagerID = table.Column<int>(type: "int", nullable: false),
                     GrossProfit = table.Column<double>(type: "float", nullable: false),
                     LinkToLead2 = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProjectType = table.Column<bool>(type: "bit", nullable: false),
+                    LegalStatusId = table.Column<int>(type: "int", nullable: false),
+                    DeveloperStatusID = table.Column<int>(type: "int", nullable: false),
+                    ProjectManagerID = table.Column<int>(type: "int", nullable: false),
                     InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     InsertUser = table.Column<int>(type: "int", nullable: false),
@@ -106,83 +209,21 @@ namespace BuyRealEstate.Domain.Migrations
                 {
                     table.PrimaryKey("PK_Projects", x => x.ID);
                     table.ForeignKey(
+                        name: "FK_Projects_DevelopmentStatuses_DeveloperStatusID",
+                        column: x => x.DeveloperStatusID,
+                        principalTable: "DevelopmentStatuses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Projects_LegalStatuses_LegalStatusId",
+                        column: x => x.LegalStatusId,
+                        principalTable: "LegalStatuses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_Projects_Users_ProjectManagerID",
                         column: x => x.ProjectManagerID,
                         principalTable: "Users",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PaymentExecutionMethods",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PaymentExecutionMethodID = table.Column<int>(type: "int", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    InsertUser = table.Column<int>(type: "int", nullable: false),
-                    UpdateUser = table.Column<int>(type: "int", nullable: false),
-                    State = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PaymentExecutionMethods", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_PaymentExecutionMethods_Payments_PaymentExecutionMethodID",
-                        column: x => x.PaymentExecutionMethodID,
-                        principalTable: "Payments",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PaymentStatuses",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PaymentId = table.Column<int>(type: "int", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    InsertUser = table.Column<int>(type: "int", nullable: false),
-                    UpdateUser = table.Column<int>(type: "int", nullable: false),
-                    State = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PaymentStatuses", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_PaymentStatuses_Payments_PaymentId",
-                        column: x => x.PaymentId,
-                        principalTable: "Payments",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "DevelopmentStatuses",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProjectID = table.Column<int>(type: "int", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    InsertUser = table.Column<int>(type: "int", nullable: false),
-                    UpdateUser = table.Column<int>(type: "int", nullable: false),
-                    State = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_DevelopmentStatuses", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_DevelopmentStatuses_Projects_ProjectID",
-                        column: x => x.ProjectID,
-                        principalTable: "Projects",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -198,6 +239,7 @@ namespace BuyRealEstate.Domain.Migrations
                     UserId = table.Column<int>(type: "int", nullable: true),
                     DocumentData = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     DocumentDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FileType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     InsertUser = table.Column<int>(type: "int", nullable: false),
@@ -211,17 +253,20 @@ namespace BuyRealEstate.Domain.Migrations
                         name: "FK_Documents_Payments_PamentID",
                         column: x => x.PamentID,
                         principalTable: "Payments",
-                        principalColumn: "ID");
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Documents_Projects_ProjectID",
                         column: x => x.ProjectID,
                         principalTable: "Projects",
-                        principalColumn: "ID");
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Documents_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "ID");
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -233,6 +278,7 @@ namespace BuyRealEstate.Domain.Migrations
                     ImageDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ImageData = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     ProjectID = table.Column<int>(type: "int", nullable: false),
+                    FileType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     InsertUser = table.Column<int>(type: "int", nullable: false),
@@ -247,32 +293,7 @@ namespace BuyRealEstate.Domain.Migrations
                         column: x => x.ProjectID,
                         principalTable: "Projects",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "LegalStatuses",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProjectID = table.Column<int>(type: "int", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    InsertUser = table.Column<int>(type: "int", nullable: false),
-                    UpdateUser = table.Column<int>(type: "int", nullable: false),
-                    State = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_LegalStatuses", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_LegalStatuses_Projects_ProjectID",
-                        column: x => x.ProjectID,
-                        principalTable: "Projects",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -302,7 +323,7 @@ namespace BuyRealEstate.Domain.Migrations
                         column: x => x.ProjectId,
                         principalTable: "Projects",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -313,7 +334,7 @@ namespace BuyRealEstate.Domain.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PaymentID = table.Column<int>(type: "int", nullable: false),
                     ProjectID = table.Column<int>(type: "int", nullable: false),
-                    paymentStutusId = table.Column<int>(type: "int", nullable: false),
+                    paymentStutusID = table.Column<int>(type: "int", nullable: false),
                     InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     InsertUser = table.Column<int>(type: "int", nullable: false),
@@ -324,8 +345,8 @@ namespace BuyRealEstate.Domain.Migrations
                 {
                     table.PrimaryKey("PK_ProjectPayments", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_ProjectPayments_PaymentStatuses_paymentStutusId",
-                        column: x => x.paymentStutusId,
+                        name: "FK_ProjectPayments_PaymentStatuses_paymentStutusID",
+                        column: x => x.paymentStutusID,
                         principalTable: "PaymentStatuses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -382,7 +403,7 @@ namespace BuyRealEstate.Domain.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PlotID = table.Column<int>(type: "int", nullable: false),
                     PaymentID = table.Column<int>(type: "int", nullable: false),
-                    paymentStutusId = table.Column<int>(type: "int", nullable: false),
+                    paymentStutusID = table.Column<int>(type: "int", nullable: false),
                     InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     InsertUser = table.Column<int>(type: "int", nullable: false),
@@ -393,8 +414,8 @@ namespace BuyRealEstate.Domain.Migrations
                 {
                     table.PrimaryKey("PK_PlotPayments", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_PlotPayments_PaymentStatuses_paymentStutusId",
-                        column: x => x.paymentStutusId,
+                        name: "FK_PlotPayments_PaymentStatuses_paymentStutusID",
+                        column: x => x.paymentStutusID,
                         principalTable: "PaymentStatuses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -423,11 +444,6 @@ namespace BuyRealEstate.Domain.Migrations
                 column: "UserID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DevelopmentStatuses_ProjectID",
-                table: "DevelopmentStatuses",
-                column: "ProjectID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Documents_PamentID",
                 table: "Documents",
                 column: "PamentID");
@@ -448,14 +464,14 @@ namespace BuyRealEstate.Domain.Migrations
                 column: "ProjectID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LegalStatuses_ProjectID",
-                table: "LegalStatuses",
-                column: "ProjectID");
+                name: "IX_Payments_PaymentExecutionMethodID",
+                table: "Payments",
+                column: "PaymentExecutionMethodID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PaymentExecutionMethods_PaymentExecutionMethodID",
-                table: "PaymentExecutionMethods",
-                column: "PaymentExecutionMethodID");
+                name: "IX_Payments_PaymentStatusId",
+                table: "Payments",
+                column: "PaymentStatusId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Payments_ProfessionalId",
@@ -463,19 +479,14 @@ namespace BuyRealEstate.Domain.Migrations
                 column: "ProfessionalId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PaymentStatuses_PaymentId",
-                table: "PaymentStatuses",
-                column: "PaymentId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_PlotPayments_PaymentID",
                 table: "PlotPayments",
                 column: "PaymentID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PlotPayments_paymentStutusId",
+                name: "IX_PlotPayments_paymentStutusID",
                 table: "PlotPayments",
-                column: "paymentStutusId");
+                column: "paymentStutusID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PlotPayments_PlotID",
@@ -493,14 +504,24 @@ namespace BuyRealEstate.Domain.Migrations
                 column: "PaymentID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProjectPayments_paymentStutusId",
+                name: "IX_ProjectPayments_paymentStutusID",
                 table: "ProjectPayments",
-                column: "paymentStutusId");
+                column: "paymentStutusID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProjectPayments_ProjectID",
                 table: "ProjectPayments",
                 column: "ProjectID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Projects_DeveloperStatusID",
+                table: "Projects",
+                column: "DeveloperStatusID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Projects_LegalStatusId",
+                table: "Projects",
+                column: "LegalStatusId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Projects_ProjectManagerID",
@@ -520,19 +541,10 @@ namespace BuyRealEstate.Domain.Migrations
                 name: "CustomerPlots");
 
             migrationBuilder.DropTable(
-                name: "DevelopmentStatuses");
-
-            migrationBuilder.DropTable(
                 name: "Documents");
 
             migrationBuilder.DropTable(
                 name: "Images");
-
-            migrationBuilder.DropTable(
-                name: "LegalStatuses");
-
-            migrationBuilder.DropTable(
-                name: "PaymentExecutionMethods");
 
             migrationBuilder.DropTable(
                 name: "PlotPayments");
@@ -544,13 +556,22 @@ namespace BuyRealEstate.Domain.Migrations
                 name: "Plots");
 
             migrationBuilder.DropTable(
-                name: "PaymentStatuses");
+                name: "Payments");
 
             migrationBuilder.DropTable(
                 name: "Projects");
 
             migrationBuilder.DropTable(
-                name: "Payments");
+                name: "PaymentExecutionMethods");
+
+            migrationBuilder.DropTable(
+                name: "PaymentStatuses");
+
+            migrationBuilder.DropTable(
+                name: "DevelopmentStatuses");
+
+            migrationBuilder.DropTable(
+                name: "LegalStatuses");
 
             migrationBuilder.DropTable(
                 name: "Users");

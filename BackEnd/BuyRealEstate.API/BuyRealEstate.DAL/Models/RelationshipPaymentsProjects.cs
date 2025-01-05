@@ -14,6 +14,8 @@ namespace BuyRealEstate.Domain.Models
         public int ProjectID { get; set; }
         public Project project { get; set; }
         public PaymentStatus paymentStutus { get; set; }
+        public int paymentStutusID { get; set; }
+
 
 
     }

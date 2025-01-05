@@ -10,7 +10,7 @@ namespace BuyRealEstate.Domain.Models
     {
         public int Id { get; set; }
         public string Status { get; set; }
-        public Project Project { get; set; }
+        public ICollection<Project>? Projects { get; set; }
         public int ProjectID { get; set; }
 
     }
