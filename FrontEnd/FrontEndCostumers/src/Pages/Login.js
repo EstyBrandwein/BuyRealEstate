@@ -1,19 +1,30 @@
-import React from 'react';
-import Button from '@mui/material/Button'; 
+import React, { useState } from 'react';
+import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
 function Login() {
-    const handleLoginSubmit = () => {
-        // Add login logic here
-    };
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
-    return (
-        <div>
-            <TextField label="שם משתמש" fullWidth />
-            <TextField type="password" label="סיסמה" fullWidth />
-            <Button onClick={handleLoginSubmit} color="primary" variant="contained">אישור</Button>
-        </div>
-    );
-}
+    const handleLoginSubmit = async () => {
+        try {
+            const response = await fetch('https://your-api-url/api/customer/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }),
+            });
 
-export default Login;
+            if (!response.ok) {
+                throw new Error('Login failed');
+            }
+
+            const data = await response.json();
+            // Handle successful login (e.g., save token, redirect, etc.)
+            console.log(data);
+        } catch (error) {
+            setError(error.message);
+        }
+    }
