@@ -7,9 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using System;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
@@ -19,7 +17,11 @@ namespace BuyRealEstate.Domain.Models
 
     public class BuyRealEstateDbContext : DbContext
     {
-        public DbSet<Customer> Customers { get; set; }
+        public BuyRealEstateDbContext(DbContextOptions<BuyRealEstateDbContext> options)
+       : base(options)
+        {
+        }
+        public DbSet<User> Users { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Plot> Plots { get; set; }
         public DbSet<Payment> Payments { get; set; }

@@ -3,6 +3,9 @@ using BuyRealEstate.Core.Services;
 using BuyRealEstate.Domain.Models;
 using BuyRealEstate.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using BuyRealEstate.Core;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,14 +13,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<BuyRealEstateDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+
 // Register the repository with the dependency injection container
-builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 // Register the service with the dependency injection container
-builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddControllers();
 builder.Services.AddRazorPages();
+
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 var app = builder.Build();
 
