@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 namespace BuyRealEstate.Domain.Models
 {
 
-    public class PaymentStatus
+    public class PaymentStatus:BaseClass
     {
         public int Id { get; set; }
         public string Status { get; set; }
+        public ICollection<Payment> Payments { get; set; }
     }
 }

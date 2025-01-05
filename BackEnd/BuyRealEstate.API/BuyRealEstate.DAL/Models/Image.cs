@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BuyRealEstate.Domain.Models
+
 {
-    public class Image
+    public class Image : BaseClass
     {
         public int ID { get; set; }
         public string ImageDescription { get; set; }

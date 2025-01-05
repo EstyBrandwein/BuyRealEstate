@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BuyRealEstate.Domain.Models
 {
-    public class Plot
+    public class Plot:BaseClass
     {
         public int ID { get; set; }
         public int PlotCost { get; set; }
@@ -16,5 +16,9 @@ namespace BuyRealEstate.Domain.Models
         public double PlotSize { get; set; }
         public int PlotNumber { get; set; }
         public Project Project { get; set; }
+        public int ProjectId { get; set; }
+        public ICollection<RelationshipCustomersPlots> CustomerPlots { get; set; }
+        public ICollection<RelationshipPaymentsPlots> PaymentPlots { get; set; }
+
     }
 }

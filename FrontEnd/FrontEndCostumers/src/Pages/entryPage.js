@@ -28,7 +28,7 @@ function EntryPage() {
                     <Button onClick={handleClose} color="primary">ביטול</Button>
                 </DialogActions>
             </Dialog>
-           
+
         </div>
     );
 }

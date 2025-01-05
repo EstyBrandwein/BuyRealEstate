@@ -6,25 +6,23 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Migrations\20241201113256_BuyRealEstateMirgrtion.cs" />
-    <Compile Remove="Migrations\20241201113256_BuyRealEstateMirgrtion.Designer.cs" />
-    <Compile Remove="Migrations\20241202113953_BuyRealEstate.cs" />
-    <Compile Remove="Migrations\20241202113953_BuyRealEstate.Designer.cs" />
-    <Compile Remove="Migrations\BuyRealEstateDbContextModelSnapshot.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BuyRealEstate.Common\BuyRealEstate.Common.csproj" />
   </ItemGroup>
 
 </Project>

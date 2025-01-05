@@ -1,10 +1,14 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button'; 
+import TextField from '@mui/material/TextField';
+
 function Register() {
     const handleRegisterSubmit = () => {
         // Add registration logic here
     };
+
     return (
         <div>
             <TextField label="שם משתמש" fullWidth />
@@ -14,4 +18,5 @@ function Register() {
         </div>
     );
 }
+
 export default Register;

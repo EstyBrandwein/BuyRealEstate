@@ -27,27 +27,4 @@ function Login() {
         } catch (error) {
             setError(error.message);
         }
-    };
-
-    return (
-        <div>
-            <TextField 
-                label="שם משתמש" 
-                fullWidth 
-                value={username} 
-                onChange={(e) => setUsername(e.target.value)} 
-            />
-            <TextField 
-                type="password" 
-                label="סיסמה" 
-                fullWidth 
-                value={password} 
-                onChange={(e) => setPassword(e.target.value)} 
-            />
-            {error && <div style={{ color: 'red' }}>{error}</div>}
-            <Button onClick={handleLoginSubmit} color="primary" variant="contained">אישור</Button>
-        </div>
-    );
-}
-
-export default Login;
+    }

@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace BuyRealEstate.Domain.Models
 {
-    public class Professional
+    public class Professional : User
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public string Profession { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
         public string WebsiteAddress { get; set; }
+        public string Professtion { get; set; }
+        public ICollection<Payment>? Payments { get; set; } // Correctly define Payments as a collection
     }
 }
