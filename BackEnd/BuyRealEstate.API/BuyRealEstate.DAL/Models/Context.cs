@@ -1,14 +1,4 @@
-﻿//using BuyRealEstate.Domain.Extentions;
-//using BuyRealEstate.Domain.Models;
-//using Microsoft.EntityFrameworkCore;
-//using Microsoft.EntityFrameworkCore.Diagnostics;
-////using Microsoft.Extensions.Configuration;
-//using Microsoft.IdentityModel.Protocols;
-//using System.Collections.Generic;
-//using System.Configuration;
-//using System.Linq.Expressions;
-
-using BuyRealEstate.Domain.Extentions;
+﻿using BuyRealEstate.Domain.Extentions;
 using BuyRealEstate.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
