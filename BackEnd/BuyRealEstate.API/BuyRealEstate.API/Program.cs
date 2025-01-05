@@ -1,52 +1,60 @@
-using BuyRealEstate.Core.Interfaces;
-using BuyRealEstate.Core.Services;
-using BuyRealEstate.Domain.Models;
 using BuyRealEstate.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
-using AutoMapper;
-using BuyRealEstate.Core;
-using Microsoft.Extensions.Configuration;
-
+using System;
+using BuyRealEstate.Domain.Models;
+using BuyRealEstate.Core.Interfaces;
+using BuyRealEstate.Core.Services;
+using BuyRealEstate.Domain.Interfaces;
+using BuyRealEstate.Core.DTos;
+using BuyRealEstate.Core.DTOs;
 var builder = WebApplication.CreateBuilder(args);
-
-// Configure services directly using the builder
-builder.Services.AddDbContext<BuyRealEstateDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-
-// Register the repository with the dependency injection container
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-
-// Register the service with the dependency injection container
-builder.Services.AddScoped<IUserService, UserService>();
-
-builder.Services.AddControllers();
+// Add services to the container.
 builder.Services.AddRazorPages();
-
-builder.Services.AddAutoMapper(typeof(MappingProfile));
-
+builder.Services.AddAutoMapper(cfg =>
+{
+    // יצירת מיפויים בין המודלים וה-DTOs שלך
+    cfg.CreateMap<DevelopmentStatus, DevelopmentStatusDTO>();
+    cfg.CreateMap<User, UsersDTO>();
+    cfg.CreateMap<LegalStatus, LegalStatusDTO>();
+    cfg.CreateMap<Image, ImageDTO>();
+    cfg.CreateMap<Document, DocumentDTO>();
+    // מיפוי של פרויקט
+    cfg.CreateMap<Project, ProjectDTO>()
+        .ForMember(dest => dest.ProjectManager, opt => opt.MapFrom(src => src.ProjectManager))
+        .ForMember(dest => dest.DeveloperStatus, opt => opt.MapFrom(src => src.DeveloperStatus))
+        .ForMember(dest => dest.LegalStatus, opt => opt.MapFrom(src => src.LegalStatus))
+        .ForMember(dest => dest.Images, opt => opt.MapFrom(src => src.Images))
+        .ForMember(dest => dest.Documents, opt => opt.MapFrom(src => src.Documents));
+    // מיפוי של Plot
+    cfg.CreateMap<Plot, PlotDTO>()
+        .ForMember(dest => dest.Project, opt => opt.MapFrom(src => src.Project));
+}, AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<IPlotRepository, PlotRepository>();
+builder.Services.AddScoped<IPlotService, PlotService>();
+builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+builder.Services.AddScoped<IProjectService, ProjectService>();
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Conection_String")));
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-//if (app.Environment.IsDevelopment())
-//{
-//    app.UseSwagger();
-//    app.UseSwaggerUI();
-//}
-
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
-
-app.MapControllers(); // Make sure to map your API controllers
+app.MapControllers();
 app.MapRazorPages();
-
 app.Run();
