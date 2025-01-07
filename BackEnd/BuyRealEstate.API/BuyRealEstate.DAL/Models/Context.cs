@@ -48,31 +48,31 @@ public class AppDbContext : DbContext
         modelBuilder.ConfigureManyToMany<RelationshipPaymentsProjects, Project, Payment>(joinKey: pp => pp.ID,joinToLeft: pp => pp.project,leftToJoins: p => p.PaymentProject,
             joinToRight: pp => pp.payment, rightToJoins: p => p.PaymentProject,leftForeignKey: pp => pp.ProjectID, rightForeignKey: pp => pp.PaymentID);
 
-        // Plot -> Project (One-to-Many)
-        ConfigureOneToMany<Project, Plot>(modelBuilder,child => child.Project, parent => parent.Plots,child => child.ProjectId);
-        // Image -> Project (One-to-Many)
-        ConfigureOneToMany<Project, Image>(modelBuilder,child => child.Project,parent => parent.Images,child => child.ProjectID );
+        //// Plot -> Project (One-to-Many)
+        //ConfigureOneToMany<Project, Plot>(modelBuilder,child => child.Project, parent => parent.Plots,child => child.ProjectId);
+        //// Image -> Project (One-to-Many)
+        //ConfigureOneToMany<Project, Image>(modelBuilder,child => child.Project,parent => parent.Images,child => child.ProjectID );
 
-        // Document -> Project (One-to-Many)
-        ConfigureOneToMany<Project, Document>(modelBuilder,child => child.Project,parent => parent.Documents,child => child.ProjectID);
+        //// Document -> Project (One-to-Many)
+        //ConfigureOneToMany<Project, Document>(modelBuilder,child => child.Project,parent => parent.Documents,child => child.ProjectID);
 
-        // Document -> Payment (One-to-Many)
-        ConfigureOneToMany<Payment, Document>(modelBuilder,child => child.Payment,parent => parent.PaymentConfirmation,child => child.PamentID);
+        //// Document -> Payment (One-to-Many)
+        //ConfigureOneToMany<Payment, Document>(modelBuilder,child => child.Payment,parent => parent.PaymentConfirmation,child => child.PamentID);
 
-        // DevelopStatus -> Project (One-to-Many)
-        ConfigureOneToMany<LegalStatus, Project>(modelBuilder,child => child.LegalStatus,parent => parent.Projects,child => child.LegalStatusId );
+        //// DevelopStatus -> Project (One-to-Many)
+        //ConfigureOneToMany<LegalStatus, Project>(modelBuilder,child => child.LegalStatus,parent => parent.Projects,child => child.LegalStatusId );
 
-        // PaymentStatus -> Payment (One-to-Many)
-        ConfigureOneToMany<PaymentStatus, Payment>(modelBuilder,child => child.PaymentStatus,parent => parent.Payments,child => child.PaymentStatusId);
+        //// PaymentStatus -> Payment (One-to-Many)
+        //ConfigureOneToMany<PaymentStatus, Payment>(modelBuilder,child => child.PaymentStatus,parent => parent.Payments,child => child.PaymentStatusId);
 
-        // PaymentExecutionMethod -> Payment (One-to-Many)
-        ConfigureOneToMany<PaymentExecutionMethod, Payment>(modelBuilder,child => child.PaymentExecutionMethod,parent => parent.Payment,child => child.PaymentExecutionMethodID );
+        //// PaymentExecutionMethod -> Payment (One-to-Many)
+        //ConfigureOneToMany<PaymentExecutionMethod, Payment>(modelBuilder,child => child.PaymentExecutionMethod,parent => parent.Payment,child => child.PaymentExecutionMethodID );
 
-        // Document -> User (One-to-Many)
-        ConfigureOneToMany<User, Document>(modelBuilder,child => child.User,parent => parent.Documents,child => child.UserId);
-        // Payment -> Professional (One-to-Many)
-        ConfigureOneToMany<Professional, Payment>( modelBuilder,child => child.Professional,parent => parent.Payments,child => child.ProfessionalId );
-        ConfigureOneToMany<DevelopmentStatus, Project>(modelBuilder, c => c.DeveloperStatus, p => p.Project, c => c.DeveloperStatusID);
+        //// Document -> User (One-to-Many)
+        //ConfigureOneToMany<User, Document>(modelBuilder,child => child.User,parent => parent.Documents,child => child.UserId);
+        //// Payment -> Professional (One-to-Many)
+        //ConfigureOneToMany<Professional, Payment>( modelBuilder,child => child.Professional,parent => parent.Payments,child => child.ProfessionalId );
+        //ConfigureOneToMany<DevelopmentStatus, Project>(modelBuilder, c => c.DeveloperStatus, p => p.Project, c => c.DeveloperStatusID);
 
        modelBuilder.SeedMockData();
         base.OnModelCreating(modelBuilder);

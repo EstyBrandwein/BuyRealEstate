@@ -31,7 +31,7 @@ builder.Services.AddAutoMapper(cfg =>
         .ForMember(dest => dest.Images, opt => opt.MapFrom(src => src.Images))
         .ForMember(dest => dest.Documents, opt => opt.MapFrom(src => src.Documents));
 
-    // ξιτει ωμ Plot
+    // ΧΧ™Χ¤Χ•Χ™ Χ©Χ Plot
     cfg.CreateMap<Plot, PlotDTO>()
         .ForMember(dest => dest.Project, opt => opt.MapFrom(src => src.Project));
 }, AppDomain.CurrentDomain.GetAssemblies());
