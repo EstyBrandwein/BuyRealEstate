@@ -14,6 +14,7 @@ namespace BuyRealEstate.Domain.Repositories
         private readonly AppDbContext _context;
 
         public UserRepository(AppDbContext context)
+
         {
             _context = context;
         }

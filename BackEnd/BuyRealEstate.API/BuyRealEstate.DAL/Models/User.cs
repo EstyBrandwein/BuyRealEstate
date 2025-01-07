@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security;
+using System.Security.Permissions;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -22,7 +23,6 @@ namespace BuyRealEstate.Domain.Models
         public string? SecendPhon { get; set; }
         [JsonIgnore] public ICollection<RelationshipCustomersPlots> CustomerPlots { get; set; }
         public ICollection<Document> Documents { get; set; }
-
         
     }
 
