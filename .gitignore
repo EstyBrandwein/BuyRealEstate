@@ -402,3 +402,4 @@ FodyWeavers.xsd
 # Ignore appsettings.json to avoid committing sensitive data
 appsettings.json
 appsettings.Development.json
+

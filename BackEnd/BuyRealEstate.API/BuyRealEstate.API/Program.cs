@@ -14,7 +14,7 @@ builder.Services.AddAutoMapper(cfg =>
 {
     // éöéøú îéôåééí áéï äîåãìéí åä-DTOs ùìê
     cfg.CreateMap<DevelopmentStatus, DevelopmentStatusDTO>();
-    cfg.CreateMap<User, UsersDTO>();
+    cfg.CreateMap<User, UserDto>();
     cfg.CreateMap<LegalStatus, LegalStatusDTO>();
     cfg.CreateMap<Image, ImageDTO>();
     cfg.CreateMap<Document, DocumentDTO>();
@@ -32,6 +32,12 @@ builder.Services.AddAutoMapper(cfg =>
 builder.Services.AddScoped<IPlotRepository, PlotRepository>();
 builder.Services.AddScoped<IPlotService, PlotService>();
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+
+builder.Services.AddScoped<IProjectService, ProjectService>();
+
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
