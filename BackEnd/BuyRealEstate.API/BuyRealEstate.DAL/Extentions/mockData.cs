@@ -18,14 +18,14 @@ namespace BuyRealEstate.Domain.Extentions
         new DevelopmentStatus { Status = "הפיתוח הושלם", Id = 2 }
       );
             modelBuilder.Entity<Document>().HasData(
-               new Document { ID = 1, FileType = ".pdf", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, DocumentDescription = "תעודת זהות", DocumentData = File.ReadAllBytes("D:\\Users\\programmer\\Downloads\\הסכם הלוואה מלווה לקנות ופרידמן.docx") },
-               new Document { ID = 2, FileType = ".pdf", PamentID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, DocumentDescription = "תעודת זהות", DocumentData = File.ReadAllBytes("D:\\Users\\programmer\\Downloads\\מסמך-אפיון-לקנות נדלן (1) (2).docx") }
+               //new Document { ID = 1, FileType = ".pdf", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, DocumentDescription = "תעודת זהות", DocumentData = File.ReadAllBytes("D:\\Users\\programmer\\Downloads\\הסכם הלוואה מלווה לקנות ופרידמן.docx") },
+               //new Document { ID = 2, FileType = ".pdf", PamentID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, DocumentDescription = "תעודת זהות", DocumentData = File.ReadAllBytes("D:\\Users\\programmer\\Downloads\\מסמך-אפיון-לקנות נדלן (1) (2).docx") }
 
                 );
 
             modelBuilder.Entity<Image>().HasData(
-               new Image { ID = 1, FileType = ".jpg", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, ImageDescription = "תמונה", ImageData = File.ReadAllBytes("D:\\Users\\programmer\\Downloads\\הסכם הלוואה מלווה לקנות ופרידמן.docx") },
-               new Image { ID = 2, FileType = ".jpg", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, ImageDescription = "תמונה", ImageData = File.ReadAllBytes("D:\\Users\\programmer\\Downloads\\הסכם הלוואה מלווה לקנות ופרידמן.docx") }
+               //new Image { ID = 1, FileType = ".jpg", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, ImageDescription = "תמונה", ImageData = File.ReadAllBytes("D:\\Users\\programmer\\Downloads\\הסכם הלוואה מלווה לקנות ופרידמן.docx") },
+               //new Image { ID = 2, FileType = ".jpg", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, ImageDescription = "תמונה", ImageData = File.ReadAllBytes("D:\\Users\\programmer\\Downloads\\הסכם הלוואה מלווה לקנות ופרידמן.docx") }
                 );
             modelBuilder.Entity<LegalStatus>().HasData(
                 new LegalStatus { Id = 1, Status = "בשלבי רכישה", InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true },

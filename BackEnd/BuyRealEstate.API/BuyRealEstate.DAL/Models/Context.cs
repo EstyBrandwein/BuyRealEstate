@@ -95,7 +95,7 @@ public class AppDbContext : DbContext
         //ConfigureOneToMany<Professional, Payment>( modelBuilder,child => child.Professional,parent => parent.Payments,child => child.ProfessionalId );
         //ConfigureOneToMany<DevelopmentStatus, Project>(modelBuilder, c => c.DeveloperStatus, p => p.Project, c => c.DeveloperStatusID);
 
-       modelBuilder.SeedMockData();
+       //modelBuilder.SeedMockData();
         base.OnModelCreating(modelBuilder);
     }
     private static void ConfigureOneToMany<TParent, TChild>(
