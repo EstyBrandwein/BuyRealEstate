@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BuyRealEstate.Common\BuyRealEstate.Common.csproj" />
     <ProjectReference Include="..\BuyRealEstate.DAL\BuyRealEstate.Domain.csproj" />
   </ItemGroup>
 

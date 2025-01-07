@@ -11,9 +11,10 @@ namespace BuyRealEstate.Domain.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private readonly BuyRealEstateDbContext _context;
+        private readonly AppDbContext _context;
 
-        public UserRepository(BuyRealEstateDbContext context)
+        public UserRepository(AppDbContext context)
+
         {
             _context = context;
         }

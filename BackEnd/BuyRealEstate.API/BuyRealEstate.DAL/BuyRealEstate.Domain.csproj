@@ -19,10 +19,9 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.0" />
-  </ItemGroup>
 
-  <ItemGroup>
     <ProjectReference Include="..\BuyRealEstate.Common\BuyRealEstate.Common.csproj" />
   </ItemGroup>
 
 </Project>
+

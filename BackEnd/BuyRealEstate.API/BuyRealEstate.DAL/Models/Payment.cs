@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 
@@ -24,15 +25,15 @@ namespace BuyRealEstate.Domain.Models
         public Professional Professional { get; set; }
         public int ProfessionalId   { get; set; }
         public DateTime LastPaymentDate { get; set; }
-      //  public Document PaymentConfirmation { get; set; }
-        public ICollection<Document> PaymentConfirmation { get; set; } // Changed to ICollection for better EF Core compatibility
+        //  public Document PaymentConfirmation { get; set; }
+        [JsonIgnore] public ICollection<Document> PaymentConfirmation { get; set; } // Changed to ICollection for better EF Core compatibility
         public int PaymentExecutionMethodID { get; set; }
 
         public PaymentExecutionMethod? PaymentExecutionMethod { get; set; }
         public PaymentStatus? PaymentStatus { get; set; }
         public int PaymentStatusId { get; set; }
-        
-        public ICollection<RelationshipPaymentsPlots> PaymentPlots { get; set; }
-        public ICollection<RelationshipPaymentsProjects> PaymentProject { get; set; }
+
+        [JsonIgnore] public ICollection<RelationshipPaymentsPlots> PaymentPlots { get; set; }
+        [JsonIgnore] public ICollection<RelationshipPaymentsProjects> PaymentProject { get; set; }
     }
 }
