@@ -402,3 +402,5 @@ FodyWeavers.xsd
 # Ignore appsettings.json to avoid committing sensitive data
 appsettings.json
 appsettings.Development.json
+/BackEnd/BuyRealEstate.API/BuyRealEstate.Core/DTos/ProjectDTO.cs
+/BackEnd/BuyRealEstate.API/BuyRealEstate.API/Program.cs
