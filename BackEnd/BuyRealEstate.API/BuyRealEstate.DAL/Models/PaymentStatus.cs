@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace BuyRealEstate.Domain.Models
@@ -11,6 +12,6 @@ namespace BuyRealEstate.Domain.Models
     {
         public int Id { get; set; }
         public string Status { get; set; }
-        public ICollection<Payment> Payments { get; set; }
+        [JsonIgnore] public ICollection<Payment> Payments { get; set; }
     }
 }
