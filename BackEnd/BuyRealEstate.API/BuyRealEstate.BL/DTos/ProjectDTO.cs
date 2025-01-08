@@ -15,7 +15,7 @@ namespace BuyRealEstate.Core.DTOs
         public bool ProjectType { get; set; } // Clarify if this represents a specific type or a flag
         public ICollection<DocumentDTO> Documents { get; set; } // Changed to ICollection for better EF Core compatibility
         public ICollection<ImageDTO> Images { get; set; }
-       // public ICollection<PlotDTO> Plots { get; set; }
+        //public ICollection<PlotDTO> Plots { get; set; }
         public DevelopmentStatusDTO DeveloperStatus { get; set; }
         public LegalStatusDTO LegalStatus { get; set; }
         public int LegalStatusId { get; set; }

@@ -6,10 +6,10 @@ namespace BuyRealEstate.Core.Interfaces
 {
     public interface IUserService
     {
-        Task<UserDto> GetByIdAsync(int id);
-        Task<IEnumerable<UserDto>> GetAllAsync();
-        Task AddAsync(UserDto userDto);
-        Task UpdateAsync(UserDto userDto);
+        Task<UsersDTO> GetByIdAsync(int id);
+        Task<IEnumerable<UsersDTO>> GetAllAsync();
+        Task AddAsync(UsersDTO userDto);
+        Task UpdateAsync(UsersDTO userDto);
         Task DeleteAsync(int id);
         Task<User> LoginAsync(string username, string password);
     }

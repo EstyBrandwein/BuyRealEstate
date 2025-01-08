@@ -18,3 +18,4 @@
 	  <ProjectReference Include="..\BuyRealEstate.Common\BuyRealEstate.Common.csproj" />
 	</ItemGroup>
 </Project>
+

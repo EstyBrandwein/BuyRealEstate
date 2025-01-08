@@ -13,13 +13,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddAutoMapper(cfg =>
 {
-    // éöéøú îéôåééí áéï äîåãìéí åä-DTOs ùìê
     cfg.CreateMap<DevelopmentStatus, DevelopmentStatusDTO>();
-    cfg.CreateMap<User, UserDto>();
+    cfg.CreateMap<User, UsersDTO>();
     cfg.CreateMap<LegalStatus, LegalStatusDTO>();
     cfg.CreateMap<Image, ImageDTO>();
     cfg.CreateMap<Document, DocumentDTO>();
-    // îéôåé ùì ôøåé÷è
     cfg.CreateMap<Project, ProjectDTO>()
         .ForMember(dest => dest.ProjectManager, opt => opt.MapFrom(src => src.ProjectManager))
         .ForMember(dest => dest.DeveloperStatus, opt => opt.MapFrom(src => src.DeveloperStatus))
@@ -51,7 +49,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 if (app.Environment.IsDevelopment())

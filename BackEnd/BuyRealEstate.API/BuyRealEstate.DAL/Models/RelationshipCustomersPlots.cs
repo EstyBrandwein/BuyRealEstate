@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BuyRealEstate.Domain.Models
 {
-    public class RelationshipCustomersPlots:BaseClass
+    public class RelationshipCustomersPlots : BaseClass
     {
         public int ID { get; set; }
         public int UserID { get; set; }

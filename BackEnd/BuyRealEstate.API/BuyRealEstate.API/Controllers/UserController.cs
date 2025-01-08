@@ -17,7 +17,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] UserDto request)
+    public async Task<IActionResult> Login([FromBody] UsersDTO request)
     {
         if (request == null || string.IsNullOrEmpty(request.Username) || string.IsNullOrEmpty(request.Password))
         {
@@ -51,7 +51,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Add([FromBody] UserDto userDto)
+    public async Task<IActionResult> Add([FromBody] UsersDTO userDto)
     {
         if (userDto == null)
         {
@@ -62,7 +62,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPut]
-    public async Task<IActionResult> Update([FromBody] UserDto userDto)
+    public async Task<IActionResult> Update([FromBody] UsersDTO userDto)
     {
         if (userDto == null)
         {

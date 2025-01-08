@@ -19,25 +19,25 @@ namespace BuyRealEstate.Core.Services
             _mapper = mapper;
         }
 
-        public async Task<UserDto> GetByIdAsync(int id)
+        public async Task<UsersDTO> GetByIdAsync(int id)
         {
             var user = await _userRepository.GetByIdAsync(id);
-            return _mapper.Map<UserDto>(user); // מיפוי אוטומטי מ-User ל-UserDto
+            return _mapper.Map<UsersDTO>(user); // מיפוי אוטומטי מ-User ל-UserDto
         }
 
-        public async Task<IEnumerable<UserDto>> GetAllAsync()
+        public async Task<IEnumerable<UsersDTO>> GetAllAsync()
         {
             var users = await _userRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<UserDto>>(users); // מיפוי אוטומטי לכל המשתמשים
+            return _mapper.Map<IEnumerable<UsersDTO>>(users); // מיפוי אוטומטי לכל המשתמשים
         }
 
-        public async Task AddAsync(UserDto userDto)
+        public async Task AddAsync(UsersDTO userDto)
         {
             var user = _mapper.Map<User>(userDto); // מיפוי חזרה ל-User
             await _userRepository.AddAsync(user);
         }
 
-        public async Task UpdateAsync(UserDto userDto)
+        public async Task UpdateAsync(UsersDTO userDto)
         {
             var user = _mapper.Map<User>(userDto); // מיפוי חזרה ל-User
             await _userRepository.UpdateAsync(user);
