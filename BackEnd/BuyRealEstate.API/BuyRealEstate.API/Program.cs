@@ -7,6 +7,7 @@ using BuyRealEstate.Core.Services;
 using BuyRealEstate.Domain.Interfaces;
 using BuyRealEstate.Core.DTos;
 using BuyRealEstate.Core.DTOs;
+
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();

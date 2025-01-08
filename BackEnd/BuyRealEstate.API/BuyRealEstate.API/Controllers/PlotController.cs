@@ -3,7 +3,7 @@ using BuyRealEstate.Core;
 using System.Threading.Tasks;
 using BuyRealEstate.Core.Interfaces;
 using BuyRealEstate.Core.DTOs;
-//using BuyRealEstate.BLL.Interfaces;
+//using BuyRealEstate.BL.Interfaces;
 //using BuyRealEstate.BLL.DTOs;
 
 namespace BuyRealEstate.API.Controllers
