@@ -20,7 +20,7 @@ namespace BuyRealEstate.Domain.Models
         public string Email { get; set; }
         public string FirstPhone { get; set; }
         public string? SecendPhon { get; set; }
-        public ICollection<RelationshipCustomersPlots> CustomerPlots { get; set; }
+        public ICollection<Plot> plots { get; set; }
         public ICollection<Document> Documents { get; set; }
         
     }
