@@ -5,6 +5,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="13.0.1" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -12,10 +13,13 @@
 		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="7.1.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="7.1.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="7.1.0" />
-	</ItemGroup>
-	<ItemGroup>
+    
 		<ProjectReference Include="..\BuyRealEstate.Common\BuyRealEstate.Common.csproj" />
 		<ProjectReference Include="..\BuyRealEstate.Core\BuyRealEstate.Core.csproj" />
 	</ItemGroup>
 
+
+		<ProjectReference Include="..\BuyRealEstate.BL\BuyRealEstate.Core.csproj" />
+		<ProjectReference Include="..\BuyRealEstate.Common\BuyRealEstate.Common.csproj" />
+	</ItemGroup>
 </Project>

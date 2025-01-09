@@ -4,50 +4,43 @@ using BuyRealEstate.Core.Interfaces;
 using BuyRealEstate.Core.DTos;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
+using BuyRealEstate.Domain.Repositories;
 namespace BuyRealEstate.Core.Services
 {
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
-
         // הזרקת AutoMapper לשירות
         public UserService(IUserRepository userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
             _mapper = mapper;
         }
-
-        public async Task<UsersDTO> GetByIdAsync(int id)
+        public async Task<UserDto> GetByIdAsync(int id)
         {
             var user = await _userRepository.GetByIdAsync(id);
-            return _mapper.Map<UsersDTO>(user); // מיפוי אוטומטי מ-User ל-UserDto
+            return _mapper.Map<UserDto>(user); // מיפוי אוטומטי מ-User ל-UserDto
         }
-
-        public async Task<IEnumerable<UsersDTO>> GetAllAsync()
+        public async Task<IEnumerable<UserDto>> GetAllAsync()
         {
             var users = await _userRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<UsersDTO>>(users); // מיפוי אוטומטי לכל המשתמשים
+            return _mapper.Map<IEnumerable<UserDto>>(users); // מיפוי אוטומטי לכל המשתמשים
         }
-
-        public async Task AddAsync(UsersDTO userDto)
+        public async Task AddAsync(UserDto userDto)
         {
             var user = _mapper.Map<User>(userDto); // מיפוי חזרה ל-User
             await _userRepository.AddAsync(user);
         }
-
-        public async Task UpdateAsync(UsersDTO userDto)
+        public async Task UpdateAsync(UserDto userDto)
         {
             var user = _mapper.Map<User>(userDto); // מיפוי חזרה ל-User
             await _userRepository.UpdateAsync(user);
         }
-
         public async Task DeleteAsync(int id)
         {
             await _userRepository.DeleteAsync(id);
         }
-
         public async Task<User> LoginAsync(string username, string password)
         {
             var user = await _userRepository.GetByUsernameAsync(username);
@@ -57,7 +50,6 @@ namespace BuyRealEstate.Core.Services
             }
             return null;
         }
-
         private bool VerifyPassword(User user, string password)
         {
             return user.Password == password; // Simplified password verification

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BuyRealEstate.Domain.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250108112050_updateusers-plots")]
+    partial class updateusersplots
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,30 +57,6 @@ namespace BuyRealEstate.Domain.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DevelopmentStatuses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            InsertDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            InsertUser = 0,
-                            ProjectID = 0,
-                            State = false,
-                            Status = "הפיתוח בעיצומו",
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UpdateUser = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            InsertDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            InsertUser = 0,
-                            ProjectID = 0,
-                            State = false,
-                            Status = "הפיתוח הושלם",
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UpdateUser = 0
-                        });
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.Document", b =>
@@ -213,52 +192,6 @@ namespace BuyRealEstate.Domain.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("LegalStatuses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 329, DateTimeKind.Local).AddTicks(4285),
-                            InsertUser = 1,
-                            ProjectID = 0,
-                            State = true,
-                            Status = "בשלבי רכישה",
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(2925),
-                            UpdateUser = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(3899),
-                            InsertUser = 1,
-                            ProjectID = 0,
-                            State = true,
-                            Status = "הושלמה על שם הנאמן",
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(3917),
-                            UpdateUser = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(3951),
-                            InsertUser = 1,
-                            ProjectID = 0,
-                            State = true,
-                            Status = "בתהליכי רישום ברשות המיסים",
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(3954),
-                            UpdateUser = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(3958),
-                            InsertUser = 1,
-                            ProjectID = 0,
-                            State = true,
-                            Status = "העסקה רשומה על שימכם",
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(3960),
-                            UpdateUser = 1
-                        });
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.Payment", b =>
@@ -337,30 +270,6 @@ namespace BuyRealEstate.Domain.Migrations
                     b.HasIndex("ProfessionalId");
 
                     b.ToTable("Payments");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            Amount = 360000.0,
-                            DataValue = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(6401),
-                            Datereference = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(6646),
-                            Detiels = "hello",
-                            HNagainst = "",
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(7359),
-                            InsertUser = 1,
-                            LastPaymentDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(7373),
-                            PaymentExecutionMethodID = 1,
-                            PaymentStatusId = 1,
-                            ProfessionalId = 4,
-                            State = true,
-                            Surplus = 12000,
-                            Title = "רשות המיסים",
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(7369),
-                            UpdateUser = 1,
-                            dose = "",
-                            movement = ""
-                        });
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.PaymentExecutionMethod", b =>
@@ -393,48 +302,6 @@ namespace BuyRealEstate.Domain.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("PaymentExecutionMethods");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            Description = "אשראי",
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(8562),
-                            InsertUser = 1,
-                            State = true,
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(8571),
-                            UpdateUser = 1
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Description = "העברה בנקאית",
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(8577),
-                            InsertUser = 1,
-                            State = true,
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(8579),
-                            UpdateUser = 1
-                        },
-                        new
-                        {
-                            ID = 3,
-                            Description = "ציק",
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(8583),
-                            InsertUser = 1,
-                            State = true,
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(8586),
-                            UpdateUser = 1
-                        },
-                        new
-                        {
-                            ID = 4,
-                            Description = "מזומן",
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(8589),
-                            InsertUser = 1,
-                            State = true,
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(8592),
-                            UpdateUser = 1
-                        });
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.PaymentStatus", b =>
@@ -467,38 +334,6 @@ namespace BuyRealEstate.Domain.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PaymentStatuses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(9308),
-                            InsertUser = 1,
-                            State = true,
-                            Status = "לא שולם",
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(9316),
-                            UpdateUser = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(9320),
-                            InsertUser = 1,
-                            State = true,
-                            Status = "מחכה לאישור",
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(9322),
-                            UpdateUser = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(9325),
-                            InsertUser = 1,
-                            State = true,
-                            Status = "שולם",
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 331, DateTimeKind.Local).AddTicks(9327),
-                            UpdateUser = 1
-                        });
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.Permission", b =>
@@ -531,48 +366,6 @@ namespace BuyRealEstate.Domain.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Permissions");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(76),
-                            InsertUser = 1,
-                            State = true,
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(83),
-                            UpdateUser = 1,
-                            permission = "מנהל"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(88),
-                            InsertUser = 1,
-                            State = true,
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(90),
-                            UpdateUser = 1,
-                            permission = "מזכירה"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(93),
-                            InsertUser = 1,
-                            State = true,
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(133),
-                            UpdateUser = 1,
-                            permission = "לקוח"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(138),
-                            InsertUser = 1,
-                            State = true,
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(139),
-                            UpdateUser = 1,
-                            permission = "איש קשר"
-                        });
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.Plot", b =>
@@ -629,59 +422,6 @@ namespace BuyRealEstate.Domain.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Plots");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(1818),
-                            InsertUser = 1,
-                            MonthlyFundingCost = 10000.0,
-                            MonthsForFundingCost = 10,
-                            PlotCost = 580000,
-                            PlotNumber = 12,
-                            PlotSize = 120.0,
-                            PlotValue = 600000.0,
-                            ProjectId = 1,
-                            State = true,
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(1828),
-                            UpdateUser = 1,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            ID = 2,
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(1837),
-                            InsertUser = 1,
-                            MonthlyFundingCost = 10000.0,
-                            MonthsForFundingCost = 10,
-                            PlotCost = 580000,
-                            PlotNumber = 11,
-                            PlotSize = 138.0,
-                            PlotValue = 600000.0,
-                            ProjectId = 1,
-                            State = true,
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(1839),
-                            UpdateUser = 1,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            ID = 3,
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(1844),
-                            InsertUser = 1,
-                            MonthlyFundingCost = 10000.0,
-                            MonthsForFundingCost = 10,
-                            PlotCost = 580000,
-                            PlotNumber = 13,
-                            PlotSize = 110.0,
-                            PlotValue = 600000.0,
-                            ProjectId = 1,
-                            State = true,
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(1846),
-                            UpdateUser = 1,
-                            UserId = 1
-                        });
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.Project", b =>
@@ -743,25 +483,6 @@ namespace BuyRealEstate.Domain.Migrations
                     b.HasIndex("ProjectManagerID");
 
                     b.ToTable("Projects");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            DeveloperStatusID = 1,
-                            GrossProfit = 12000.0,
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(6054),
-                            InsertUser = 1,
-                            LegalStatusId = 1,
-                            LinkToLead2 = "https://www.efshar-nadlan.co.il/",
-                            ProjectAddress = "כרמית",
-                            ProjectManagerID = 1,
-                            ProjectName = "כרמית 11",
-                            ProjectType = true,
-                            State = true,
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(6069),
-                            UpdateUser = 1
-                        });
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.RelationshipPaymentsPlots", b =>
@@ -805,20 +526,6 @@ namespace BuyRealEstate.Domain.Migrations
                     b.HasIndex("paymentStutusID");
 
                     b.ToTable("PlotPayments");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(7122),
-                            InsertUser = 1,
-                            PaymentID = 1,
-                            PlotID = 1,
-                            State = true,
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(7129),
-                            UpdateUser = 1,
-                            paymentStutusID = 1
-                        });
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.RelationshipPaymentsProjects", b =>
@@ -862,20 +569,6 @@ namespace BuyRealEstate.Domain.Migrations
                     b.HasIndex("paymentStutusID");
 
                     b.ToTable("ProjectPayments");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(8152),
-                            InsertUser = 1,
-                            PaymentID = 1,
-                            ProjectID = 1,
-                            State = true,
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(8159),
-                            UpdateUser = 1,
-                            paymentStutusID = 1
-                        });
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.User", b =>
@@ -945,24 +638,6 @@ namespace BuyRealEstate.Domain.Migrations
                     b.HasDiscriminator().HasValue("User");
 
                     b.UseTphMappingStrategy();
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            Email = "chayamalot@gmail.com",
-                            FirstName = "חיה",
-                            FirstPhone = "0504101585",
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(8373),
-                            InsertUser = 1,
-                            LastName = "ברנדויין",
-                            Password = "CB5328152",
-                            PermissionId = 1,
-                            State = true,
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(8377),
-                            UpdateUser = 1,
-                            Username = "ChayaB"
-                        });
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.Professional", b =>
@@ -978,44 +653,6 @@ namespace BuyRealEstate.Domain.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("Professional");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 4,
-                            Email = "ghj@hjj",
-                            FirstName = "רשות",
-                            FirstPhone = "050141155",
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(3886),
-                            InsertUser = 1,
-                            LastName = "המיסים",
-                            Password = "123456",
-                            PermissionId = 4,
-                            State = true,
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(3896),
-                            UpdateUser = 1,
-                            Username = "רשות המיסים",
-                            Professtion = "מיסים",
-                            WebsiteAddress = "https://www.efshar-nadlan.co.il"
-                        },
-                        new
-                        {
-                            ID = 5,
-                            Email = "royi@grilak",
-                            FirstName = "רועי",
-                            FirstPhone = "0556565626",
-                            InsertDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(3905),
-                            InsertUser = 1,
-                            LastName = "גרילק",
-                            Password = "123456",
-                            PermissionId = 4,
-                            State = true,
-                            UpdateDate = new DateTime(2025, 1, 8, 13, 25, 12, 332, DateTimeKind.Local).AddTicks(3907),
-                            UpdateUser = 1,
-                            Username = "עורך דין",
-                            Professtion = "עריכת דין",
-                            WebsiteAddress = ""
-                        });
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.Document", b =>

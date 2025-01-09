@@ -18,15 +18,17 @@ namespace BuyRealEstate.Domain.Repositories
 
         public async Task<IEnumerable<Project>> GetAllProjectsAsync()
         {
-            return await _context.Projects.Include(p => p.DeveloperStatus).
-                Include(p => p.LegalStatus)
+            return await _context.Projects
+                //.Include(p => p.DeveloperStatus).
+               // Include(p => p.LegalStatus)
                 .ToListAsync();
         }
 
         public async Task<Project> GetProjectByIdAsync(int id)
         {
-            return await _context.Projects.Include(p => p.DeveloperStatus).
-                 Include(p => p.LegalStatus)
+            return await _context.Projects
+                //.Include(p => p.DeveloperStatus).
+                 //Include(p => p.LegalStatus)
                 .FirstOrDefaultAsync(p => p.ID == id);
         }
 
