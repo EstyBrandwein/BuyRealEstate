@@ -9,7 +9,7 @@ namespace BuyRealEstate.Core.DTOs
         public int ID { get; set; }
         public string ProjectName { get; set; }
         public string ProjectAddress { get; set; }
-        public UserDto ProjectManager { get; set; }   // Assuming Users is a related class
+        public UsersDTO ProjectManager { get; set; }   // Assuming Users is a related class
         public double GrossProfit { get; set; }
         public string LinkToLead2 { get; set; }
         public bool ProjectType { get; set; } // Clarify if this represents a specific type or a flag
