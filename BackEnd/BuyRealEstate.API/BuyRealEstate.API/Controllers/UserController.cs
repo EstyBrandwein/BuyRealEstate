@@ -17,7 +17,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] UserDto request)
+    public async Task<IActionResult> Login([FromBody] LoginDTO request)
     {
         if (request == null || string.IsNullOrEmpty(request.Username) || string.IsNullOrEmpty(request.Password))
         {
@@ -27,10 +27,13 @@ public class UserController : ControllerBase
         var user = await _userService.LoginAsync(request.Username, request.Password);
         if (user != null)
         {
-            return Ok(user); // Return success response with user data
+            return Ok(user);
         }
-        return Unauthorized("Invalid username or password."); // Return error response
+        return Unauthorized("Invalid username or password.");
     }
+
+
+
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
@@ -60,17 +63,19 @@ public class UserController : ControllerBase
         await _userService.AddAsync(userDto);
         return CreatedAtAction(nameof(GetById), new { id = userDto.ID }, userDto);
     }
-
-    [HttpPut]
-    public async Task<IActionResult> Update([FromBody] UserDto userDto)
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(int id, [FromBody] UserDto userDto)
     {
-        if (userDto == null)
+        if (userDto == null || userDto.ID != id)
         {
-            return BadRequest("User data is required.");
+            return BadRequest("User data is invalid or ID mismatch.");
         }
-        await _userService.UpdateAsync(userDto);
+
+        await _userService.UpdateAsync(userDto); // תוודא ש-ID בקשת ה-URL תואם ל-ID ב-UserDto
         return NoContent();
     }
+
+
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)

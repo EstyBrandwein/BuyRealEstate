@@ -4,6 +4,7 @@ using BuyRealEstate.Core.Interfaces;
 using BuyRealEstate.Core.DTos;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BuyRealEstate.Core.Services
 {
@@ -39,9 +40,28 @@ namespace BuyRealEstate.Core.Services
 
         public async Task UpdateAsync(UserDto userDto)
         {
-            var user = _mapper.Map<User>(userDto); // מיפוי חזרה ל-User
-            await _userRepository.UpdateAsync(user);
+            // חפש את המשתמש הקיים במסד הנתונים לפי ה-ID
+            var existingUser = await _userRepository.GetByIdAsync(userDto.ID);
+            if (existingUser == null)
+            {
+                // מחזיר תשובה מתאימה אם המשתמש לא נמצא
+                throw new Exception($"User with ID {userDto.ID} not found.");
+            }
+
+            // עדכון השדות של המשתמש הקיים עם הנתונים מ-UserDto
+            existingUser.PermissionId = userDto.PermissionId;
+            existingUser.Username = userDto.Username;
+            existingUser.Password = userDto.Password;
+            existingUser.FirstName = userDto.FirstName;
+            existingUser.LastName = userDto.LastName;
+            existingUser.Email = userDto.Email;
+            existingUser.FirstPhone = userDto.FirstPhone;
+
+            // שמור את השינויים
+            await _userRepository.UpdateAsync(existingUser);
         }
+
+
 
         public async Task DeleteAsync(int id)
         {

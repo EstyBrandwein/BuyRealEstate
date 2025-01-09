@@ -14,7 +14,7 @@ namespace BuyRealEstate.Core
     {
         public MappingProfile()
         {
-            // הגדרת המיפויים בין מודלים ל-DTOs ולהפך
+            
             CreateMap<User, UserDto>();
             CreateMap<UserDto, User>();
         }

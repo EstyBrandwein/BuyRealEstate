@@ -16,6 +16,9 @@ builder.Services.AddAutoMapper(cfg =>
     // éöéøú îéôåééí áéï äîåãìéí åä-DTOs ùìê
     cfg.CreateMap<DevelopmentStatus, DevelopmentStatusDTO>();
     cfg.CreateMap<User, UserDto>();
+    cfg.CreateMap<UserDto, User>();
+    cfg.CreateMap<Permission, PermissionDTO>();
+    cfg.CreateMap<PermissionDTO, Permission>();
     cfg.CreateMap<LegalStatus, LegalStatusDTO>();
     cfg.CreateMap<Image, ImageDTO>();
     cfg.CreateMap<Document, DocumentDTO>();
