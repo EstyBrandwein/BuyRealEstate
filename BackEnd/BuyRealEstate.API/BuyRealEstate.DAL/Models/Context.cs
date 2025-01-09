@@ -1,12 +1,9 @@
-
-
 using BuyRealEstate.Domain.Extentions;
 using BuyRealEstate.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using System.Linq.Expressions;
 using System.Security;
-
 public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
@@ -29,8 +26,9 @@ public class AppDbContext : DbContext
     public DbSet<RelationshipPaymentsProjects> ProjectPayments { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-       // modelBuilder.ConfigureManyToMany<RelationshipCustomersPlots, User, Plot>(joinKey: cp => cp.ID, joinToLeft: cp => cp.User,
-       //leftToJoins: u => u.CustomerPlots, joinToRight: cp => cp.Plot, rightToJoins: p => p.CustomerPlots, leftForeignKey: cp => cp.UserID, rightForeignKey: cp => cp.PlotID);
+        // modelBuilder.ConfigureManyToMany<RelationshipCustomersPlots, User, Plot>(joinKey: cp => cp.ID, joinToLeft: cp => cp.User,
+        //leftToJoins: u => u.CustomerPlots, joinToRight: cp => cp.Plot, rightToJoins: p => p.CustomerPlots, leftForeignKey: cp => cp.UserID, rightForeignKey: cp => cp.PlotID);
+
         // Plot <-> Payment
         modelBuilder.ConfigureManyToMany<RelationshipPaymentsPlots, Plot, Payment>(joinKey: pp => pp.ID, joinToLeft: pp => pp.plot, leftToJoins: p => p.PaymentPlots,
             joinToRight: pp => pp.payment, rightToJoins: p => p.PaymentPlots, leftForeignKey: pp => pp.PlotID, rightForeignKey: pp => pp.PaymentID);
@@ -56,6 +54,7 @@ public class AppDbContext : DbContext
         // Payment -> Professional (One-to-Many)
         ConfigureOneToMany<Professional, Payment>(modelBuilder, child => child.Professional, parent => parent.Payments, child => child.ProfessionalId);
         ConfigureOneToMany<DevelopmentStatus, Project>(modelBuilder, c => c.DeveloperStatus, p => p.Project, c => c.DeveloperStatusID);
+
         ConfigureOneToMany<User, Plot>(modelBuilder,c=> c.User,p=>p.plots,c => c.UserId);
         modelBuilder.SeedMockData();
 
@@ -76,10 +75,8 @@ public class AppDbContext : DbContext
             .OnDelete(DeleteBehavior.Restrict); // Default behavior; adjust as needed
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-
     {
         optionsBuilder.ConfigureWarnings(warnings =>
             warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
     }
-
 }

@@ -4,12 +4,10 @@ using System.Linq;
 using System.Security;
 using System.Security.Permissions;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-
 namespace BuyRealEstate.Domain.Models
 {
-    public class User:BaseClass
+    public class User : BaseClass
     {
         public int ID { get; set; }
         public Permission Permission { get; set; }
@@ -23,7 +21,7 @@ namespace BuyRealEstate.Domain.Models
         public string? SecendPhon { get; set; }
         public ICollection<Plot> plots { get; set; }
         public ICollection<Document> Documents { get; set; }
-        
     }
+
 
 }

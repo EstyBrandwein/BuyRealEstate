@@ -14,6 +14,7 @@ namespace BuyRealEstate.Core
     {
         public MappingProfile()
         {
+
             CreateMap<User, UsersDTO>();
             CreateMap<UsersDTO, User>();
             CreateMap<DevelopmentStatus, DevelopmentStatusDTO>();
