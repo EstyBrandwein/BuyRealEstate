@@ -7,27 +7,14 @@ using BuyRealEstate.Core.Services;
 using BuyRealEstate.Domain.Interfaces;
 using BuyRealEstate.Core.DTos;
 using BuyRealEstate.Core.DTOs;
+using BuyRealEstate.Core;
+using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddAutoMapper(cfg =>
-{
-    cfg.CreateMap<DevelopmentStatus, DevelopmentStatusDTO>();
-    cfg.CreateMap<User, UsersDTO>();
-    cfg.CreateMap<LegalStatus, LegalStatusDTO>();
-    cfg.CreateMap<Image, ImageDTO>();
-    cfg.CreateMap<Document, DocumentDTO>();
-    cfg.CreateMap<Project, ProjectDTO>()
-        .ForMember(dest => dest.ProjectManager, opt => opt.MapFrom(src => src.ProjectManager))
-        .ForMember(dest => dest.DeveloperStatus, opt => opt.MapFrom(src => src.DeveloperStatus))
-        .ForMember(dest => dest.LegalStatus, opt => opt.MapFrom(src => src.LegalStatus))
-        .ForMember(dest => dest.Images, opt => opt.MapFrom(src => src.Images))
-        .ForMember(dest => dest.Documents, opt => opt.MapFrom(src => src.Documents));
 
-    cfg.CreateMap<Plot, PlotDTO>()
-        .ForMember(dest => dest.Project, opt => opt.MapFrom(src => src.Project));
-}, AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IPlotRepository, PlotRepository>();
 builder.Services.AddScoped<IPlotService, PlotService>();
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
@@ -37,6 +24,12 @@ builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
+var mapperConfig = new MapperConfiguration(cfg =>
+{
+    cfg.AddProfile(new MappingProfile()); // Add your custom profiles
+});
+IMapper mapper = mapperConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
