@@ -28,6 +28,7 @@ public class AppDbContext : DbContext
     {
         // modelBuilder.ConfigureManyToMany<RelationshipCustomersPlots, User, Plot>(joinKey: cp => cp.ID, joinToLeft: cp => cp.User,
         //leftToJoins: u => u.CustomerPlots, joinToRight: cp => cp.Plot, rightToJoins: p => p.CustomerPlots, leftForeignKey: cp => cp.UserID, rightForeignKey: cp => cp.PlotID);
+
         // Plot <-> Payment
         modelBuilder.ConfigureManyToMany<RelationshipPaymentsPlots, Plot, Payment>(joinKey: pp => pp.ID, joinToLeft: pp => pp.plot, leftToJoins: p => p.PaymentPlots,
             joinToRight: pp => pp.payment, rightToJoins: p => p.PaymentPlots, leftForeignKey: pp => pp.PlotID, rightForeignKey: pp => pp.PaymentID);
@@ -53,8 +54,10 @@ public class AppDbContext : DbContext
         // Payment -> Professional (One-to-Many)
         ConfigureOneToMany<Professional, Payment>(modelBuilder, child => child.Professional, parent => parent.Payments, child => child.ProfessionalId);
         ConfigureOneToMany<DevelopmentStatus, Project>(modelBuilder, c => c.DeveloperStatus, p => p.Project, c => c.DeveloperStatusID);
-        ConfigureOneToMany<User, Plot>(modelBuilder, c => c.User, p => p.plots, c => c.UserId);
-        //modelBuilder.SeedMockData();
+
+        ConfigureOneToMany<User, Plot>(modelBuilder,c=> c.User,p=>p.plots,c => c.UserId);
+        modelBuilder.SeedMockData();
+
         base.OnModelCreating(modelBuilder);
     }
     private static void ConfigureOneToMany<TParent, TChild>(

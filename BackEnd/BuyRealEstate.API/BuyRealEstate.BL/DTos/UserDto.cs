@@ -9,7 +9,7 @@ using static System.Reflection.Metadata.BlobBuilder;
 
 namespace BuyRealEstate.Core.DTos
 {
-    public class UserDto
+    public class UsersDTO
     {
          public int ID { get; set; }
         public PermissionDTO? Permission { get; set; }
