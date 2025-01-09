@@ -21,6 +21,11 @@ namespace BuyRealEstate.Domain.Repositories
 
             return await _context.Plots.Include(p => p.Project).ToListAsync();
         }
+        public async Task<IEnumerable<Plot>> GetAllPlotsByIdAsync(int id)
+        {
+
+            return await _context.Plots.Include(p => p.Project).Where(p=>p.UserId == id).ToListAsync();
+        }
 
         public async Task<Plot> GetPlotByIdAsync(int id)
         {

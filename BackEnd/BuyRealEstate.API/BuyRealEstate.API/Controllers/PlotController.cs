@@ -3,6 +3,7 @@ using BuyRealEstate.Core;
 using System.Threading.Tasks;
 using BuyRealEstate.Core.Interfaces;
 using BuyRealEstate.Core.DTOs;
+using BuyRealEstate.Core.DTos;
 //using BuyRealEstate.BL.Interfaces;
 //using BuyRealEstate.BLL.DTOs;
 
@@ -25,6 +26,12 @@ namespace BuyRealEstate.API.Controllers
             var plots = await _plotService.GetAllPlotsAsync();
             return Ok(plots);
         }
+        [HttpGet("userplot")]
+        public async Task<IActionResult> GetAllPlotsByUserID([FromBody] int id)
+        {
+            var plots = await _plotService.GetAllPlotByUserIdAsync(id);
+            return Ok(plots);
+        }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPlot(int id)
@@ -35,14 +42,14 @@ namespace BuyRealEstate.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddPlot(PlotDTO plot)
+        public async Task<IActionResult> AddPlot([FromBody] PlotDTO plot)
         {
             await _plotService.AddPlotAsync(plot);
             return CreatedAtAction(nameof(GetPlot), new { id = plot.ID }, plot);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePlot(int id, PlotDTO plot)
+        public async Task<IActionResult> UpdatePlot(int id, [FromBody] PlotDTO plot)
         {
             if (id != plot.ID) return BadRequest();
             await _plotService.UpdatePlotAsync(plot);

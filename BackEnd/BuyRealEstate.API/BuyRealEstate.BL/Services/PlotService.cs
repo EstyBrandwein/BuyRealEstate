@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BuyRealEstate.Core.DTos;
 using BuyRealEstate.Core.DTOs;
 using BuyRealEstate.Core.Interfaces;
 using BuyRealEstate.Domain.Interfaces;
@@ -25,6 +26,11 @@ namespace BuyRealEstate.Core.Services
             var plots = await _plotRepository.GetAllPlotsAsync();
             return plots.Select(p => _mapper.Map<PlotDTO>(p));
         }
+        public async Task<IEnumerable<PlotDTO>> GetAllPlotByUserIdAsync(int id)
+        {
+            var plots = await _plotRepository.GetAllPlotsByIdAsync(id);
+            return plots.Select(p => _mapper.Map<PlotDTO>(p));
+        }
 
         public async Task<PlotDTO> GetPlotByIdAsync(int id)
         {
@@ -49,5 +55,7 @@ namespace BuyRealEstate.Core.Services
         {
             await _plotRepository.DeletePlotAsync(id);
         }
+
+        
     }
 }

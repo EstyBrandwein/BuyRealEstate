@@ -14,9 +14,7 @@
 		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="7.1.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="7.1.0" />
     
-		<ProjectReference Include="..\BuyRealEstate.Common\BuyRealEstate.Common.csproj" />
-		<ProjectReference Include="..\BuyRealEstate.Core\BuyRealEstate.Core.csproj" />
-	</ItemGroup>
+
 
 
 		<ProjectReference Include="..\BuyRealEstate.BL\BuyRealEstate.Core.csproj" />
