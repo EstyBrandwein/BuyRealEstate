@@ -50,6 +50,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors(builder =>
+    builder.WithOrigins("http://localhost:3000") // Frontend origin
+           .AllowAnyHeader()
+           .AllowAnyMethod());
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();

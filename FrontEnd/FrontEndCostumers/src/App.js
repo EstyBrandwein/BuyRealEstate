@@ -9,7 +9,7 @@ import EntryPage from './Pages/entryPage';
 import DetailsPage from './Pages/myFeiledPage';
 import PaymentPage from './Pages/paymentsPage';
 import GrossProfitPage from './Pages/profitCalculations';
-import PlotsPage from './Pages/realEstateDetails';
+import PlotsPage from './Pages/PlotsPage';
 function App() {
   const handleLogout = () => {
     // פונקציה להתנתקות
@@ -19,7 +19,7 @@ function App() {
     <Router>
       <div className="app">
         <Routes>
-          <Route exact path="/" element={<EntryPage/>} />  
+          <Route exact path="/" element={<PlotsPage/>} />  
           <Route path="/mainPage" element={<MainPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/my-fields" element={<MyFields />} />

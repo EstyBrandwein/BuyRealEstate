@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Details from "./realEstateDetails";
+import Details from "./PlotsPage";
 import Documents from "./documents";
 import Payment from "./paymentsPage";
 import GrossProfitPage from './profitCalculations';
