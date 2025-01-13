@@ -2,12 +2,14 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidebar from './Pages/sideBarPage';
 import MyFields from './Pages/myFeiledPage';
-import EditProfile from './Pages/EditProfile';
-import Login from './Pages/homePage';
+import EditProfile from './Pages/editProfilePage';
+import Login from './Pages/Login';
 import MainPage from './Pages/mainPage';
-import MyPlots from './Pages/MyPlots';
-import Contact from './Pages/Contact';
-
+import EntryPage from './Pages/entryPage';
+import DetailsPage from './Pages/myFeiledPage';
+import PaymentPage from './Pages/paymentsPage';
+import GrossProfitPage from './Pages/profitCalculations';
+import PlotsPage from './Pages/PlotsPage';
 function App() {
   const handleLogout = () => {
     // פונקציה להתנתקות
@@ -17,14 +19,12 @@ function App() {
     <Router>
       <div className="app">
         <Routes>
-        <Route path="/my-plots" element={<MyPlots />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/edit-profile" element={<EditProfile />} />
-          <Route path="/" element={<MainPage />} />
+          <Route exact path="/" element={<PlotsPage/>} />  
+          <Route path="/mainPage" element={<MainPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/my-fields" element={<MyFields />} />
           <Route path="/edit-profile" element={<EditProfile />} />
-          <Route path="/my-fields" render={() => (
+          <Route path="/my-fields" element={() => (
           <div>
             <Sidebar username="User123" email="user123@example.com" onLogout={handleLogout} />
             <MyFields />
