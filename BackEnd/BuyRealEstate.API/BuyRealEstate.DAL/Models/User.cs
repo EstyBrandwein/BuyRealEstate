@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security;
 using System.Security.Permissions;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 namespace BuyRealEstate.Domain.Models
 {
@@ -19,6 +20,7 @@ namespace BuyRealEstate.Domain.Models
         public string Email { get; set; }
         public string FirstPhone { get; set; }
         public string? SecendPhon { get; set; }
+        [JsonIgnore]
         public ICollection<Plot> plots { get; set; }
         public ICollection<Document> Documents { get; set; }
     }

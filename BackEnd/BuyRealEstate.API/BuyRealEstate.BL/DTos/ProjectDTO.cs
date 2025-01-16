@@ -19,7 +19,6 @@ namespace BuyRealEstate.Core.DTOs
         public DevelopmentStatusDTO? DeveloperStatus { get; set; }
         public LegalStatusDTO? LegalStatus { get; set; }
         public int LegalStatusId { get; set; }
-        // Changed to ICollection for better EF Core compatibility
         public ICollection<RelationshipPaymentsProjects>? PaymentProject { get; set; }
         public int DeveloperStatusID { get; set; }
         public int ProjectManagerID { get; set; }

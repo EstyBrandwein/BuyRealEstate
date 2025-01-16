@@ -14,6 +14,7 @@ public class MappingProfile : Profile
         CreateMap<LegalStatus, LegalStatusDTO>();
         CreateMap<Image, ImageDTO>();
         CreateMap<Document, DocumentDTO>();
+        CreateMap<DocumentDTO, Document>();
 
         // Project and ProjectDTO mappings
         CreateMap<Project, ProjectDTO>()

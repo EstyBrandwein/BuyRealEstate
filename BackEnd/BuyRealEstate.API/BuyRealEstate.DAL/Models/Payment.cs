@@ -22,18 +22,18 @@ namespace BuyRealEstate.Domain.Models
         public string Detiels { get; set; }
         public int Surplus { get; set; }
         public double Amount { get; set; }
-        public Professional Professional { get; set; }
+        public Professional? Professional { get; set; }
         public int ProfessionalId   { get; set; }
         public DateTime LastPaymentDate { get; set; }
         //  public Document PaymentConfirmation { get; set; }
-        [JsonIgnore] public ICollection<Document> PaymentConfirmation { get; set; } // Changed to ICollection for better EF Core compatibility
+        [JsonIgnore] public ICollection<Document>? PaymentConfirmation { get; set; } // Changed to ICollection for better EF Core compatibility
         public int PaymentExecutionMethodID { get; set; }
 
         public PaymentExecutionMethod? PaymentExecutionMethod { get; set; }
         public PaymentStatus? PaymentStatus { get; set; }
         public int PaymentStatusId { get; set; }
 
-        [JsonIgnore] public ICollection<RelationshipPaymentsPlots> PaymentPlots { get; set; }
-        [JsonIgnore] public ICollection<RelationshipPaymentsProjects> PaymentProject { get; set; }
+        [JsonIgnore] public ICollection<RelationshipPaymentsPlots>? PaymentPlots { get; set; }
+        [JsonIgnore] public ICollection<RelationshipPaymentsProjects>? PaymentProject { get; set; }
     }
 }
