@@ -4,33 +4,68 @@ using BuyRealEstate.Core.Interfaces;
 using Microsoft.AspNetCore.Identity.Data;
 using BuyRealEstate.Core.DTos;
 using BuyRealEstate.Core.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
 
 [Route("api/[controller]")]
 [ApiController]
 public class UserController : ControllerBase
 {
     private readonly IUserService _userService;
+    private readonly IAuthService _authService;
 
-    public UserController(IUserService userService)
+    public UserController(IUserService userService, IAuthService authService)
     {
         _userService = userService;
+        _authService = authService;
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginDTO request)
+    public async Task<IActionResult> LoginAndSendVerification([FromBody] LoginDTO request)
     {
-        if (request == null || string.IsNullOrEmpty(request.Username) || string.IsNullOrEmpty(request.Password))
+        if (string.IsNullOrEmpty(request.Username) || string.IsNullOrEmpty(request.Password))
         {
-            return BadRequest("Invalid login request.");
+            return BadRequest("Username and password are required.");
         }
 
+        // בדיקת פרטי משתמש
         var user = await _userService.LoginAsync(request.Username, request.Password);
-        if (user != null)
+        if (user == null)
         {
-            return Ok(user);
+            return Unauthorized("Invalid username or password.");
         }
-        return Unauthorized("Invalid username or password.");
+
+        // יצירת קוד אימות ושליחתו למייל
+        var verificationCode = await _authService.GenerateVerificationCodeAsync(user.ID);
+        await _authService.SendVerificationEmail(user.Email, verificationCode);
+
+        return Ok(new { Message = "Verification code sent to email.", UserId = user.ID });
     }
+
+    [HttpPost("verify")]
+    public async Task<IActionResult> VerifyCode([FromBody] VerificationRequest request)
+    {
+        if (request == null || string.IsNullOrEmpty(request.Code))
+        {
+            return BadRequest("Verification code is required.");
+        }
+
+        var isValid = await _authService.VerifyCodeAsync(request.UserId, request.Code);
+        if (!isValid)
+        {
+            return Unauthorized("Invalid or expired verification code.");
+        }
+
+        return Ok(new { Message = "Verification successful, you can now log in." });
+    }
+
+
+
+
+
+
+
 
 
 

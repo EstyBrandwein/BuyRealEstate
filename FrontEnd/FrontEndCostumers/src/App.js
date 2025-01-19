@@ -10,6 +10,7 @@ import DetailsPage from './Pages/myFeiledPage';
 import PaymentPage from './Pages/paymentsPage';
 import GrossProfitPage from './Pages/profitCalculations';
 import PlotsPage from './Pages/realEstateDetails';
+import VerificationPage from './Pages/VerifyPage';
 function App() {
   const handleLogout = () => {
     // פונקציה להתנתקות
@@ -19,17 +20,19 @@ function App() {
     <Router>
       <div className="app">
         <Routes>
-          <Route exact path="/" element={<EntryPage/>} />  
+          <Route exact path="/" element={<Login/>} /> 
+          {/* <Route exact path="/" element={<EntryPage/>} />   */}
           <Route path="/mainPage" element={<MainPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/my-fields" element={<MyFields />} />
+          <Route path="/VerifyPage" element={<VerificationPage />} />
+          {/* <Route path="/login" element={<Login />} /> */}
+          {/* <Route path="/my-fields" element={<MyFields />} />
           <Route path="/edit-profile" element={<EditProfile />} />
           <Route path="/my-fields" element={() => (
           <div>
             <Sidebar username="User123" email="user123@example.com" onLogout={handleLogout} />
             <MyFields />
           </div>
-        )} />
+        )} /> */}
         </Routes>
       </div>
     </Router>
