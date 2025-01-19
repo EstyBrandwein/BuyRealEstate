@@ -1,4 +1,6 @@
-﻿namespace BuyRealEstate.Core.DTOs
+﻿using BuyRealEstate.Core.DTos;
+
+namespace BuyRealEstate.Core.DTOs
 {
     public class PlotDTO
     {
@@ -10,5 +12,7 @@
         public double PlotSize { get; set; }
         public int PlotNumber { get; set; }
         public ProjectDTO? Project { get; set; }
+        public UsersDTO? UserDto { get; set; }
+        public int userId { get; set; }
     }
 }

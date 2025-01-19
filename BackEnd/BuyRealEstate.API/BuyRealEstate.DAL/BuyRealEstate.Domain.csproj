@@ -16,7 +16,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
 
-
     <Folder Include="Migrations\" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.0" />
 
