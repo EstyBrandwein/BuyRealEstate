@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Threading.Tasks;
 using BuyRealEstate.Domain.Models;
+using BuyRealEstate.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using BuyRealEstate.Core.Interfaces;
 namespace BuyRealEstate.Domain.Repositories
 {
     public class UserRepository : IUserRepository

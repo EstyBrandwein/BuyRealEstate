@@ -1,5 +1,4 @@
-﻿
-using BuyRealEstate.Core.DTos;
+﻿using BuyRealEstate.Core.DTos;
 using BuyRealEstate.Domain.Models;
 
 namespace BuyRealEstate.Core.DTOs

@@ -4,8 +4,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './Pages/Login';
 import MainPage from './Pages/MainPage';
 import PlotsPage from './Pages/PlotsPage';
-import FileListViewer from './Pages/Document';
+import FileListViewer from './Pages/Documents/Document';
 import MainListPlots from './Pages/ListPlots/MainListPlots';
+import UploadImage from './Pages/Image/UploadImage';
 function App() {
 
   return (
@@ -13,6 +14,7 @@ function App() {
       <div className="app">
         <Routes>
         <Route path="/" element={<MainListPlots />} />
+        {/* <Route path="/UploadImage" element={<UploadImage />} /> */}
         <Route path="/PlotsPage/:id" element={<PlotsPage />} />
         <Route exact path="/PDFViewer" element={<FileListViewer/>} />  
         <Route path="/mainPage" element={<MainPage />} />
