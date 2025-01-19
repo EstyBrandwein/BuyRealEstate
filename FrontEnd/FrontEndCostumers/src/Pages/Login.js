@@ -1,65 +1,59 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-function Login() {
+const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
-    const handleLoginSubmit = async (e) => {
-        e.preventDefault(); // Prevent default form submission
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
-            const response = await axios.post('https://localhost:7219/api/user/login', {
-                Username : username,
-                Password : password
-            }, {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+            const response = await axios.post('http://localhost:5145/api/user/login', {
+                username,
+                password
             });
 
+            // אם הבקשה הצליחה, ננווט לדף הראשי
             if (response.status === 200) {
-                // Handle successful login, e.g., navigate to the main page
-                navigate('/mainPage');
-            } else {
-                // Handle unexpected response status
-                setError('Unexpected response from the server.');
+                // console.log(response.data);
+                // navigate('/mainPage');
+                navigate('/VerifyPage', { state: { userId: response.data.userId } });
             }
         } catch (error) {
+            // טיפול בשגיאות
             if (error.response) {
-                // The request was made, but the server responded with a status code
-                // that falls out of the range of 2xx
-                setError(error.response.data || 'An error occurred while logging in.');
+                setMessage(error.response.data.message || 'Login failed');
             } else {
-                // Something happened in setting up the request that triggered an Error
-                setError('An error occurred while logging in.');
+                setMessage('An error occurred. Please try again.');
             }
         }
-    }
+    };
 
     return (
-        <form onSubmit={handleLoginSubmit}>
-            <TextField
-                label="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-            />
-            <TextField
-                label="Password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-            />
-            {error && <p>{error}</p>} {/* Display error message if exists */}
-            <Button type="submit">Login</Button>
-        </form>
+        <div>
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    placeholder="Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+                <button type="submit">Login</button>
+            </form>
+            {message && <p>{message}</p>}
+        </div>
     );
-}
+};
 
 export default Login;
