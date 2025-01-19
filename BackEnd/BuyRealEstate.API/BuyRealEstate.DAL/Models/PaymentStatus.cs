@@ -12,6 +12,6 @@ namespace BuyRealEstate.Domain.Models
     {
         public int Id { get; set; }
         public string Status { get; set; }
-        [JsonIgnore] public ICollection<Payment> Payments { get; set; }
+        [JsonIgnore] public ICollection<Payment>? Payments { get; set; }
     }
 }

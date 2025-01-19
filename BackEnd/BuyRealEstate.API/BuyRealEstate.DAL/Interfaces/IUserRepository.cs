@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace BuyRealEstate.Core.Interfaces
+namespace BuyRealEstate.Domain.Interfaces
 {
     public interface IUserRepository
     {
