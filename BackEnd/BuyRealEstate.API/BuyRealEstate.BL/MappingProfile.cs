@@ -13,6 +13,7 @@ public class MappingProfile : Profile
         CreateMap<DevelopmentStatus, DevelopmentStatusDTO>();
         CreateMap<LegalStatus, LegalStatusDTO>();
         CreateMap<Image, ImageDTO>();
+        CreateMap<ImageDTO, Image>();
         CreateMap<Document, DocumentDTO>();
         CreateMap<DocumentDTO, Document>();
 

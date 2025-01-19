@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../CSS/Contact.css";
-import FileListViewer from "./Document";
+import FileListViewer from "./Documents/Document";
 import { useParams } from "react-router";
+import ImageList from "./Image/ImageList";
 function PlotsPage() {
   const { id } = useParams();
   const [activeTab, setActiveTab] = useState("description");
@@ -30,34 +31,20 @@ function PlotsPage() {
         return (
           <div>
             <h3>תיאור</h3>
-            <p>
-              <strong>מספר מגרש:</strong> {plot.plotNumber}
-            </p>
-            <p>
-              <strong>גודל:</strong> {plot.plotSize} מ"ר
-            </p>
-            <p>
-              <strong>ערך:</strong> {plot.plotValue} דולר
-            </p>
-            <p>
-              <strong>סטטוס משפטי:</strong>{" "}
-              {plot.project?.legalStatus || "לא זמין"}
-            </p>
-            <p>
-              <strong>שם פרויקט:</strong> {plot.project?.projectName}
-            </p>
+            <p><strong>מספר מגרש:</strong> {plot.plotNumber}</p>
+            <p><strong>גודל:</strong> {plot.plotSize} מ"ר </p>
+            <p><strong>ערך:</strong> {plot.plotValue} ש"ח </p>
+            <p> <strong>סטטוס משפטי:</strong>{" "}{plot.project?.legalStatus || "לא זמין"}</p>
+            <p> <strong>שם פרויקט:</strong> {plot.project?.projectName}</p>
           </div>
         );
       case "receiptsInvoices":
         return (
-          <div>
-            <FileListViewer></FileListViewer>
-          </div>
+          <div><FileListViewer></FileListViewer></div>
         );
       case "paymentSheet":
         return (
           <div>
-            <h3>כרטסת תשלומים</h3>
             <table border="1" style={{ width: "100%", textAlign: "right" }}>
               <thead>
                 <tr>
@@ -93,108 +80,32 @@ function PlotsPage() {
       case "fieldPhotos":
         return (
           <div>
-            <h3>תמונות מהשטח</h3>
-            <p>תמונות מהשטח יופיעו כאן.</p>
+            <ImageList projectId={plot.project.id}></ImageList>
           </div>
         );
       case "contact":
         return (
-          <div
-            style={{
-              textAlign: "right",
-              direction: "rtl",
-              fontFamily: "Arial",
-            }}
-          >
+          <div style={{textAlign: "right", direction: "rtl",fontFamily: "Arial",}}>
             <form style={{ maxWidth: "400px", margin: "auto" }}>
               <div style={{ marginBottom: "10px" }}>
-                <label
-                  htmlFor="name"
-                  style={{ display: "block", marginBottom: "5px" }}
-                >
+                <label htmlFor="name"style={{ display: "block", marginBottom: "5px" }}>
                   שם:
                 </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  style={{
-                    width: "100%",
-                    padding: "8px",
-                    boxSizing: "border-box",
-                  }}
-                  placeholder="הכנס את שמך"
-                />
+                <input type="text"id="name" name="name" style={{width: "100%", padding: "8px", boxSizing: "border-box",}} placeholder="הכנס את שמך"/>
               </div>
               <div style={{ marginBottom: "10px" }}>
-                <label
-                  htmlFor="email"
-                  style={{ display: "block", marginBottom: "5px" }}
-                >
-                  אימייל:
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  style={{
-                    width: "100%",
-                    padding: "8px",
-                    boxSizing: "border-box",
-                  }}
-                  placeholder="הכנס את האימייל שלך"
-                />
+                <label htmlFor="email" style={{ display: "block", marginBottom: "5px" }} > אימייל:</label>
+                <input  type="email" id="email" name="email" style={{ width: "100%", padding: "8px",boxSizing: "border-box",}}placeholder="הכנס את האימייל שלך"/>
               </div>
               <div style={{ marginBottom: "10px" }}>
-                <label
-                  htmlFor="phone"
-                  style={{ display: "block", marginBottom: "5px" }}
-                >
-                  טלפון:
-                </label>
-                <input
-                  type="text"
-                  id="phone"
-                  name="phone"
-                  style={{
-                    width: "100%",
-                    padding: "8px",
-                    boxSizing: "border-box",
-                  }}
-                  placeholder="הכנס את הטלפון שלך"
-                />
+                <label  htmlFor="phone" style={{ display: "block", marginBottom: "5px" }} >טלפון: </label>
+                <input type="text" id="phone" name="phone" style={{ width: "100%", padding: "8px", boxSizing: "border-box", }} placeholder="הכנס את הטלפון שלך"/>
               </div>
               <div style={{ marginBottom: "10px" }}>
-                <label
-                  htmlFor="message"
-                  style={{ display: "block", marginBottom: "5px" }}
-                >
-                  הודעה:
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  style={{
-                    width: "100%",
-                    padding: "8px",
-                    boxSizing: "border-box",
-                    height: "80px",
-                  }}
-                  placeholder="הכנס את ההודעה שלך"
-                ></textarea>
+                <label htmlFor="message" style={{ display: "block", marginBottom: "5px" }} > הודעה:</label>
+                <textarea  id="message" name="message"style={{ width: "100%", padding: "8px", boxSizing: "border-box", height: "80px", }} placeholder="הכנס את ההודעה שלך"></textarea>
               </div>
-              <button
-                type="submit"
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  backgroundColor: "#4CAF50",
-                  color: "white",
-                  border: "none",
-                  cursor: "pointer",
-                  fontSize: "16px",
-                }}
-              >
+              <button type="submit" style={{width: "100%", padding: "10px",backgroundColor: "#4CAF50",color: "white",border: "none",cursor: "pointer",fontSize: "16px",}}>
                 שליחה
               </button>
             </form>
@@ -205,10 +116,7 @@ function PlotsPage() {
         return (
           <div>
             <h3>פירוט עלויות</h3>
-            <table
-              border="1"
-              style={{ width: "100%", textAlign: "right", marginTop: "20px" }}
-            >
+            <table border="1" style={{ width: "100%", textAlign: "right", marginTop: "20px" }}>
               <thead>
                 <tr>
                   <th>תיאור</th>
@@ -256,21 +164,11 @@ function PlotsPage() {
         return (
           <div>
             <h3>פרופיל</h3>
-            <p>
-              <strong>שם רוכש:</strong> {plot.user?.username}
-            </p>
-            <p>
-              <strong>ת.ז.:</strong> {plot.user?.id}
-            </p>
-            <p>
-              <strong>טלפון ראשי:</strong> {plot.user?.firstPhone}
-            </p>
-            <p>
-              <strong>טלפון משני:</strong> {plot.user?.secendPhon || "לא קיים"}
-            </p>
-            <p>
-              <strong>מייל:</strong> {plot.user?.email}
-            </p>
+            <p><strong>שם רוכש:</strong> {plot.user?.username} </p>
+            <p><strong>ת.ז.:</strong> {plot.user?.id}</p>
+            <p><strong>טלפון ראשי:</strong> {plot.user?.firstPhone}</p>
+            <p><strong>טלפון משני:</strong> {plot.user?.secendPhon || "לא קיים"}</p>
+            <p><strong>מייל:</strong> {plot.user?.email}</p>
             <h4>רשימת מגרשים:</h4>
             <ul>
               {plot.user?.plots?.map((p, index) => (
@@ -286,10 +184,7 @@ function PlotsPage() {
         return (
           <div>
             <h3>שובים וערבויות</h3>
-            <table
-              border="1"
-              style={{ width: "100%", textAlign: "right", marginTop: "20px" }}
-            >
+            <table  border="1" style={{ width: "100%", textAlign: "right", marginTop: "20px" }}>
               <thead>
                 <tr>
                   <th>תאריך תשלום</th>
@@ -329,48 +224,13 @@ function PlotsPage() {
       </p>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div style={{ display: "flex", borderBottom: "2px solid #ccc" }}>
-          <div
-            onClick={() => setActiveTab("profile")}
-            style={{
-              padding: "10px 20px",
-              cursor: "pointer",
-              backgroundColor:
-                activeTab === "profile" ? "#d3d3d3" : "transparent",
-              borderTopLeftRadius: "5px",
-              fontWeight: "bold",
-            }}
-          >
-            פרופיל
-          </div>
-          <div
-            onClick={() => setActiveTab("costDetails")}
-            style={{
-              padding: "10px 20px",
-              cursor: "pointer",
-              backgroundColor:
-                activeTab === "costDetails" ? "#d3d3d3" : "transparent",
-              fontWeight: "bold",
-            }}
-          >
-            פירוט עלויות
-          </div>
-          <div
-            onClick={() => setActiveTab("guarantees")}
-            style={{
-              padding: "10px 20px",
-              cursor: "pointer",
-              backgroundColor:
-                activeTab === "guarantees" ? "#d3d3d3" : "transparent",
-              fontWeight: "bold",
-            }}
-          >
-            שוברים וערבויות
-          </div>
-          <div
-            onClick={() => setActiveTab("paymentSheet")}
-            style={{
-              padding: "10px 20px",
-              cursor: "pointer",
+          <div onClick={() => setActiveTab("profile")}style={{padding: "10px 20px",cursor: "pointer",backgroundColor:activeTab === "profile" ? "#d3d3d3" : "transparent",
+          borderTopLeftRadius: "5px", fontWeight: "bold",}}>פרופיל</div>
+          <div onClick={() => setActiveTab("costDetails")}style={{ padding: "10px 20px", cursor: "pointer",backgroundColor:activeTab === "costDetails" ? "#d3d3d3" : "transparent",
+              fontWeight: "bold",}} > פירוט עלויות</div>
+          <div onClick={() => setActiveTab("guarantees")} style={{padding: "10px 20px",cursor: "pointer", backgroundColor:activeTab === "guarantees" ? "#d3d3d3" : "transparent",
+              fontWeight: "bold", }}>שוברים וערבויות</div>
+          <div onClick={() => setActiveTab("paymentSheet")} style={{padding: "10px 20px",cursor: "pointer",
               backgroundColor:
                 activeTab === "paymentSheet" ? "#d3d3d3" : "transparent",
               fontWeight: "bold",

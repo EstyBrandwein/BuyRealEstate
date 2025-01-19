@@ -20,10 +20,11 @@ namespace BuyRealEstate.Domain.Models
         public string Email { get; set; }
         public string FirstPhone { get; set; }
         public string? SecendPhon { get; set; }
+        public string VerificationCode { get; set; } // קוד האימות
+        public bool IsVerified { get; set; } // האם המשתמש אושר
         [JsonIgnore]
         public ICollection<Plot> plots { get; set; }
         public ICollection<Document> Documents { get; set; }
+        public DateTime? VerificationCodeExpiry { get; set; }
     }
-
-
 }
