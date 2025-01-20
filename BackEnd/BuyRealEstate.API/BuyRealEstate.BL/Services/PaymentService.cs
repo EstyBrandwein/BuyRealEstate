@@ -19,32 +19,35 @@ namespace BuyRealEstate.Core.Services
             _paymentRepository = paymentRepository;
         }
 
-        //public async Task AddPaymentAsync(PaymentDTO p)
-        //{
-        //    var payment = new Payment 
-        //    {
-        //        PaymentConfirmation = (ICollection<Document>)p.PaymentConfirmation,
-        //        Title = p.Title,
-        //        movement = p.movement,
-        //        dose = p.dose,
-        //        HNagainst = p.HNagainst,
-        //        Datereference = p.Datereference,
-        //        DataValue = p.DataValue,
-        //        Detiels = p.Detiels,
-        //        Surplus = p.Surplus,
-        //        Amount = p.Amount,
-        //        Professional = p.Professional,
-        //        LastPaymentDate = p.LastPaymentDate,
-        //        PaymentExecutionMethodID = p.PaymentExecutionMethodID,
-        //        PaymentStatusId = p.PaymentStatusId,
-
-        //    };
-        //    await _paymentRepository.AddPaymentAsync(payment);
-        //}
-
-        public Task DeletePaymentAsync(int id)
+        public async Task AddPaymentAsync(PaymentDTO p)
         {
-            throw new NotImplementedException();
+            var payment = new Payment
+            {
+                PaymentConfirmation = (ICollection<Document>)p.PaymentConfirmation,
+                Title = p.Title,
+                movement = p.movement,
+                dose = p.dose,
+                HNagainst = p.HNagainst,
+                Datereference = p.Datereference,
+                DataValue = p.DataValue,
+                Detiels = p.Detiels,
+                Surplus = p.Surplus,
+                Amount = p.Amount,
+                Professional = p.Professional,
+                LastPaymentDate = p.LastPaymentDate,
+                PaymentExecutionMethodID = p.PaymentExecutionMethodID,
+                PaymentStatusId = p.PaymentStatusId,
+                //PaymentPlots = (ICollection<RelationshipPaymentsPlots>)p.PaymentPlots,
+                PaymentPlots = p.PaymentPlots,
+                PaymentProject = p.PaymentProject
+            };
+            await _paymentRepository.AddPaymentAsync(payment);
+        }
+
+
+        public async Task DeletePaymentAsync(int id)
+        {
+            await _paymentRepository.DeletePaymentAsync(id);
         }
 
         public async Task<IEnumerable<PaymentDTO>> GetAllPaymentsAsync()
@@ -60,14 +63,30 @@ namespace BuyRealEstate.Core.Services
             return new PaymentDTO();
         }
 
-        public Task UpdatePaymentAsync(PaymentDTO payment)
+        public async Task UpdatePaymentAsync(PaymentDTO p)
         {
-            throw new NotImplementedException();
+            var payment = new Payment
+            {
+                PaymentConfirmation = (ICollection<Document>)p.PaymentConfirmation,
+                Title = p.Title,
+                movement = p.movement,
+                dose = p.dose,
+                HNagainst = p.HNagainst,
+                Datereference = p.Datereference,
+                DataValue = p.DataValue,
+                Detiels = p.Detiels,
+                Surplus = p.Surplus,
+                Amount = p.Amount,
+                Professional = p.Professional,
+                LastPaymentDate = p.LastPaymentDate,
+                PaymentExecutionMethodID = p.PaymentExecutionMethodID,
+                PaymentStatusId = p.PaymentStatusId,
+                //PaymentPlots = (ICollection<RelationshipPaymentsPlots>)p.PaymentPlots,
+                PaymentPlots = p.PaymentPlots,
+                PaymentProject = p.PaymentProject
+            };
+            await _paymentRepository.UpdatePaymentAsync(payment);
         }
 
-        public Task AddPaymentAsync(PaymentDTO payment)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
