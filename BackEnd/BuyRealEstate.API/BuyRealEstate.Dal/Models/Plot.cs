@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 namespace BuyRealEstate.Domain.Models
 {
@@ -23,8 +24,10 @@ namespace BuyRealEstate.Domain.Models
         public int ProjectId { get; set; }
         public User? User { get; set; }
         public int UserId { get; set; }
+
         //public ICollection<RelationshipCustomersPlots> CustomerPlots { get; set; }
-        public ICollection<RelationshipPaymentsPlots> PaymentPlots { get; set; }
+        [JsonIgnore]
+        public ICollection<RelationshipPaymentsPlots>? PaymentPlots { get; set; }
 
     }
 }

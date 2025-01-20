@@ -25,6 +25,12 @@ builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
+builder.Services.AddScoped<IDocumentService, DocumentService>();
+builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
+
+builder.Services.AddScoped<IImageRepository, ImageRepository>();
+builder.Services.AddScoped<IImageService, ImageService>();
+
 builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 
@@ -54,9 +60,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseCors(builder =>
-    builder.WithOrigins("http://localhost:3000") // Frontend origin
-           .AllowAnyHeader()
-           .AllowAnyMethod());
+    builder.AllowAnyOrigin()
+               .AllowAnyMethod());
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace BuyRealEstate.Core.Interfaces
+namespace BuyRealEstate.Domain.Interfaces
 {
     public interface IUserRepository
     {
@@ -11,7 +11,9 @@ namespace BuyRealEstate.Core.Interfaces
         Task AddAsync(User user);
         Task UpdateAsync(User user);
         Task DeleteAsync(int id);
-        Task<User> GetByUsernameAsync(string username);
+        Task<User> GetByUsernameAsync(string username); // חיפוש משתמש לפי שם משתמש בלבד
+
+        // שיטה חדשה לעדכון קוד האימות וסטטוס האימות
+        Task UpdateVerificationCodeAsync(int userId, string verificationCode, bool isVerified);
     }
 }
-
