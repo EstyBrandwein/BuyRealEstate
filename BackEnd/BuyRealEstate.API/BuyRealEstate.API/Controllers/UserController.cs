@@ -89,7 +89,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Add([FromBody] UserDto userDto)
+    public async Task<IActionResult> Add([FromBody] UsersDTO userDto)
     {
         if (userDto == null)
         {
@@ -99,7 +99,7 @@ public class UserController : ControllerBase
         return CreatedAtAction(nameof(GetById), new { id = userDto.ID }, userDto);
     }
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, [FromBody] UserDto userDto)
+    public async Task<IActionResult> Update(int id, [FromBody] UsersDTO userDto) 
     {
         if (userDto == null || userDto.ID != id)
         {

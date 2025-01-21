@@ -9,7 +9,7 @@ namespace BuyRealEstate.Core.DTos
 {
     public class DocumentDTO
     {
-        //public int ID { get; set; }
+        public int ID { get; set; }
         //public int? ProjectID { get; set; }
         //public int? PamentID { get; set; }
         //public int? UserId { get; set; }

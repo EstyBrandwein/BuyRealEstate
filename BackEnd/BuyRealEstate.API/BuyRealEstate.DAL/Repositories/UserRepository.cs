@@ -1,4 +1,4 @@
-﻿using BuyRealEstate.Core.Interfaces;
+﻿using BuyRealEstate.Domain.Interfaces;
 using BuyRealEstate.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 

@@ -59,8 +59,8 @@ namespace BuyRealEstate.Domain.Extentions
                new Plot { ID = 3, UserId = 1, PlotCost = 580000, MonthlyFundingCost = 10000, MonthsForFundingCost = 10, PlotValue = 600000, PlotSize = 110, PlotNumber = 13, ProjectId = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
           );
             modelBuilder.Entity<Professional>().HasData(
-               new Professional { ID = 4, FirstName = "רשות", LastName = "המיסים", Email = "ghj@hjj", Password = "123456", FirstPhone = "050141155", PermissionId = 4, Username = "רשות המיסים", Professtion = "מיסים", WebsiteAddress = "https://www.efshar-nadlan.co.il", InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true },
-               new Professional { ID = 5,WebsiteAddress = "", FirstName = "רועי", LastName = "גרילק", Email = "royi@grilak", Password = "123456", FirstPhone = "0556565626", PermissionId = 4, Username = "עורך דין", Professtion = "עריכת דין", InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
+               new Professional { ID = 4,IsVerified =true,VerificationCode = "", FirstName = "רשות", LastName = "המיסים", Email = "ghj@hjj", Password = "123456", FirstPhone = "050141155", PermissionId = 4, Username = "רשות המיסים", Professtion = "מיסים", WebsiteAddress = "https://www.efshar-nadlan.co.il", InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true },
+               new Professional { ID = 5, IsVerified = true, VerificationCode = "", WebsiteAddress = "", FirstName = "רועי", LastName = "גרילק", Email = "royi@grilak", Password = "123456", FirstPhone = "0556565626", PermissionId = 4, Username = "עורך דין", Professtion = "עריכת דין", InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
               );
             modelBuilder.Entity<Project>().HasData(
                new Project { ID = 1, ProjectName = "כרמית 11", ProjectAddress = "כרמית", LegalStatusId = 1, ProjectManagerID = 1, DeveloperStatusID = 1, GrossProfit = 12000, LinkToLead2 = "https://www.efshar-nadlan.co.il/", ProjectType = true, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
@@ -69,14 +69,14 @@ namespace BuyRealEstate.Domain.Extentions
             //modelBuilder.Entity<RelationshipCustomersPlots>().HasData(
             //   new RelationshipCustomersPlots { ID = 1, PlotID = 1, UserID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
             //    );
-            modelBuilder.Entity<RelationshipPaymentsPlots>().HasData(
-               new RelationshipPaymentsPlots { ID = 1, PlotID = 1, PaymentID = 1, paymentStutusID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
-                );
+            //modelBuilder.Entity<RelationshipPaymentsPlots>().HasData(
+            //   new RelationshipPaymentsPlots { ID = 1, PlotID = 1, PaymentID = 1, paymentStutusID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
+            //    );
             modelBuilder.Entity<RelationshipPaymentsProjects>().HasData(
                new RelationshipPaymentsProjects { ID = 1, ProjectID = 1, PaymentID = 1, paymentStutusID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
                 );
             modelBuilder.Entity<User>().HasData(
-                new User { ID = 1, FirstName = "חיה", LastName = "ברנדויין", Email = "chayamalot@gmail.com", Password = "CB5328152", FirstPhone = "0504101585", Username = "ChayaB", PermissionId = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
+                new User { ID = 1, IsVerified = true, VerificationCode = "", FirstName = "חיה", LastName = "ברנדויין", Email = "chayamalot@gmail.com", Password = "CB5328152", FirstPhone = "0504101585", Username = "ChayaB", PermissionId = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
                 );
         }
     }

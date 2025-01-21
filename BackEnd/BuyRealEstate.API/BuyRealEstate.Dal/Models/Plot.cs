@@ -25,7 +25,8 @@ namespace BuyRealEstate.Domain.Models
         public int ProjectId { get; set; }
         public User? User { get; set; }
         public int UserId { get; set; }
-        public ICollection<RelationshipCustomersPlots> CustomerPlots { get; set; }
+        //public ICollection<RelationshipCustomersPlots> CustomerPlots { get; set; }
+        [JsonIgnore]
         public ICollection<RelationshipPaymentsPlots> PaymentPlots { get; set; }
 
     }
