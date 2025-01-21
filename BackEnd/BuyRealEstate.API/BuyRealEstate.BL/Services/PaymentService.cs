@@ -8,10 +8,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace BuyRealEstate.Core.Services
 {
-    public class PaymentService: IPaymentService
+    public class PaymentService : IPaymentService
+
     {
         private readonly IPaymentRepository _paymentRepository;
         public PaymentService(IPaymentRepository paymentRepository)
@@ -43,7 +43,6 @@ namespace BuyRealEstate.Core.Services
             };
             await _paymentRepository.AddPaymentAsync(payment);
         }
-
 
         public async Task DeletePaymentAsync(int id)
         {
@@ -87,6 +86,7 @@ namespace BuyRealEstate.Core.Services
             };
             await _paymentRepository.UpdatePaymentAsync(payment);
         }
-
     }
 }
+
+

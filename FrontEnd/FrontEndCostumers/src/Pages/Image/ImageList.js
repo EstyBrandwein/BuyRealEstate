@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
 const ImageList = ({ projectId }) => {
   const [images, setImages] = useState([]);
   const [error, setError] = useState(null);
-
   useEffect(() => {
     const fetchImages = async () => {
       if (!projectId) {
         setError("Project ID is not defined");
         return;
       }
-
       try {
         const response = await axios.get(`https://localhost:7219/api/Images/project/${projectId}`);
         if (Array.isArray(response.data)) {
@@ -24,12 +21,9 @@ const ImageList = ({ projectId }) => {
         setError("Failed to fetch images");
       }
     };
-
     fetchImages();
   }, [projectId]);
-
   if (error) return <div>Error: {error}</div>;
-
   return (
     <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
       {images.length > 0 ? (
@@ -49,5 +43,4 @@ const ImageList = ({ projectId }) => {
     </div>
   );
 };
-
 export default ImageList;

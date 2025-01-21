@@ -1,4 +1,3 @@
-/* General styling */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -7,7 +6,6 @@ body {
     direction: rtl;
     text-align: right;
   }
-  
   /* Tabs Styling */
   .tabs {
     display: flex;
@@ -22,9 +20,8 @@ body {
     transition: background-color 0.3s;
   }
   .tab.active {
-    background-color: #d3d3d3;
+    background-color: #D3D3D3;
   }
-  
   /* Forms */
   form {
     max-width: 400px;
@@ -54,9 +51,8 @@ body {
     transition: background-color 0.3s;
   }
   form button:hover {
-    background-color: #45a049;
+    background-color: #45A049;
   }
-  
   /* Tables */
   table {
     width: 100%;
@@ -69,9 +65,8 @@ body {
     text-align: right;
   }
   table th {
-    background-color: #f2f2f2;
+    background-color: #F2F2F2;
   }
-  
   /* General sections */
   .section {
     padding: 10px;
@@ -79,14 +74,11 @@ body {
   .section h3 {
     margin-bottom: 15px;
   }
-  
   /* Error Message */
   .error-message {
     color: red;
   }
-  
   /* Content Loading */
   .loading {
     font-style: italic;
   }
-  

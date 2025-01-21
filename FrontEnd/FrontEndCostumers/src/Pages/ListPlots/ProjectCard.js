@@ -1,18 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./ListPlots.css";
-
 function ProjectCard({ plot, isClickable }) {
   const navigate = useNavigate();
   const { id, project, plotSize, plotNumber, plotCost } = plot;
-
   // Function to handle card click
   const handleCardClick = () => {
     if (isClickable) {
       navigate(`/PlotsPage/${id}`);
     }
   };
-
   return (
     <div
       className={`project-card ${isClickable ? "clickable" : "non-clickable"}`}
@@ -30,5 +27,4 @@ function ProjectCard({ plot, isClickable }) {
     </div>
   );
 }
-
 export default ProjectCard;

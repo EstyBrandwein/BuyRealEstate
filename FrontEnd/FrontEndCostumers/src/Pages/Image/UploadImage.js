@@ -1,25 +1,20 @@
 import React, { useState } from "react";
 import axios from "axios";
-
 const UploadImage = ({ projectId }) => {
   const [file, setFile] = useState(null);
   const [description, setDescription] = useState("");
-
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
-
   const handleUpload = async () => {
     if (!file) {
       alert("Please select a file first!");
       return;
     }
-
     const formData = new FormData();
     formData.append("file", file);
     formData.append("description", description);
     formData.append("projectId", projectId);
-
     try {
       const response = await axios.post("/api/images", formData, {
         headers: { "Content-Type": "multipart/form-data" },
@@ -29,7 +24,6 @@ const UploadImage = ({ projectId }) => {
       console.error("Error uploading file:", err);
     }
   };
-
   return (
     <div>
       <input type="file" onChange={handleFileChange} />
@@ -43,5 +37,4 @@ const UploadImage = ({ projectId }) => {
     </div>
   );
 };
-
 export default UploadImage;

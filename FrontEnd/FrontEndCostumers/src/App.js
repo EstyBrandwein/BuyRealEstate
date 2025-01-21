@@ -1,22 +1,27 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-//import Sidebar from './Pages/sideBarPage';
 import Login from './Pages/Login';
-
-import MainPage from './Pages/MainPage';
-import PlotsPage from './Pages/PlotsPage';
-import FileListViewer from './Pages/Documents/Document';
+import MainPage from './Pages/mainPage';
+import PlotsPage from './Pages/realEstateDetails';
+import VerificationPage from './Pages/VerifyPage';
+import FileListViewer from './Pages/Document/Document';
 import MainListPlots from './Pages/ListPlots/MainListPlots';
-import UploadImage from './Pages/Image/UploadImage';
+
+
+
 function App() {
+  const handleLogout = () => {
+    // פונקציה להתנתקות
+  };
 
   return (
     <Router>
       <div className="app">
         <Routes>
-          <Route exact path="/" element={<Login/>} /> 
+        <Route path="/" element={<MainListPlots />} />
+          {/* <Route exact path="/" element={<Login/>} />  */}
           {/* <Route exact path="/" element={<EntryPage/>} />   */}
-          <Route path="/mainPage" element={<MainPage />} />
+          {/* <Route path="/mainPage" element={<MainPage />} /> */}
           <Route path="/VerifyPage" element={<VerificationPage />} />
           {/* <Route path="/login" element={<Login />} /> */}
           {/* <Route path="/my-fields" element={<MyFields />} />
@@ -27,13 +32,12 @@ function App() {
             <MyFields />
           </div>
         )} /> */}
-
-        <Route path="/" element={<MainListPlots />} />
+       
         {/* <Route path="/UploadImage" element={<UploadImage />} /> */}
-        <Route path="/PlotsPage/:id" element={<PlotsPage />} />
-        <Route exact path="/PDFViewer" element={<FileListViewer/>} />  
+        <Route path="/PlotsPage/:id" element={<PlotsPage/>} />
+        <Route exact path="/PDFViewer" element={<FileListViewer/>} />
         <Route path="/mainPage" element={<MainPage />} />
-          <Route path="/login" element={<Login />} />          
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </Router>

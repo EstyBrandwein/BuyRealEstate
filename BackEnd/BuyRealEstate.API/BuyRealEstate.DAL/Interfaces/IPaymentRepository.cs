@@ -16,3 +16,4 @@ namespace BuyRealEstate.Domain.Interfaces
         Task DeletePaymentAsync(int id);
     }
 }
+

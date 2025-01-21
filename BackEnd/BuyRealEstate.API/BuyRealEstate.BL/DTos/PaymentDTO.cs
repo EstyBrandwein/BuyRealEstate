@@ -26,12 +26,11 @@ namespace BuyRealEstate.Core.DTos
         //  public Document PaymentConfirmation { get; set; }
         public ICollection<DocumentDTO>? PaymentConfirmation { get; set; } // Changed to ICollection for better EF Core compatibility
         public int PaymentExecutionMethodID { get; set; }
-
         public PaymentExecutionMethod? PaymentExecutionMethod { get; set; }
         public PaymentStatus? PaymentStatus { get; set; }
         public int PaymentStatusId { get; set; }
-
         public ICollection<RelationshipPaymentsPlots>? PaymentPlots { get; set; }
         public ICollection<RelationshipPaymentsProjects>? PaymentProject { get; set; }
     }
 }
+

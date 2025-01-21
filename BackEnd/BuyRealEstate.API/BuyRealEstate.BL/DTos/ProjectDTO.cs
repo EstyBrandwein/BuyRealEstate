@@ -1,6 +1,5 @@
 ﻿using BuyRealEstate.Core.DTos;
 using BuyRealEstate.Domain.Models;
-
 namespace BuyRealEstate.Core.DTOs
 {
     public class ProjectDTO
@@ -21,6 +20,5 @@ namespace BuyRealEstate.Core.DTOs
         public ICollection<RelationshipPaymentsProjects>? PaymentProject { get; set; }
         public int DeveloperStatusID { get; set; }
         public int ProjectManagerID { get; set; }
-
     }
 }

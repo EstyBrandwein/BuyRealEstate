@@ -8,7 +8,8 @@ namespace BuyRealEstate.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class PaymentController: ControllerBase
+    public class PaymentController : ControllerBase
+
     {
         private readonly IPaymentService _paymentService;
         public PaymentController(IPaymentService paymentService)
@@ -53,3 +54,4 @@ namespace BuyRealEstate.API.Controllers
         }
     }
 }
+

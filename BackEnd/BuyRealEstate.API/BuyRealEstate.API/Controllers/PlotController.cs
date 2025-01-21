@@ -6,7 +6,6 @@ using BuyRealEstate.Core.DTOs;
 using BuyRealEstate.Core.DTos;
 //using BuyRealEstate.BL.Interfaces;
 //using BuyRealEstate.BLL.DTOs;
-
 namespace BuyRealEstate.API.Controllers
 {
     [ApiController]
@@ -14,12 +13,10 @@ namespace BuyRealEstate.API.Controllers
     public class PlotController : ControllerBase
     {
         private readonly IPlotService _plotService;
-
         public PlotController(IPlotService plotService)
         {
             _plotService = plotService;
         }
-
         [HttpGet]
         public async Task<IActionResult> GetAllPlots()
         {
@@ -32,7 +29,6 @@ namespace BuyRealEstate.API.Controllers
             var plots = await _plotService.GetAllPlotByUserIdAsync(id);
             return Ok(plots);
         }
-
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPlot(int id)
         {
@@ -40,14 +36,12 @@ namespace BuyRealEstate.API.Controllers
             if (plot == null) return NotFound();
             return Ok(plot);
         }
-
         [HttpPost]
         public async Task<IActionResult> AddPlot([FromBody] PlotDTO plot)
         {
             await _plotService.AddPlotAsync(plot);
             return CreatedAtAction(nameof(GetPlot), new { id = plot.ID }, plot);
         }
-
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdatePlot(int id, [FromBody] PlotDTO plot)
         {
@@ -55,7 +49,6 @@ namespace BuyRealEstate.API.Controllers
             await _plotService.UpdatePlotAsync(plot);
             return NoContent();
         }
-
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePlot(int id)
         {

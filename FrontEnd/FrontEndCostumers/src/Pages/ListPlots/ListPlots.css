@@ -1,26 +1,23 @@
 .app-container {
     display: flex;
   }
-  
   .sidebar {
     width: 20%;
-    background-color: #b8e994;
+    background-color: #B8E994;
     padding: 10px;
   }
-  
   main {
     width: 80%;
     padding: 20px;
   }
-  
   .project-card {
     border: 1px solid #ddd;
     padding: 15px;
     margin-bottom: 10px;
-    background-color: #e5f7d8;
+    background-color: #E5F7D8;
   }
   .project-card {
-    background-color: #f9f9f9; /* Light background */
+    background-color: #F9F9F9; /* Light background */
     border: 1px solid #ddd; /* Subtle border */
     border-radius: 12px; /* Rounded corners */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
@@ -30,26 +27,22 @@
     transition: transform 0.2s, box-shadow 0.2s;
     cursor: pointer; /* Make it look clickable */
   }
-  
   .project-card:hover {
     transform: translateY(-5px); /* Lift the card on hover */
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15); /* Increase shadow on hover */
   }
-  
   .project-title {
     font-size: 1.5rem;
     color: #333; /* Dark text color for contrast */
     margin-bottom: 10px;
   }
-  
   .project-info {
     font-size: 1rem;
     color: #555; /* Slightly lighter text */
     margin: 5px 0;
   }
-  
   .project-card:hover .project-title {
-    color: #0078d7; /* Subtle blue color on hover */
+    color: #0078D7; /* Subtle blue color on hover */
   }
   .plots-list {
     display: flex;
@@ -57,9 +50,8 @@
     gap: 20px;
     justify-content: flex-end; /* Adjust for right-to-left layout */
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #F9F9F9;
   }
-  
   .project-card {
     flex: 1 1 calc(30% - 20px); /* Responsive card sizing */
     border: 1px solid #ddd;
@@ -67,26 +59,22 @@
     padding: 20px;
     margin: 10px;
     transition: transform 0.2s, box-shadow 0.2s;
-    background-color: #ffffff;
+    background-color: #FFFFFF;
     cursor: pointer;
     text-align: right; /* Right-to-left alignment */
   }
-  
   .project-card:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   }
-  
   .project-title {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 10px;
     color: #333;
   }
-  
   .project-info {
     font-size: 1rem;
     margin: 5px 0;
     color: #555;
   }
-  

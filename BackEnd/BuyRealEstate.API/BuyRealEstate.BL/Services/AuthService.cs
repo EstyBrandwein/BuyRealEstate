@@ -1,4 +1,4 @@
-﻿using BuyRealEstate.Core.Interfaces;
+﻿using BuyRealEstate.Domain.Interfaces;
 using System.Net;
 using System.Net.Mail;
 

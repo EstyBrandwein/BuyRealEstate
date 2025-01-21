@@ -6,12 +6,11 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using static System.Reflection.Metadata.BlobBuilder;
-
 namespace BuyRealEstate.Core.DTos
 {
     public class UsersDTO
     {
-         public int ID { get; set; }
+        public int ID { get; set; }
         public PermissionDTO? Permission { get; set; }
         public int PermissionId { get; set; }
         public string Username { get; set; }
@@ -22,9 +21,6 @@ namespace BuyRealEstate.Core.DTos
         public string FirstPhone { get; set; }
         public string? SecendPhon { get; set; }
         public ICollection<Plot> Plots { get; set; }
-
         public ICollection<DocumentDTO> Documents { get; set; }
-
-
     }
 }

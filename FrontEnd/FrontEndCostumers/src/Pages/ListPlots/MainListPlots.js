@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Sidebar from "../SideBarPage";
+import Sidebar from "../sideBarPage";
 import ProjectCard from "./ProjectCard";
 import "./ListPlots.css"
 import { useNavigate } from "react-router";
 function MainListPlots() {
   const [plots, setPlots] = useState([]);
-
   useEffect(() => {
     const fetchPlots = async () => {
       try {
@@ -20,16 +19,13 @@ function MainListPlots() {
         console.error("Error fetching plots:", error);
       }
     };
-
     fetchPlots();
   }, []);
   const navigate = useNavigate();
-
   // Function to handle page click
   const handlePageClick = (id) => {
     navigate(`/PlotsPage/${id}`);
   };
-
   return (
     <div className="plots-list">
       {plots.map((plot) => (
@@ -48,5 +44,4 @@ function MainListPlots() {
     </div>
   );
 }
-
 export default MainListPlots;

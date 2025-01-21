@@ -3,7 +3,6 @@ using BuyRealEstate.Core.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using BuyRealEstate.Core.DTos;
-
 namespace BuyRealEstate.API.Controllers
 {
     [ApiController]
@@ -11,17 +10,14 @@ namespace BuyRealEstate.API.Controllers
     public class DocumentController : ControllerBase
     {
         private readonly IDocumentService _documentService;
-
         public DocumentController(IDocumentService documentService)
         {
             _documentService = documentService;
         }
-
         [HttpGet]
         public async Task<IActionResult> GetAllDocuments()
         {
             var documents = await _documentService.GetAllDocumentsAsync();
-
             // Convert each document's byte array to Base64
             var response = documents.Select(d => new
             {
@@ -29,17 +25,14 @@ namespace BuyRealEstate.API.Controllers
                 DocumentDescription = d.DocumentDescription,
                 DocumentData = d.DocumentData != null ? Convert.ToBase64String(d.DocumentData) : null
             });
-
             return Ok(response);
         }
-
         [HttpGet("documentproject")]
         public async Task<IActionResult> GetDocumentsByProjectID([FromQuery] int id)
         {
             var documents = await _documentService.GetAllDocumentByProjectIdAsync(id);
             return Ok(documents);
         }
-
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDocument(int id)
         {
@@ -50,14 +43,12 @@ namespace BuyRealEstate.API.Controllers
             }
             return Ok(new { pdfData = base64Data });
         }
-
         [HttpPost]
         public async Task<IActionResult> AddDocument([FromBody] DocumentDTO document)
         {
             await _documentService.AddDocumentAsync(document);
             return CreatedAtAction(nameof(GetDocument), new { id = document.ID }, document);
         }
-
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateDocument(int id, [FromBody] DocumentDTO document)
         {
@@ -68,7 +59,6 @@ namespace BuyRealEstate.API.Controllers
             await _documentService.UpdateDocumentAsync(document);
             return NoContent();
         }
-
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDocument(int id)
         {
