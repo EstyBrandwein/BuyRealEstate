@@ -1,6 +1,8 @@
 ﻿using BuyRealEstate.Domain.Interfaces;
 using BuyRealEstate.Domain.Models;
+using BuyRealEstate.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
+namespace BuyRealEstate.Domain.Repositories
 
 public class UserRepository : IUserRepository
 {

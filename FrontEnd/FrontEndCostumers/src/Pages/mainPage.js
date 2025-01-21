@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Sidebar from './sideBarPage';
+import Sidebar from './SideBarPage';
 
 const fields = [
   { id: 1, name: "Field 1", description: "Short description of Field 1", image: "https://via.placeholder.com/150" },

@@ -16,7 +16,7 @@ namespace BuyRealEstate.Domain.Models
         public string DocumentDescription { get; set; }
         public Project? Project { get; set; }
         public Payment? Payment { get; set; }
-        public User User { get; set; }
+        public User? User { get; set; }
         public string FileType { get; set; }
 
     }

@@ -1,6 +1,7 @@
 ﻿using BuyRealEstate.Domain.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+
 namespace BuyRealEstate.Domain.Interfaces
 {
     public interface IDocumentRepository
