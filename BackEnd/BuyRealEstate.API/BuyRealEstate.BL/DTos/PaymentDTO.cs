@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+
 namespace BuyRealEstate.Core.DTos
 {
     public class PaymentDTO
@@ -32,3 +33,4 @@ namespace BuyRealEstate.Core.DTos
         public ICollection<RelationshipPaymentsProjects>? PaymentProject { get; set; }
     }
 }
+

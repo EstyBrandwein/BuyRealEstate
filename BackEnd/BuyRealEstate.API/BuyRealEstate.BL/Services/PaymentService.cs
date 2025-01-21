@@ -11,12 +11,14 @@ using System.Threading.Tasks;
 namespace BuyRealEstate.Core.Services
 {
     public class PaymentService : IPaymentService
+
     {
         private readonly IPaymentRepository _paymentRepository;
         public PaymentService(IPaymentRepository paymentRepository)
         {
             _paymentRepository = paymentRepository;
         }
+
         public async Task AddPaymentAsync(PaymentDTO p)
         {
             var payment = new Payment
@@ -41,21 +43,25 @@ namespace BuyRealEstate.Core.Services
             };
             await _paymentRepository.AddPaymentAsync(payment);
         }
+
         public async Task DeletePaymentAsync(int id)
         {
             await _paymentRepository.DeletePaymentAsync(id);
         }
+
         public async Task<IEnumerable<PaymentDTO>> GetAllPaymentsAsync()
         {
             var payments = await _paymentRepository.GetAllPaymentsAsync();
             return payments.Select(p => new PaymentDTO());
         }
+
         public async Task<PaymentDTO> GetPaymentByIdAsync(int id)
         {
             var p = await _paymentRepository.GetPaymentByIdAsync(id);
             if (p == null) return null;
             return new PaymentDTO();
         }
+
         public async Task UpdatePaymentAsync(PaymentDTO p)
         {
             var payment = new Payment
@@ -82,8 +88,5 @@ namespace BuyRealEstate.Core.Services
         }
     }
 }
-
-
-
 
 

@@ -6,11 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace BuyRealEstate.Domain.Repositories
 {
     public class PaymentRepository : IPaymentRepository
     {
         private readonly AppDbContext _context;
+
         public PaymentRepository(AppDbContext context)
         {
             _context = context;
@@ -24,6 +26,7 @@ namespace BuyRealEstate.Domain.Repositories
             await _context.Payments.AddAsync(payment);
             await _context.SaveChangesAsync();
         }
+
         public async Task DeletePaymentAsync(int id)
         {
             var payment = await _context.Payments.FindAsync(id);
@@ -33,10 +36,12 @@ namespace BuyRealEstate.Domain.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+
         public async Task<Payment> GetPaymentByIdAsync(int id)
         {
             return await _context.Payments.FirstOrDefaultAsync(p => p.ID == id);
         }
+
         public async Task UpdatePaymentAsync(Payment payment)
         {
             _context.Payments.Update(payment);
@@ -44,3 +49,4 @@ namespace BuyRealEstate.Domain.Repositories
         }
     }
 }
+

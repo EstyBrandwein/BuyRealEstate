@@ -26,12 +26,14 @@ builder.Services.AddScoped<IImageRepository, ImageRepository>();
 builder.Services.AddScoped<IImageService, ImageService>();
 builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
+
 var mapperConfig = new MapperConfiguration(cfg =>
 {
     cfg.AddProfile(new MappingProfile()); // Add your custom profiles
 });
 IMapper mapper = mapperConfig.CreateMapper();
 builder.Services.AddSingleton(mapper);
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -39,7 +41,6 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Conection_String")));
 var app = builder.Build();
 builder = WebApplication.CreateBuilder(args);
- 
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -62,8 +63,4 @@ app.UseAuthorization();
 app.MapControllers();
 app.MapRazorPages();
 app.Run();
-
-
-
-
 

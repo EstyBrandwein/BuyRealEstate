@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace BuyRealEstate.Core.Interfaces
 {
     public interface IPaymentService
@@ -16,3 +17,4 @@ namespace BuyRealEstate.Core.Interfaces
         Task DeletePaymentAsync(int id);
     }
 }
+
