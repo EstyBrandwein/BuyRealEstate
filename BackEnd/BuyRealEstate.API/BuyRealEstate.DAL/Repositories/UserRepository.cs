@@ -2,7 +2,7 @@
 using BuyRealEstate.Domain.Models;
 using BuyRealEstate.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
-namespace BuyRealEstate.Domain.Repositories
+namespace BuyRealEstate.Domain.Repositories;
 
 public class UserRepository : IUserRepository
 {
@@ -45,11 +45,7 @@ public class UserRepository : IUserRepository
         }
     }
 
-    public async Task<User> GetByUsernameAsync(string username)
-    {
-        return await _context.Users
-                             .FirstOrDefaultAsync(u => u.Username == username);
-    }
+    public async Task<User> GetByUsernameAsync(string username) => await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
 
     // שיטה חדשה לעדכון קוד האימות וסטטוס האימות
     public async Task UpdateVerificationCodeAsync(int userId, string verificationCode, bool isVerified)
