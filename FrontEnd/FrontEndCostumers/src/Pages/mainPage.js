@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Sidebar from './SideBarPage';
+import MySidebar from './sideBarPage';
 
 const fields = [
   { id: 1, name: "Field 1", description: "Short description of Field 1", image: "https://via.placeholder.com/150" },
@@ -20,7 +20,7 @@ export default function MainPage() {
 
   return (
     <div style={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>
-      <Sidebar username="User123" email="user123@example.com" onLogout={() => {}} />
+      <MySidebar username="User123" email="user123@example.com" onLogout={() => {}} />
       <h1 style={{ textAlign: "center" }}>הפרויקטים שלי</h1>
       <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
         {fields.map((field) => (
