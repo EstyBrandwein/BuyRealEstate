@@ -6,6 +6,7 @@ import PlotsPage from './Pages/realEstateDetails';
 import VerificationPage from './Pages/VerifyPage';
 import FileListViewer from './Pages/Document/Document';
 import MainListPlots from './Pages/ListPlots/MainListPlots';
+import Contact from './Pages/PlotDetiels/Contact';
 
 
 
@@ -19,6 +20,8 @@ function App() {
       <div className="app">
         <Routes>
         <Route path="/" element={<MainListPlots />} />
+        <Route path="/contact" element={<Contact />} />
+
           {/* <Route exact path="/" element={<Login/>} />  */}
           {/* <Route exact path="/" element={<EntryPage/>} />   */}
           {/* <Route path="/mainPage" element={<MainPage />} /> */}

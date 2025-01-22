@@ -7,6 +7,10 @@ import ImageList from "./Image/ImageList";
 import CostDetiels from "./PlotDetiels/costDetiels";
 import Contact from "./PlotDetiels/Contact";
 import Paymentsheet from "./PlotDetiels/Paymentsheet";
+import DescriptionPlot from "./PlotDetiels/DescriptionPlot";
+import Header from "./Header";
+import ProgressUpdate from "./PlotDetiels/ProgressUpdate";
+//import "../CSS/PlotsPage.css"
 function PlotsPage() {
   const { id } = useParams();
   const [activeTab, setActiveTab] = useState("description");
@@ -29,14 +33,11 @@ function PlotsPage() {
     switch (activeTab) {
       case "description":
         return (
-          <div>
-            <h3>תיאור</h3>
-            <p><strong>מספר מגרש:</strong> {plot.plotNumber}</p>
-            <p><strong>גודל:</strong> {plot.plotSize} מ"ר </p>
-            <p><strong>ערך:</strong> {plot.plotValue} ש"ח </p>
-            <p> <strong>סטטוס משפטי:</strong>{" "}{plot.project?.legalStatus || "לא זמין"}</p>
-            <p> <strong>שם פרויקט:</strong> {plot.project?.projectName}</p>
-          </div>
+          <DescriptionPlot plot={plot}></DescriptionPlot>
+        );
+        case "updates":
+        return (
+          <ProgressUpdate></ProgressUpdate>
         );
       case "receiptsInvoices":
         return (
@@ -97,78 +98,126 @@ function PlotsPage() {
     }
   };
   return (
-    <div dir="rtl">
+    
+    <div dir="rtl"> 
+    <Header></Header>
+    <div></div>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <p>
+       
         <strong>שם פרויקט:</strong>{" "}
-        {plot?.project?.projectName || "[טעינת שם הפרויקט...]"}{" "}
+        {plot?.project?.projectName || "[טעינת שם הפרויקט...]"}
       </p>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <div style={{ display: "flex", borderBottom: "2px solid #ccc" }}>
-          <div onClick={() => setActiveTab("description")}style={{padding: "10px 20px",cursor: "pointer",backgroundColor:activeTab === "description" ? "#D3D3D3" : "transparent",
-          borderTopLeftRadius: "5px", fontWeight: "bold",}}>תאור פרויקט</div>
-          <div onClick={() => setActiveTab("costDetails")}style={{ padding: "10px 20px", cursor: "pointer",backgroundColor:activeTab === "costDetails" ? "#D3D3D3" : "transparent",
-              fontWeight: "bold",}} > פירוט עלויות</div>
-          <div onClick={() => setActiveTab("guarantees")} style={{padding: "10px 20px",cursor: "pointer", backgroundColor:activeTab === "guarantees" ? "#D3D3D3" : "transparent",
-              fontWeight: "bold", }}>שוברים וערבויות</div>
-          <div onClick={() => setActiveTab("paymentSheet")} style={{padding: "10px 20px",cursor: "pointer",
-              backgroundColor:
-                activeTab === "paymentSheet" ? "#D3D3D3" : "transparent",
+      <div >
+        <div className="tabs-container" >
+          <div
+            onClick={() => setActiveTab("description")}
+            style={{
+              padding: "10px 20px",
+              cursor: "pointer",
+              backgroundColor: activeTab === "description" ? "#D3D3D3" : "transparent",
+              borderTopLeftRadius: "5px",
               fontWeight: "bold",
             }}
           >
-            כרטסת תשלומים
+            📄 תיאור פרויקט
+          </div>
+          <div
+            onClick={() => setActiveTab("updates")}
+            style={{
+              padding: "10px 20px",
+              cursor: "pointer",
+              backgroundColor: activeTab === "updates" ? "#D3D3D3" : "transparent",
+              borderTopLeftRadius: "5px",
+              fontWeight: "bold",
+            }}
+          >
+            🔨 עדכונים
+          </div>
+          <div
+            onClick={() => setActiveTab("costDetails")}
+            style={{
+              padding: "10px 20px",
+              cursor: "pointer",
+              backgroundColor: activeTab === "costDetails" ? "#D3D3D3" : "transparent",
+              fontWeight: "bold",
+            }}
+          >
+            💰 פירוט עלויות
+          </div>
+          <div
+            onClick={() => setActiveTab("guarantees")}
+            style={{
+              padding: "10px 20px",
+              cursor: "pointer",
+              backgroundColor: activeTab === "guarantees" ? "#D3D3D3" : "transparent",
+              fontWeight: "bold",
+            }}
+          >
+            🛡️ שוברים וערבויות
+          </div>
+          <div
+            onClick={() => setActiveTab("paymentSheet")}
+            style={{
+              padding: "10px 20px",
+              cursor: "pointer",
+              backgroundColor: activeTab === "paymentSheet" ? "#D3D3D3" : "transparent",
+              fontWeight: "bold",
+            }}
+          >
+            📋 כרטסת תשלומים
           </div>
           <div
             onClick={() => setActiveTab("receiptsInvoices")}
             style={{
               padding: "10px 20px",
               cursor: "pointer",
-              backgroundColor:
-                activeTab === "receiptsInvoices" ? "#D3D3D3" : "transparent",
+              backgroundColor: activeTab === "receiptsInvoices" ? "#D3D3D3" : "transparent",
               fontWeight: "bold",
             }}
           >
-            קבלות/חשבוניות
+            🧾 קבלות/חשבוניות
           </div>
           <div
             onClick={() => setActiveTab("doucuments")}
             style={{
               padding: "10px 20px",
               cursor: "pointer",
-              backgroundColor:
-                activeTab === "doucuments" ? "#D3D3D3" : "transparent",
+              backgroundColor: activeTab === "doucuments" ? "#D3D3D3" : "transparent",
               fontWeight: "bold",
             }}
           >
-מסמכים אישיים
+            📂 מסמכים אישיים
           </div>
-          
           <div
             onClick={() => setActiveTab("fieldPhotos")}
             style={{
               padding: "10px 20px",
               cursor: "pointer",
-              backgroundColor:
-                activeTab === "fieldPhotos" ? "#D3D3D3" : "transparent",
+              backgroundColor: activeTab === "fieldPhotos" ? "#D3D3D3" : "transparent",
               fontWeight: "bold",
             }}
           >
-            תמונות מהשטח
+            📷 תמונות מהשטח
           </div>
-          <div onClick={() => setActiveTab("contact")} style={{ padding: "10px 20px",
+          <div
+            onClick={() => setActiveTab("contact")}
+            style={{
+              padding: "10px 20px",
               cursor: "pointer",
-              backgroundColor:
-                activeTab === "contact" ? "#D3D3D3" : "transparent",
+              backgroundColor: activeTab === "contact" ? "#D3D3D3" : "transparent",
               fontWeight: "bold",
             }}
           >
-            צור קשר
+            📞 צור קשר
           </div>
         </div>
-        <div style={{ padding: "10px" }}>{renderContent()}</div>
+        <div className="content">
+  {renderContent()} {/* התוכן לא משנה את גובה האזור */}
+</div>
       </div>
     </div>
   );
+  
 }
 export default PlotsPage;
