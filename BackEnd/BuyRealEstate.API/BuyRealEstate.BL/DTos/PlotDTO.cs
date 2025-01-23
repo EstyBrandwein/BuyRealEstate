@@ -15,7 +15,6 @@ namespace BuyRealEstate.Core.DTos
         public int Equity { get; set; }
         public int Ground { get; set; }
         public int ManagmentCost { get; set; }
-
         public int PlotCost { get; set; }
         public double MonthlyFundingCost { get; set; }
         public int MonthsForFundingCost { get; set; }

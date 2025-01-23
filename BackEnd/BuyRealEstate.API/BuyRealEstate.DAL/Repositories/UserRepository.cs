@@ -1,7 +1,8 @@
-﻿using BuyRealEstate.Domain.Interfaces;
-using BuyRealEstate.Domain.Models;
+﻿using BCrypt.Net;
 using BuyRealEstate.Domain.Interfaces;
+using BuyRealEstate.Domain.Models;
 using Microsoft.EntityFrameworkCore;
+
 namespace BuyRealEstate.Domain.Repositories;
 
 public class UserRepository : IUserRepository
@@ -13,15 +14,9 @@ public class UserRepository : IUserRepository
         _context = context;
     }
 
-    public async Task<User> GetByIdAsync(int id)
-    {
-        return await _context.Users.FindAsync(id);
-    }
+    public async Task<User> GetAsync(int id) => await _context.Users.FindAsync(id);
 
-    public async Task<IEnumerable<User>> GetAllAsync()
-    {
-        return await _context.Users.ToListAsync();
-    }
+    public async Task<IEnumerable<User>> GetAllAsync() => await _context.Users.ToListAsync();
 
     public async Task AddAsync(User user)
     {
@@ -29,15 +24,33 @@ public class UserRepository : IUserRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task UpdateAsync(User user)
+    //פונקציה לאימות הסיסמה
+    public async Task<bool> VerifyPasswordAsync(string username, string password)
     {
-        _context.Users.Update(user);
+        var user = await GetAsync(username);
+        if (user == null) return false;
+        return BCrypt.Net.BCrypt.Verify(password, user.Password); // אימות הסיסמה
+    }
+
+
+    public async Task UpdateAsync(int id, User user)
+    {
+        var existingUser = await _context.Users.FindAsync(id);
+        if (existingUser == null)
+        {
+            throw new KeyNotFoundException($"User with ID {id} not found.");
+        }
+
+        _context.Entry(existingUser).CurrentValues.SetValues(user);
+
         await _context.SaveChangesAsync();
     }
 
+
+
     public async Task DeleteAsync(int id)
     {
-        var user = await GetByIdAsync(id);
+        var user = await GetAsync(id);
         if (user != null)
         {
             _context.Users.Remove(user);
@@ -45,19 +58,8 @@ public class UserRepository : IUserRepository
         }
     }
 
-    public async Task<User> GetByUsernameAsync(string username) => await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+    public async Task<User> GetAsync(string username) => await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
 
-    // שיטה חדשה לעדכון קוד האימות וסטטוס האימות
-    public async Task UpdateVerificationCodeAsync(int userId, string verificationCode, bool isVerified)
-    {
-        var user = await _context.Users.FindAsync(userId);
-        if (user != null)
-        {
-            user.VerificationCode = verificationCode;
-            user.VerificationCodeExpiry = DateTime.UtcNow.AddMinutes(10); // עדכון תוקף
-            user.IsVerified = isVerified;
-            await _context.SaveChangesAsync();
-        }
-    }
+
 
 }
