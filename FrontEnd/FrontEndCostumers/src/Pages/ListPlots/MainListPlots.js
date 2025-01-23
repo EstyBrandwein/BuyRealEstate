@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Sidebar from "../sideBarPage";
 import ProjectCard from "./ProjectCard";
-import "./ListPlots.css"
+import "./ListPlots.css";
 import { useNavigate } from "react-router";
 import Header from "../Header";
 function MainListPlots() {
@@ -28,25 +28,26 @@ function MainListPlots() {
     navigate(`/PlotsPage/${id}`);
   };
   return (
-<div dir="rtl">        <Header></Header>
-   
-    <div className="plots-list">
-         
+    <div dir="rtl">
+      <Header></Header>
 
-      {plots.map((plot) => (
-        <div
-          key={plot.id}
-          className="project-card"
-          onClick={() => handlePageClick(plot.id)}
-        >
-          <h3 className="project-title">{plot.project.projectName}</h3>
-          <p className="project-info">כתובת: {plot.project.projectAddress}</p>
-          <p className="project-info">מספר מגרש: {plot.plotNumber}</p>
-          <p className="project-info">גודל: {plot.plotSize} מ"ר</p>
-          <p className="project-info">עלות: ₪{plot.plotCost.toLocaleString()}</p>
-        </div>
-      ))}
-    </div>
+      <div className="plots-list">
+        {plots.map((plot) => (
+          <div
+            key={plot.id}
+            className="project-card"
+            onClick={() => handlePageClick(plot.id)}
+          >
+            <h3 className="project-title">{plot.project.projectName}</h3>
+            <p className="project-info">כתובת: {plot.project.projectAddress}</p>
+            <p className="project-info">מספר מגרש: {plot.plotNumber}</p>
+            <p className="project-info">גודל: {plot.plotSize} מ"ר</p>
+            <p className="project-info">
+              עלות: ₪{plot.plotCost.toLocaleString()}
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
