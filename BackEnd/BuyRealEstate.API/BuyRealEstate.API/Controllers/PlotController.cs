@@ -24,9 +24,9 @@ namespace BuyRealEstate.API.Controllers
             return Ok(plots);
         }
         [HttpGet("userplot")]
-        public async Task<IActionResult> GetAllPlotsByUserID([FromBody] int id)
+        public async Task<IActionResult> GetAllPlots([FromBody] int userId)
         {
-            var plots = await _plotService.GetAllPlotByUserIdAsync(id);
+            var plots = await _plotService.GetAllPlotByUserIdAsync(userId);
             return Ok(plots);
         }
         [HttpGet("{id}")]
