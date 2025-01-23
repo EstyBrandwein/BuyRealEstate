@@ -26,6 +26,13 @@ form {
   .tabs-container {
     display: flex;
     border-bottom: 2px solid #ccc;
+    position: sticky !important;
+    top: 10;
+    background-color: #fff; 
+    z-index: 1000; 
+    border-bottom: 2px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    flex-direction:  row;
   }
   .tab {
     padding: 10px 20px;
