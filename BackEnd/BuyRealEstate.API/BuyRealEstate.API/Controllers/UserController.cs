@@ -102,7 +102,7 @@ public class UserController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = userDto.ID }, userDto);
     }
 
-    // הפונקציה לא עובדת טוב כי זה מנסה לעדכן את כל הנתונים כולל id ואין אפשרות לעדכן id כי זה מפתח רץ
+
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(int id, [FromBody] UsersDTO userDto)
     {
