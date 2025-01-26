@@ -26,8 +26,15 @@ builder.Services.AddScoped<IImageRepository, ImageRepository>();
 builder.Services.AddScoped<IImageService, ImageService>();
 builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
+<<<<<<< HEAD
+
+builder.Services.AddScoped<IGuaranteesRepository, GuaranteesRepository>();
+builder.Services.AddScoped<IGuaranteesService, GuaranteesService>();
+
+=======
 //builder.Services.AddScoped<IGuaranteesRepository, GuaranteesRepository>();
 //builder.Services.AddScoped<IGuaranteesService, GuaranteesService>();
+>>>>>>> 9490a5cc1ea9c0a4c7a34ec81a5a29c7be6a46a9
 var mapperConfig = new MapperConfiguration(cfg =>
 {
     cfg.AddProfile(new MappingProfile()); // Add your custom profiles
@@ -39,6 +46,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Conection_String")));
+<<<<<<< HEAD
+
+=======
+>>>>>>> 9490a5cc1ea9c0a4c7a34ec81a5a29c7be6a46a9
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy", builder =>
@@ -50,6 +61,10 @@ builder.Services.AddCors(options =>
     });
 });
 var app = builder.Build();
+<<<<<<< HEAD
+
+=======
+>>>>>>> 9490a5cc1ea9c0a4c7a34ec81a5a29c7be6a46a9
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

@@ -1,0 +1,49 @@
+.guarantees-container {
+    font-family: "Arial", sans-serif;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  h3 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+  
+  .guarantees-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .guarantees-table th, 
+  .guarantees-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ccc;
+  }
+  
+  .guarantees-table th {
+    background-color: #34495e;
+    color: #fff;
+  }
+  
+  .guarantees-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .guarantees-table tr:hover {
+    background-color: #d1f2eb;
+    cursor: pointer;
+  }
+  
+  .guarantees-table td {
+    word-wrap: break-word;
+  }
+  
+  

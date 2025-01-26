@@ -16,6 +16,8 @@ public class MappingProfile : Profile
         CreateMap<ImageDTO, Image>();
         CreateMap<Document, DocumentDTO>();
         CreateMap<DocumentDTO, Document>();
+        CreateMap<Guarantees, GuaranteesDTO>();
+        CreateMap<GuaranteesDTO, Guarantees>();
 
         // Project and ProjectDTO mappings
         CreateMap<Project, ProjectDTO>()
