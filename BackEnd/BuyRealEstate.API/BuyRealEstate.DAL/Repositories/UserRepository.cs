@@ -40,7 +40,7 @@ public class UserRepository : IUserRepository
         {
             throw new KeyNotFoundException($"User with ID {id} not found.");
         }
-
+        user.ID = existingUser.ID;
         _context.Entry(existingUser).CurrentValues.SetValues(user);
 
         await _context.SaveChangesAsync();

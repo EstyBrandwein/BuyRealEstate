@@ -7,6 +7,7 @@ import VerificationPage from './Pages/VerifyPage';
 import FileListViewer from './Pages/Document/Document';
 import MainListPlots from './Pages/ListPlots/MainListPlots';
 import Contact from './Pages/PlotDetiels/Contact';
+import UpdateProfile from './Pages/UpdateProfile';
 
 
 
@@ -17,7 +18,6 @@ function App() {
       <div className="app">
         <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/MainListPlots" element={<MainListPlots />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/VerifyPage" element={<VerificationPage />} />
 
@@ -25,6 +25,9 @@ function App() {
         <Route path="/PlotsPage/:id" element={<PlotsPage/>} />
         <Route exact path="/PDFViewer" element={<FileListViewer/>} />
         <Route path="/mainPage" element={<MainPage />} />
+
+          <Route path="/MainListPlots" element={<MainListPlots />} />
+          <Route path="/UpdateProfile" element={<UpdateProfile />} />
         </Routes>
       </div>
     </Router>
