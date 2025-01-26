@@ -53,7 +53,7 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DevelopmentStatuses");
+                    b.ToTable("DevelopmentStatuses", (string)null);
 
                     b.HasData(
                         new
@@ -132,7 +132,7 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Documents");
+                    b.ToTable("Documents", (string)null);
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.Image", b =>
@@ -177,7 +177,7 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasIndex("ProjectID");
 
-                    b.ToTable("Images");
+                    b.ToTable("Images", (string)null);
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.LegalStatus", b =>
@@ -212,7 +212,7 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LegalStatuses");
+                    b.ToTable("LegalStatuses", (string)null);
 
                     b.HasData(
                         new
@@ -336,7 +336,7 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasIndex("ProfessionalId");
 
-                    b.ToTable("Payments");
+                    b.ToTable("Payments", (string)null);
 
                     b.HasData(
                         new
@@ -392,7 +392,7 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("PaymentExecutionMethods");
+                    b.ToTable("PaymentExecutionMethods", (string)null);
 
                     b.HasData(
                         new
@@ -466,7 +466,7 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaymentStatuses");
+                    b.ToTable("PaymentStatuses", (string)null);
 
                     b.HasData(
                         new
@@ -530,7 +530,7 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Permissions");
+                    b.ToTable("Permissions", (string)null);
 
                     b.HasData(
                         new
@@ -640,7 +640,7 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Plots");
+                    b.ToTable("Plots", (string)null);
 
                     b.HasData(
                         new
@@ -766,7 +766,7 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasIndex("ProjectManagerID");
 
-                    b.ToTable("Projects");
+                    b.ToTable("Projects", (string)null);
 
                     b.HasData(
                         new
@@ -823,7 +823,7 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("RelationshipCustomersPlots");
+                    b.ToTable("RelationshipCustomersPlots", (string)null);
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.RelationshipPaymentsPlots", b =>
@@ -866,7 +866,7 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasIndex("paymentStutusID");
 
-                    b.ToTable("PlotPayments");
+                    b.ToTable("PlotPayments", (string)null);
                 });
 
             modelBuilder.Entity("BuyRealEstate.Domain.Models.RelationshipPaymentsProjects", b =>
@@ -909,7 +909,7 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasIndex("paymentStutusID");
 
-                    b.ToTable("ProjectPayments");
+                    b.ToTable("ProjectPayments", (string)null);
 
                     b.HasData(
                         new
@@ -998,7 +998,7 @@ namespace BuyRealEstate.Domain.Migrations
 
                     b.HasIndex("PermissionId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
 
                     b.HasDiscriminator().HasValue("User");
 

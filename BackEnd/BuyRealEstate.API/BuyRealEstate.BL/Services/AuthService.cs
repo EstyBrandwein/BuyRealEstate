@@ -1,15 +1,57 @@
 ﻿using BuyRealEstate.Domain.Interfaces;
+using Microsoft.Extensions.Configuration;
 using System.Net;
 using System.Net.Mail;
 
 public class AuthService : IAuthService
 {
     private readonly IUserRepository _userRepository;
+    private readonly string _smtpHost;
+    private readonly int _smtpPort;
+    private readonly string _smtpUsername;
+    private readonly string _smtpPassword;
 
-    public AuthService(IUserRepository userRepository)
+    public AuthService(IUserRepository userRepository, IConfiguration configuration)
     {
         _userRepository = userRepository;
+        _smtpHost = configuration["Smtp:Host"];
+        _smtpPort = int.Parse(configuration["Smtp:Port"]);
+        _smtpUsername = configuration["Smtp:Username"];
+        _smtpPassword = configuration["Smtp:Password"];
     }
+
+
+    public async Task SendVerificationEmail(string email, string verificationCode)
+    {
+        var mailMessage = new MailMessage
+        {
+            From = new MailAddress(_smtpUsername), // Use your Gmail address here
+            To = { new MailAddress(email) },
+            Subject = "Verify your account",
+            Body = $"<p>Your verification code is: <strong>{verificationCode}</strong></p>",
+            IsBodyHtml = true
+        };
+
+        using (var smtpClient = new SmtpClient(_smtpHost, _smtpPort))
+        {
+            smtpClient.Credentials = new NetworkCredential(_smtpUsername, _smtpPassword); // Ensure the correct password
+            smtpClient.EnableSsl = true; // TLS is required for Gmail
+            smtpClient.Timeout = 10000; // Optional: set timeout to allow for slower connections
+            try
+            {
+                await smtpClient.SendMailAsync(mailMessage);
+            }
+            catch (SmtpException ex)
+            {
+                // Handle exception (log it, etc.)
+                Console.WriteLine("SMTP Exception: " + ex.Message);
+            }
+        }
+    }
+
+
+
+
 
     public async Task<string> GenerateVerificationCodeAsync(int userId)
     {
@@ -61,23 +103,23 @@ public class AuthService : IAuthService
         return random.Next(100000, 999999).ToString();
     }
 
-    //  הפונקציה לשליחת האימייל
-    public async Task SendVerificationEmail(string email, string verificationCode)
-    {
-        var mailMessage = new MailMessage
-        {
-            To = { new MailAddress(email) },
-            Subject = "Verify your account",
-            Body = $"<p>Your verification code is: <strong>{verificationCode}</strong></p>",
-            IsBodyHtml = true
-        };
+    ////  הפונקציה לשליחת האימייל
+    //public async Task SendVerificationEmail(string email, string verificationCode)
+    //{
+    //    var mailMessage = new MailMessage
+    //    {
+    //        To = { new MailAddress(email) },
+    //        Subject = "Verify your account",
+    //        Body = $"<p>Your verification code is: <strong>{verificationCode}</strong></p>",
+    //        IsBodyHtml = true
+    //    };
 
-        using (var smtpClient = new SmtpClient("smtp.yourdomain.com", 587))
-        {
-            smtpClient.Credentials = new NetworkCredential("m0548471369@gmail.com", "your_password");
-            smtpClient.EnableSsl = true;
-            await smtpClient.SendMailAsync(mailMessage);
-        }
-    }
+    //    using (var smtpClient = new SmtpClient("smtp.yourdomain.com", 587))
+    //    {
+    //        smtpClient.Credentials = new NetworkCredential("m0548471369@gmail.com", "your_password");
+    //        smtpClient.EnableSsl = true;
+    //        await smtpClient.SendMailAsync(mailMessage);
+    //    }
+    //}
 
 }

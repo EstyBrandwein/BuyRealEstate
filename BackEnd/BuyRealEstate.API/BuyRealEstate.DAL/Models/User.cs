@@ -20,8 +20,8 @@
             public string Email { get; set; }
             public string FirstPhone { get; set; }
             public string? SecendPhon { get; set; }
-            public string VerificationCode { get; set; } // קוד האימות
-            public bool IsVerified { get; set; } // האם המשתמש אושר
+            public string? VerificationCode { get; set; } // קוד האימות
+            public bool? IsVerified { get; set; } // האם המשתמש אושר
             
             public DateTime? VerificationCodeExpiry { get; set; }   
             [JsonIgnore]
