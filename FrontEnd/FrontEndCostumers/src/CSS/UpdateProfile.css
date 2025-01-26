@@ -1,0 +1,63 @@
+.container {
+    max-width: 800px; /* הגדלת רוחב המיכל */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex; /* שינוי לתצוגת פלקס */
+    flex-wrap: wrap; /* מאפשר פריסת שדות בשורות */
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    width: 100%; /* תופס את כל הרוחב */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* תופס את כל הרוחב */
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+input {
+    padding: 12px; /* הגדלת ריפוד */
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: calc(50% - 10px); /* רוחב של 50% פחות מרווח */
+}
+
+input:nth-child(odd) { /* עבור שדות אי זוגיים */
+    margin-right: 20px; /* מרווח בין שדות */
+}
+
+button {
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%; /* תופס את כל הרוחב */
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.message {
+    margin-bottom: 15px;
+    text-align: center;
+    color: #d9534f; /* צבע עבור הודעות שגיאה */
+    width: 100%; /* תופס את כל הרוחב */
+}

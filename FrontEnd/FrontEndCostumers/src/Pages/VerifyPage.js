@@ -8,7 +8,7 @@ const VerificationPage = ({ userId }) => {
     const handleVerification = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5145/api/user/verify', {
+            const response = await axios.post('http://localhost:7219/api/user/verify', {
                 userId,
                 code,
             });
@@ -25,16 +25,16 @@ const VerificationPage = ({ userId }) => {
 
     return (
         <div>
-            <h2>Enter Verification Code</h2>
+            <h2>אנא הכנס קוד אימות</h2>
             <form onSubmit={handleVerification}>
                 <input
                     type="text"
-                    placeholder="Verification Code"
+                    placeholder="קוד אימות"
                     value={code}
                     onChange={(e) => setCode(e.target.value)}
                     required
                 />
-                <button type="submit">Verify</button>
+                <button type="submit">אשר</button>
             </form>
             {message && <p>{message}</p>}
         </div>
