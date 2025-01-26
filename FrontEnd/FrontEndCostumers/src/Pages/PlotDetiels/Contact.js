@@ -1,7 +1,11 @@
 import React from "react";
+import Header from "../Header";
 
 const Contact = () => {
   return (
+    <div dir="rtl"> 
+           <Header></Header>
+
     <div style={{textAlign: "right", direction: "rtl",fontFamily: "Arial",}}>
             <form style={{ maxWidth: "400px", margin: "auto" }}>
               <div style={{ marginBottom: "10px" }}>
@@ -26,8 +30,9 @@ const Contact = () => {
                 שליחה
               </button>
             </form>
-          </div>
-  );
+            </div>
+            </div>
+          );
 };
 
 export default Contact;

@@ -18,24 +18,15 @@ namespace BuyRealEstate.Domain.Extentions
         new DevelopmentStatus { Status = "הפיתוח הושלם", Id = 2 }
       );
             modelBuilder.Entity<Document>().HasData(
-<<<<<<< HEAD
-             //  new Document { ID = 1, FileType = ".pdf", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, DocumentDescription = "תעודת זהות", DocumentData = File.ReadAllBytes("C:\\Users\\USER\\Downloads\\מסמך-אפיון-לקנות נדלן (1) (2).docx") },
-            //   new Document { ID = 2, FileType = ".pdf", PamentID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, DocumentDescription = "תעודת זהות", DocumentData = File.ReadAllBytes("C:\\Users\\USER\\Downloads\\טבלאות (3).docx") }
-=======
-               new Document { ID = 1, FileType = ".pdf", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, DocumentDescription = "תעודת זהות", DocumentData = File.ReadAllBytes("C:\\Users\\USER\\Downloads\\אישור על מעמד לא עובד.pdf") },
-               new Document { ID = 2, FileType = ".pdf", PamentID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, DocumentDescription = "תעודת זהות", DocumentData = File.ReadAllBytes("C:\\Users\\USER\\Downloads\\אישור על מעמד לא עובד.pdf") }
->>>>>>> 9490a5cc1ea9c0a4c7a34ec81a5a29c7be6a46a9
+            //   new Document { ID = 1, FileType = ".pdf", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, DocumentDescription = "תעודת זהות", DocumentData = File.ReadAllBytes("C:\\Users\\USER\\Downloads\\אישור על מעמד לא עובד.pdf") },
+            //   new Document { ID = 2, FileType = ".pdf", PamentID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, DocumentDescription = "תעודת זהות", DocumentData = File.ReadAllBytes("C:\\Users\\USER\\Downloads\\אישור על מעמד לא עובד.pdf") }
 
                 );
 
             modelBuilder.Entity<Image>().HasData(
-<<<<<<< HEAD
-              // new Image { ID = 1, FileType = ".jpg", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, ImageDescription = "תמונה", ImageData = File.ReadAllBytes("C:\\Users\\USER\\Downloads\\טבלאות (3).docx") },
-            //   new Image { ID = 2, FileType = ".jpg", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, ImageDescription = "תמונה", ImageData = File.ReadAllBytes("C:\\Users\\USER\\Downloads\\טבלאות (3).docx") }
-=======
-               new Image { ID = 1, FileType = ".jpg", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, ImageDescription = "תמונה", ImageData = File.ReadAllBytes("C:\\Users\\USER\\Downloads\\IMG_8357.JPG") },
-               new Image { ID = 2, FileType = ".jpg", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, ImageDescription = "תמונה", ImageData = File.ReadAllBytes("C:\\Users\\USER\\Downloads\\IMG_8357.JPG") }
->>>>>>> 9490a5cc1ea9c0a4c7a34ec81a5a29c7be6a46a9
+
+           //    new Image { ID = 1, FileType = ".jpg", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, ImageDescription = "תמונה", ImageData = File.ReadAllBytes("C:\\Users\\USER\\Downloads\\IMG_8357.JPG") },
+             //  new Image { ID = 2, FileType = ".jpg", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, ImageDescription = "תמונה", ImageData = File.ReadAllBytes("C:\\Users\\USER\\Downloads\\IMG_8357.JPG") }
                 );
             modelBuilder.Entity<LegalStatus>().HasData(
                 new LegalStatus { Id = 1, Status = "בשלבי רכישה", InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true },

@@ -11,9 +11,10 @@ const Header = () => {
         <img src={logo} alt="לוגו החברה" className="header-logo" />
       </div>
       <div className="header-left">
-        <button className="header-icon-button" title="פרופיל שלי">
+     
+        <Link to="/UpdateProfile" className="header-icon-button" title="פרופיל שלי">
           <FaUser className="header-icon" />
-        </button>
+        </Link>
         <Link to="/contact" className="header-icon-button" title="צור קשר">
           <FaPhone className="header-icon" />
         </Link>
