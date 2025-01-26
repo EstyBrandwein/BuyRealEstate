@@ -11,19 +11,16 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5145/api/user/login', {
-                username,
-                password
-            });
-
-            // אם הבקשה הצליחה, ננווט לדף הראשי
+            const response = await axios.post(
+                'https://localhost:7219/api/user/login',
+                { username :"טובה", password : "TOVA123"},
+                { headers: { 'Content-Type': 'application/json' } }
+            );
             if (response.status === 200) {
-                // console.log(response.data);
-                // navigate('/mainPage');
                 navigate('/VerifyPage', { state: { userId: response.data.userId } });
             }
         } catch (error) {
-            // טיפול בשגיאות
+            console.error("Login error:", error);
             if (error.response) {
                 setMessage(error.response.data.message || 'Login failed');
             } else {
