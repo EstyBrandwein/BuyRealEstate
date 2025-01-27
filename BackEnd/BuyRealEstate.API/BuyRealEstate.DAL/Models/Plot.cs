@@ -4,17 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-
 namespace BuyRealEstate.Domain.Models
 {
-    public class Plot:BaseClass
+    public class Plot : BaseClass
     {
         public int ID { get; set; }
         public int BuildingCost { get; set; }
         public int Equity { get; set; }
         public int Ground { get; set; }
         public int ManagmentCost { get; set; }
-
         public int PlotCost { get; set; }
         public double MonthlyFundingCost { get; set; }
         public int MonthsForFundingCost { get; set; }
@@ -28,6 +26,5 @@ namespace BuyRealEstate.Domain.Models
         //public ICollection<RelationshipCustomersPlots> CustomerPlots { get; set; }
         [JsonIgnore]
         public ICollection<RelationshipPaymentsPlots> PaymentPlots { get; set; }
-
     }
 }

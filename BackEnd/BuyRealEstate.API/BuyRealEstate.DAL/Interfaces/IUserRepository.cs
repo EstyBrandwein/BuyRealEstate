@@ -6,14 +6,14 @@ namespace BuyRealEstate.Domain.Interfaces
 {
     public interface IUserRepository
     {
-        Task<User> GetByIdAsync(int id);
+        Task<User> GetAsync(int id); // חיפוש משתמש לפי id    
         Task<IEnumerable<User>> GetAllAsync();
         Task AddAsync(User user);
-        Task UpdateAsync(User user);
+        Task UpdateAsync(int id, User user);
         Task DeleteAsync(int id);
-        Task<User> GetByUsernameAsync(string username); // חיפוש משתמש לפי שם משתמש בלבד
+        Task<User> GetAsync(string username); // חיפוש משתמש לפי שם משתמש בלבד
+        Task<bool> VerifyPasswordAsync(string username, string password);
 
-        // שיטה חדשה לעדכון קוד האימות וסטטוס האימות
-        Task UpdateVerificationCodeAsync(int userId, string verificationCode, bool isVerified);
+
     }
 }

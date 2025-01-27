@@ -24,6 +24,7 @@ public class AppDbContext : DbContext
     public DbSet<RelationshipCustomersPlots> CustomerPlots { get; set; }
     public DbSet<RelationshipPaymentsPlots> PlotPayments { get; set; }
     public DbSet<RelationshipPaymentsProjects> ProjectPayments { get; set; }
+    public DbSet<Guarantees> Guarantees { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // modelBuilder.ConfigureManyToMany<RelationshipCustomersPlots, User, Plot>(joinKey: cp => cp.ID, joinToLeft: cp => cp.User,

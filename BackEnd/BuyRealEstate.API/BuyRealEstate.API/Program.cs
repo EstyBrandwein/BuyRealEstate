@@ -19,15 +19,17 @@ builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IAuthService, AuthService>();
+//builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IDocumentService, DocumentService>();
 builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
 builder.Services.AddScoped<IImageRepository, ImageRepository>();
 builder.Services.AddScoped<IImageService, ImageService>();
 builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
-//builder.Services.AddScoped<IGuaranteesRepository, GuaranteesRepository>();
-//builder.Services.AddScoped<IGuaranteesService, GuaranteesService>();
+
+builder.Services.AddScoped<IGuaranteesRepository, GuaranteesRepository>();
+builder.Services.AddScoped<IGuaranteesService, GuaranteesService>();
+
 var mapperConfig = new MapperConfiguration(cfg =>
 {
     cfg.AddProfile(new MappingProfile()); // Add your custom profiles
@@ -39,6 +41,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Conection_String")));
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy", builder =>
@@ -50,6 +53,7 @@ builder.Services.AddCors(options =>
     });
 });
 var app = builder.Build();
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");

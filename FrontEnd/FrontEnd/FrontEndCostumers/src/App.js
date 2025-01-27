@@ -12,35 +12,20 @@ import UpdateProfile from './Pages/UpdateProfile';
 
 
 function App() {
-  const handleLogout = () => {
-    // פונקציה להתנתקות
-  };
-
+ 
   return (
     <Router>
       <div className="app">
         <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/VerifyPage" element={<VerificationPage />} />
 
-          {/* <Route exact path="/" element={<Login/>} />  */}
-          {/* <Route exact path="/" element={<EntryPage/>} />   */}
-          {/* <Route path="/mainPage" element={<MainPage />} /> */}
-          <Route path="/VerifyPage" element={<VerificationPage />} />
-          {/* <Route path="/login" element={<Login />} /> */}
-          {/* <Route path="/my-fields" element={<MyFields />} />
-          <Route path="/edit-profile" element={<EditProfile />} />
-          <Route path="/my-fields" element={() => (
-          <div>
-            <Sidebar username="User123" email="user123@example.com" onLogout={handleLogout} />
-            <MyFields />
-          </div>
-        )} /> */}
-       
         {/* <Route path="/UploadImage" element={<UploadImage />} /> */}
         <Route path="/PlotsPage/:id" element={<PlotsPage/>} />
         <Route exact path="/PDFViewer" element={<FileListViewer/>} />
         <Route path="/mainPage" element={<MainPage />} />
+
           <Route path="/MainListPlots" element={<MainListPlots />} />
           <Route path="/UpdateProfile" element={<UpdateProfile />} />
         </Routes>

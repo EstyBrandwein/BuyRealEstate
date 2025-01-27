@@ -1,10 +1,4 @@
 ﻿using BuyRealEstate.Core.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace BuyRealEstate.Core.DTos
 {
@@ -15,7 +9,7 @@ namespace BuyRealEstate.Core.DTos
         public int Equity { get; set; }
         public int Ground { get; set; }
         public int ManagmentCost { get; set; }
-
+        public DateTime UpdateDate { get; set; }
         public int PlotCost { get; set; }
         public double MonthlyFundingCost { get; set; }
         public int MonthsForFundingCost { get; set; }
