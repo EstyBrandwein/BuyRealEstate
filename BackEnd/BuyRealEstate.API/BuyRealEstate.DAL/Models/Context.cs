@@ -21,7 +21,7 @@ public class AppDbContext : DbContext
     public DbSet<Image> Images { get; set; }
     public DbSet<Document> Documents { get; set; }
     public DbSet<PaymentExecutionMethod> PaymentExecutionMethods { get; set; }
-    //public DbSet<RelationshipCustomersPlots> CustomerPlots { get; set; }
+    public DbSet<RelationshipCustomersPlots> CustomerPlots { get; set; }
     public DbSet<RelationshipPaymentsPlots> PlotPayments { get; set; }
     public DbSet<RelationshipPaymentsProjects> ProjectPayments { get; set; }
     public DbSet<Guarantees> Guarantees { get; set; }
