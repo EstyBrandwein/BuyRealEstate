@@ -4,6 +4,7 @@ import Sidebar from "../sideBarPage";
 import ProjectCard from "./ProjectCard";
 import "./ListPlots.css"
 import { useNavigate } from "react-router";
+import Header from "../Header";
 function MainListPlots() {
   const [plots, setPlots] = useState([]);
   useEffect(() => {
@@ -27,7 +28,11 @@ function MainListPlots() {
     navigate(`/PlotsPage/${id}`);
   };
   return (
+<div dir="rtl">        <Header></Header>
+   
     <div className="plots-list">
+         
+
       {plots.map((plot) => (
         <div
           key={plot.id}
@@ -41,6 +46,7 @@ function MainListPlots() {
           <p className="project-info">עלות: ₪{plot.plotCost.toLocaleString()}</p>
         </div>
       ))}
+    </div>
     </div>
   );
 }

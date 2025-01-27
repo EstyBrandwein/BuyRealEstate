@@ -6,6 +6,8 @@ import PlotsPage from './Pages/realEstateDetails';
 import VerificationPage from './Pages/VerifyPage';
 import FileListViewer from './Pages/Document/Document';
 import MainListPlots from './Pages/ListPlots/MainListPlots';
+import Contact from './Pages/PlotDetiels/Contact';
+import UpdateProfile from './Pages/UpdateProfile';
 
 
 
@@ -18,7 +20,9 @@ function App() {
     <Router>
       <div className="app">
         <Routes>
-        <Route path="/" element={<MainListPlots />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/contact" element={<Contact />} />
+
           {/* <Route exact path="/" element={<Login/>} />  */}
           {/* <Route exact path="/" element={<EntryPage/>} />   */}
           {/* <Route path="/mainPage" element={<MainPage />} /> */}
@@ -37,7 +41,8 @@ function App() {
         <Route path="/PlotsPage/:id" element={<PlotsPage/>} />
         <Route exact path="/PDFViewer" element={<FileListViewer/>} />
         <Route path="/mainPage" element={<MainPage />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/MainListPlots" element={<MainListPlots />} />
+          <Route path="/UpdateProfile" element={<UpdateProfile />} />
         </Routes>
       </div>
     </Router>
