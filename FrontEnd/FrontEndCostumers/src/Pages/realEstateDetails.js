@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../CSS/Contact.css";
 import FileListViewer from "../Pages/Document/Document";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import ImageList from "./Image/ImageList";
 import CostDetiels from "./PlotDetiels/costDetiels";
 import Contact from "./PlotDetiels/Contact";
@@ -11,6 +11,7 @@ import DescriptionPlot from "./PlotDetiels/DescriptionPlot";
 import Header from "./Header";
 import ProgressUpdate from "./PlotDetiels/ProgressUpdate";
 import Guarantees from "./PlotDetiels/Guarantees";
+import { FaArrowRight, FaBell, FaCog, FaHome, FaUser } from "react-icons/fa";
 //import "../CSS/PlotsPage.css"
 function PlotsPage() {
   const { id } = useParams();
@@ -46,7 +47,7 @@ function PlotsPage() {
         );
         case "doucuments":
         return (
-          <div><FileListViewer></FileListViewer></div>
+          <div><FileListViewer projectId={1}></FileListViewer></div>
         );
       case "paymentSheet":
         return (
@@ -77,6 +78,9 @@ function PlotsPage() {
     <div dir="rtl"> 
     <Header></Header>
     <div></div>
+    <Link to="/MainListPlots" className="header-icon-button" title=" למגרשים שלי">
+    <FaArrowRight className="header-icon" />
+          </Link>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <p>
        
