@@ -60,6 +60,8 @@ public class UserRepository : IUserRepository
 
     public async Task<User> GetAsync(string username) => await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
 
-
-
+    public async Task<User> GetUserAsync(string userName)
+    {
+        return await _context.Users.FirstOrDefaultAsync(u => u.Username == userName);
+    }
 }

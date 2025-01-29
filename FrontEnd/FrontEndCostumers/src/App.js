@@ -8,6 +8,7 @@ import FileListViewer from './Pages/Document/Document';
 import MainListPlots from './Pages/ListPlots/MainListPlots';
 import Contact from './Pages/PlotDetiels/Contact';
 import UpdateProfile from './Pages/UpdateProfile';
+import ThankYou from './Pages/ThankYou';
 
 
 
@@ -28,6 +29,7 @@ function App() {
 
           <Route path="/MainListPlots" element={<MainListPlots />} />
           <Route path="/UpdateProfile" element={<UpdateProfile />} />
+          <Route path="/ThankYou" element={<ThankYou />} />
         </Routes>
       </div>
     </Router>

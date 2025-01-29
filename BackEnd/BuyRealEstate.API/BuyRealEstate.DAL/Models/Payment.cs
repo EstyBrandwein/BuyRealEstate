@@ -28,7 +28,7 @@ namespace BuyRealEstate.Domain.Models
         //  public Document PaymentConfirmation { get; set; }
         [JsonIgnore] public ICollection<Document>? PaymentConfirmation { get; set; } // Changed to ICollection for better EF Core compatibility
         public int PaymentExecutionMethodID { get; set; }
-
+        public string ToWhere { get; set; }
         public PaymentExecutionMethod? PaymentExecutionMethod { get; set; }
         public PaymentStatus? PaymentStatus { get; set; }
         public int PaymentStatusId { get; set; }

@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Guarantees.css"; // ייבוא קובץ ה-CSS לעיצוב
-
 function Guarantees() {
   const [guarantees, setGuarantees] = useState([]);
-
   useEffect(() => {
     const fetchGuarantees = async () => {
       try {
@@ -13,7 +11,6 @@ function Guarantees() {
         }
         const data = await response.json();
         console.log("Fetched Guarantees:", data);
-
         const processedGuarantees = data.map(item => ({
           dateOfPayment: item.dateOfPayment || null,
           voucherNumber: item.voucherNumber || "לא זמין",
@@ -22,17 +19,14 @@ function Guarantees() {
           guaranteeIssued: item.guaranteeIssued || false,
           note: item.note || "",
         }));
-
         setGuarantees(processedGuarantees);
       } catch (error) {
         console.error("Error:", error.message);
         alert("Failed to load guarantees.");
       }
     };
-
     fetchGuarantees();
   }, []);
-
   return (
     <div className="guarantees-container">
       <table className="guarantees-table">
@@ -54,8 +48,8 @@ function Guarantees() {
                   : "לא זמין"} </td>
               <td>{item.voucherNumber}</td>
               <td>{item.amount}</td>
-              <td>{item.isPaid ? "✅" : "❌"}</td>
-              <td>{item.guaranteeUssued ?  "✅" : "❌"}</td>
+              <td>{item.isPaid ? ":white_check_mark:" : ":x:"}</td>
+              <td>{item.guaranteeUssued ?  ":white_check_mark:" : ":x:"}</td>
               <td>{item.note || " "}</td>
             </tr>
           ))}
@@ -64,5 +58,4 @@ function Guarantees() {
     </div>
   );
 }
-
 export default Guarantees;

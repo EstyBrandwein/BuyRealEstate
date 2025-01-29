@@ -15,7 +15,9 @@ const Login = () => {
                 { headers: { 'Content-Type': 'application/json' } }
             );
             if (response.status === 200) {
-                navigate('/VerifyPage', { state: { userId: response.data.userId } });
+                console.log("userName", username,"password",password);
+                
+                navigate('/VerifyPage', { state: { userName: username,password:password } });
             }
         } catch (error) {
             console.error("Login error:", error);

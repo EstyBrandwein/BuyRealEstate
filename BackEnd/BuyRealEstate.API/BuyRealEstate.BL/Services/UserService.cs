@@ -38,7 +38,8 @@ namespace BuyRealEstate.Core.Services
 
         public async Task UpdateAsync(int id, UsersDTO userDto)
         {
-            var user = _mapper.Map<User>(userDto); 
+            var user = _mapper.Map<User>(userDto);
+            user.Password = BCrypt.Net.BCrypt.HashPassword(userDto.Password);
             await _userRepository.UpdateAsync(id, user);
         }
         public async Task DeleteAsync(int id) => await _userRepository.DeleteAsync(id);
@@ -46,6 +47,12 @@ namespace BuyRealEstate.Core.Services
         public async Task<bool> LoginAsync(string username, string password)
         {
             return await _userRepository.VerifyPasswordAsync(username, password);
+        }
+
+        public async Task<UsersDTO> GetUserAsync(string userName)
+        {
+            var user = await _userRepository.GetUserAsync(userName);
+            return _mapper.Map<UsersDTO>(user);
         }
 
 

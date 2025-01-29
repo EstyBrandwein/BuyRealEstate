@@ -19,5 +19,6 @@ namespace BuyRealEstate.Domain.Models
         public User? User { get; set; }
         public string FileType { get; set; }
         public string isRecipe { get; set; }
+
     }
 }

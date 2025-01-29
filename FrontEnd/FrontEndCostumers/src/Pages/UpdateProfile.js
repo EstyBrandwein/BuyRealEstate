@@ -2,7 +2,6 @@ import React, { useEffect, useReducer, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../CSS/UpdateProfile.css'; 
-import Header from './Header';
 
 const initialState = {
     id: 0,
@@ -83,9 +82,6 @@ const UpdateProfile = () => {
     };
 
     return (
-        <div dir="rtl">    
-            <Header></Header>
-
         <div className="container">
             {message && <div className="message">{message}</div>}
             <h2>עדכון פרופיל</h2>
@@ -104,8 +100,6 @@ const UpdateProfile = () => {
                 <button type="submit">עדכון פרופיל</button>
             </form>
         </div>
-        </div>
-
     );
 };
 
