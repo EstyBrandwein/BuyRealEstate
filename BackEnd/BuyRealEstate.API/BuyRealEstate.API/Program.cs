@@ -30,6 +30,18 @@ builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddScoped<IGuaranteesRepository, GuaranteesRepository>();
 builder.Services.AddScoped<IGuaranteesService, GuaranteesService>();
 
+//builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+//builder.Services.AddSingleton<IEmailService, EmailService>();
+
+
+var emailSettings = builder.Configuration.GetSection("EmailSettings").Get<EmailSettings>();
+builder.Services.AddSingleton(emailSettings);
+builder.Services.AddSingleton<IEmailService, EmailService>();
+
+
+
+
+
 var mapperConfig = new MapperConfiguration(cfg =>
 {
     cfg.AddProfile(new MappingProfile()); // Add your custom profiles
@@ -72,3 +84,4 @@ app.UseAuthorization();
 app.MapControllers();
 app.MapRazorPages();
 app.Run();
+            

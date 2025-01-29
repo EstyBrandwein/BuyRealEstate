@@ -1,30 +1,41 @@
-﻿//using Microsoft.AspNetCore.Mvc;
-//using YourProject.API.Models;
-//using YourProject.API.Services;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
-//namespace YourProject.API.Controllers
-//{
-//    [Route("api/[controller]")]
-//    [ApiController]
-//    public class ContactController : ControllerBase
-//    {
-//        private readonly IEmailService _emailService;
+[Route("api/[controller]")]
+[ApiController]
+public class ContactController : ControllerBase
+{
+    private readonly IEmailService _emailService;
 
-//        public ContactController(IEmailService emailService)
-//        {
-//            _emailService = emailService;
-//        }
+    public ContactController(IEmailService emailService)
+    {
+        _emailService = emailService;
+    }
 
-//        [HttpPost]
-//        public async Task<IActionResult> SendEmail([FromBody] ContactFormModel model)
-//        {
-//            if (!ModelState.IsValid)
-//            {
-//                return BadRequest(ModelState);
-//            }
+    [HttpPost]
+    public async Task<IActionResult> SendContactEmail([FromBody] ContactRequest contactRequest)
+    {
+        if (contactRequest == null || string.IsNullOrEmpty(contactRequest.subject) || string.IsNullOrEmpty(contactRequest.recipientEmail) || string.IsNullOrEmpty(contactRequest.message))
+        {
+            return BadRequest("All fields are required.");
+        }
 
-//            await _emailService.SendEmailAsync(model);
-//            return Ok("Email sent successfully.");
-//        }
-//    }
-//}
+        var message =
+        $@"
+        <p><strong></strong><br>{contactRequest.message}</p>";
+          //<h3>הודעה חדשה מהאתר</h3>
+        //<p><strong> נושא:</strong> {contactRequest.subject}</p>
+        //<p><strong>מייל לחזרה :</strong> {contactRequest.recipientEmail}</p>
+        //";
+
+        await _emailService.SendEmailAsync("liknotnadlan@gmail.com", "הודעה חדשה מאתר ניהול לקוחות - צור קשר", message);
+        return Ok();
+    }
+}
+
+public class ContactRequest
+{
+    public string subject { get; set; }
+    public string recipientEmail { get; set; }
+    public string message { get; set; }
+}

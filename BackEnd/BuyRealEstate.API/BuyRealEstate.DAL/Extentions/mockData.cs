@@ -18,19 +18,19 @@ namespace BuyRealEstate.Domain.Extentions
         new DevelopmentStatus { Status = "הפיתוח הושלם", Id = 2 }
       );
             modelBuilder.Entity<Document>().HasData(
-               new Document { ID = 1, FileType = ".pdf", PamentID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, IsRecipt = true, InsertUser = 1, UpdateUser = 1, DocumentDescription = "תעודת זהות", DocumentData = File.ReadAllBytes("C:\\Users\\USER\\Documents\\BuyRealEstate\\מסמכים\\מסמכי נאמנות שמחי.pdf") },
-               new Document { ID = 2, FileType = ".pdf", PamentID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, IsRecipt = true, InsertUser = 1, UpdateUser = 1, DocumentDescription = "תעודת זהות", DocumentData = File.ReadAllBytes("C:\\Users\\USER\\Documents\\BuyRealEstate\\מסמכים\\אישור ניהול חשבון חירן 2024 (1) (4) (1).pdf") },
-               new Document { ID = 3, FileType = ".pdf", PamentID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, IsRecipt = false, InsertUser = 1, UpdateUser = 1, DocumentDescription = "תעודת זהות", DocumentData = File.ReadAllBytes("C:\\Users\\USER\\Documents\\BuyRealEstate\\מסמכים\\אישור לרובין.pdf") },
-               new Document { ID = 4, FileType = ".pdf", PamentID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, IsRecipt = false, InsertUser = 1, UpdateUser = 1, DocumentDescription = "תעודת זהות", DocumentData = File.ReadAllBytes("C:\\Users\\USER\\Documents\\BuyRealEstate\\מסמכים\\אישור ניהול חשבון ברנדויין אליהו וחיה.pdf") }
+               new Document { ID = 1, FileType = ".pdf", PamentID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, IsRecipt = true, InsertUser = 1, UpdateUser = 1, DocumentDescription = "הודעה על נאמנות שמחי", DocumentData = File.ReadAllBytes("C:\\Users\\USER\\Documents\\BuyRealEstate\\מסמכים\\מסמכי נאמנות שמחי.pdf") },
+               new Document { ID = 2, FileType = ".pdf", PamentID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, IsRecipt = true, InsertUser = 1, UpdateUser = 1, DocumentDescription = "אישור ניהול חשבון", DocumentData = File.ReadAllBytes("C:\\Users\\USER\\Documents\\BuyRealEstate\\מסמכים\\אישור ניהול חשבון חירן 2024 (1) (4) (1).pdf") },
+               new Document { ID = 3, FileType = ".pdf", PamentID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, IsRecipt = false, InsertUser = 1, UpdateUser = 1, DocumentDescription = "אישור נאמן לצורך העברת כספים", DocumentData = File.ReadAllBytes("C:\\Users\\USER\\Documents\\BuyRealEstate\\מסמכים\\אישור לרובין.pdf") },
+               new Document { ID = 4, FileType = ".pdf", PamentID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, IsRecipt = false, InsertUser = 1, UpdateUser = 1, DocumentDescription = "אישור ניהול חשבון", DocumentData = File.ReadAllBytes("C:\\Users\\USER\\Documents\\BuyRealEstate\\מסמכים\\אישור ניהול חשבון ברנדויין אליהו וחיה.pdf") }
 
 
                 );
 
             modelBuilder.Entity<Image>().HasData(
-               new Image { ID = 1, FileType = ".jpg", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, ImageDescription = "תמונה", ImageData = File.ReadAllBytes("C:\\Users\\USER\\Documents\\BuyRealEstate\\תמונות\\1.jpg") },
-               new Image { ID = 2, FileType = ".jpg", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, ImageDescription = "תמונה", ImageData = File.ReadAllBytes("C:\\Users\\USER\\Documents\\BuyRealEstate\\תמונות\\2.jpg") },
-               new Image { ID = 3, FileType = ".jpg", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, ImageDescription = "תמונה", ImageData = File.ReadAllBytes("C:\\Users\\USER\\Documents\\BuyRealEstate\\תמונות\\3.jpg") },
-               new Image { ID = 4, FileType = ".jpg", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, ImageDescription = "תמונה", ImageData = File.ReadAllBytes("C:\\Users\\USER\\Documents\\BuyRealEstate\\תמונות\\4.jpg") }
+               new Image { ID = 1, FileType = ".jpg", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, ImageDescription = "מיגרשים", ImageData = File.ReadAllBytes("C:\\Users\\USER\\Documents\\BuyRealEstate\\תמונות\\1.jpg") },
+               new Image { ID = 2, FileType = ".jpg", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, ImageDescription = "הבית שלך", ImageData = File.ReadAllBytes("C:\\Users\\USER\\Documents\\BuyRealEstate\\תמונות\\2.jpg") },
+               new Image { ID = 3, FileType = ".jpg", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, ImageDescription = "המגרש שלך", ImageData = File.ReadAllBytes("C:\\Users\\USER\\Documents\\BuyRealEstate\\תמונות\\3.jpg") },
+               new Image { ID = 4, FileType = ".jpg", ProjectID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, State = true, InsertUser = 1, UpdateUser = 1, ImageDescription = "חירן", ImageData = File.ReadAllBytes("C:\\Users\\USER\\Documents\\BuyRealEstate\\תמונות\\4.jpg") }
                 );
             modelBuilder.Entity<LegalStatus>().HasData(
                 new LegalStatus { Id = 1, Status = "בשלבי רכישה", InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true },
@@ -73,9 +73,9 @@ namespace BuyRealEstate.Domain.Extentions
                new Project { ID = 1, ProjectName = "כרמית 11", ProjectAddress = "כרמית", LegalStatusId = 1, ProjectManagerID = 1, DeveloperStatusID = 1, GrossProfit = 12000, LinkToLead2 = "https://www.efshar-nadlan.co.il/", ProjectType = true, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
 
                 );
-            //modelBuilder.Entity<RelationshipCustomersPlots>().HasData(
-            //   new RelationshipCustomersPlots { ID = 1, PlotID = 1, UserID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
-            //    );
+            modelBuilder.Entity<RelationshipCustomersPlots>().HasData(
+               new RelationshipCustomersPlots { ID = 1, PlotID = 1, UserID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
+                );
             modelBuilder.Entity<RelationshipPaymentsPlots>().HasData(
                new RelationshipPaymentsPlots { ID = 1, PlotID = 1, PaymentID = 1, paymentStutusID = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
                 );
@@ -85,6 +85,11 @@ namespace BuyRealEstate.Domain.Extentions
             modelBuilder.Entity<User>().HasData(
                 new User { ID = 1, IsVerified = true, VerificationCode = "", FirstName = "חיה", LastName = "ברנדויין", Email = "chayamalot@gmail.com", Password = "CB5328152", FirstPhone = "0504101585", Username = "ChayaB", PermissionId = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
                 );
+             modelBuilder.Entity<Guarantees>().HasData(
+                new Guarantees { Id = 1, Amount = 87643, DateOfPayment = DateTime.Now,GuaranteeUssued=true,IsPaid=false,Note="עוד לא שולם",VoucherNumber=4, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true },
+                new Guarantees { Id = 2, Amount = 673829, DateOfPayment = DateTime.Now, GuaranteeUssued = false, IsPaid = false, Note = "עוד לא שולם", VoucherNumber = 1, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }, 
+                new Guarantees { Id = 3, Amount = 3572, DateOfPayment = DateTime.Now, GuaranteeUssued = true, IsPaid = true, Note = "שולם", VoucherNumber = 3, InsertDate = DateTime.Now, UpdateDate = DateTime.Now, InsertUser = 1, UpdateUser = 1, State = true }
+    );
         }
     }
 
