@@ -25,7 +25,6 @@ function App() {
         {/* <Route path="/UploadImage" element={<UploadImage />} /> */}
         <Route path="/PlotsPage/:id" element={<PlotsPage/>} />
         <Route exact path="/PDFViewer" element={<FileListViewer/>} />
-        <Route path="/mainPage" element={<MainPage />} />
 
           <Route path="/MainListPlots" element={<MainListPlots />} />
           <Route path="/UpdateProfile" element={<UpdateProfile />} />

@@ -1,6 +1,5 @@
 import React from "react";
-import "./Paymentsheet.css"; // Import CSS file
-
+import "./Paymentsheet.css";
 const Paymentsheet = ({ plot }) => {
   return (
     <div className="paymentsheet">

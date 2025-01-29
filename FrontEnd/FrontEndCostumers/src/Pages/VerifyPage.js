@@ -1,25 +1,35 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-const VerificationPage = ({ userName,password }) => {
+const VerificationPage = () => {
     const [code, setCode] = useState('');
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const userId = location.state?.userId; 
 
     const handleVerification = async (e) => {
         e.preventDefault();
+
+        console.log("📢 שולח קוד אימות:", { userId, code });
+
         try {
-            const response = await axios.post('http://localhost:7219/api/Verification/send-verification-code', {
-                userName,
-                password,
+            const response = await axios.post('https://localhost:7219/api/Verification/CheckVerificationCode', {
+                userId,
+                code,
             });
 
+            console.log("✅ תגובת שרת:", response.data);
+
             if (response.status === 200) {
-                setMessage('Verification successful! Redirecting...');
-                // נווט לדף הראשי
-                window.location.href = '/mainPage';
+                navigate('/MainListPlot'); // נווט לעמוד הראשי
+            } else {
+                setMessage('קוד שגוי, נסה שוב.');
             }
         } catch (error) {
-            setMessage('Invalid verification code. Please try again.');
+            console.error("❌ שגיאת אימות:", error.response?.data || error.message);
+            setMessage(error.response?.data?.message || 'קוד שגוי, נסה שוב.');
         }
     };
 

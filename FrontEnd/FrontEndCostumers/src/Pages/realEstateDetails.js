@@ -10,6 +10,7 @@ import Paymentsheet from "./PlotDetiels/Paymentsheet";
 import DescriptionPlot from "./PlotDetiels/DescriptionPlot";
 import Header from "./Header";
 import ProgressUpdate from "./PlotDetiels/ProgressUpdate";
+import Guarantees from "./PlotDetiels/Guarantees";
 //import "../CSS/PlotsPage.css"
 function PlotsPage() {
   const { id } = useParams();
@@ -65,33 +66,8 @@ function PlotsPage() {
         );
       case "guarantees":
         return (
-          <div>
-            <h3>שובים וערבויות</h3>
-            <table  border="1" style={{ width: "100%", textAlign: "right", marginTop: "20px" }}>
-              <thead>
-                <tr>
-                  <th>תאריך תשלום</th>
-                  <th>מספר שובר</th>
-                  <th>סכום לתשלום</th>
-                  <th>שולם?</th>
-                  <th>הופקה ערבות</th>
-                  <th>הערות</th>
-                </tr>
-              </thead>
-              <tbody>
-                {plot.guarantees?.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item.paymentDate || "לא זמין"}</td>
-                    <td>{item.receiptNumber || "לא זמין"}</td>
-                    <td>{item.amountToPay || "לא זמין"}</td>
-                    <td>{item.paid ? "כן" : "לא"}</td>
-                    <td>{item.guaranteeIssued ? "כן" : "לא"}</td>
-                    <td>{item.notes || "אין הערות"}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          
+          <Guarantees></Guarantees>
         );
       default:
         return <p>בחר לשונית כדי לראות תוכן.</p>;

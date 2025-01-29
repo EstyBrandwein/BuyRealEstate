@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.Data;
 using System.Security.Claims;
+using BuyRealEstate.Core.DTos;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -16,8 +17,9 @@ public class VerificationController : ControllerBase
         _emailService = emailService;
         _userervice = userService;
     }
+    private static Dictionary<string, string> verificationCodes = new Dictionary<string, string>();
 
-    [HttpPost]
+    [HttpPost("SendVerificationCode")]
     public async Task<IActionResult> SendVerificationCode([FromBody] VerificationRequest verificationRequest)
     {
         if (verificationRequest == null || string.IsNullOrEmpty(verificationRequest.Username) || string.IsNullOrEmpty(verificationRequest.Password))
@@ -25,7 +27,6 @@ public class VerificationController : ControllerBase
             return BadRequest("Username and password are required.");
         }
 
-        // Here, validate the user credentials with your DB (e.g. using _userRepository)
         var user = await _userervice.GetUserAsync(verificationRequest.Username);
 
         if (user == null || !BCrypt.Net.BCrypt.Verify(verificationRequest.Password, user.Password))
@@ -33,31 +34,47 @@ public class VerificationController : ControllerBase
             return Unauthorized("Invalid username or password.");
         }
 
-        // Generate a random verification code
         var verificationCode = new Random().Next(100000, 999999).ToString();
 
-        // Save the verification code to the database, associated with the user (not shown in this example)
+        // **שומר את הקוד במילון כדי להשתמש בו באימות**
+        verificationCodes[verificationRequest.Username] = verificationCode;
 
         var message = $@"
-        <h3>קוד אימות לאפליקצית לקנות נדלן</h3>
-        <p>קוד האימו שלך הוא: <strong>{verificationCode}</strong></p>
-        <p>אנא אמת את קוד האימות</p>
-        ";
+    <h3>קוד אימות לאפליקצית לקנות נדלן</h3>
+    <p>קוד האימות שלך הוא: <strong>{verificationCode}</strong></p>
+    <p>אנא אמת את קוד האימות</p>";
 
-        try
-        {
-            await _emailService.SendEmailAsync(user.Email, "קוד אימות", message);
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, $"Email sending failed: {ex.Message}");
-        }
-        return Ok();
+        await _emailService.SendEmailAsync(user.Email, "קוד אימות", message);
+
+        return Ok(new { message = "Verification code sent successfully." });
     }
+
+    [HttpPost("VerifyCode")]
+    public IActionResult VerifyCode([FromBody] VerifyCodeRequest verifyRequest)
+    {
+        if (verifyRequest == null || string.IsNullOrEmpty(verifyRequest.Username) || string.IsNullOrEmpty(verifyRequest.Code))
+        {
+            return BadRequest("Username and code are required.");
+        }
+
+        // **בודק האם המשתמש קיים במילון ואם הקוד תואם**
+        if (verificationCodes.TryGetValue(verifyRequest.Username, out var correctCode))
+        {
+            if (correctCode == verifyRequest.Code)
+            {
+                verificationCodes.Remove(verifyRequest.Username); // **מוחק את הקוד אחרי השימוש**
+                return Ok(new { message = "Verification successful." });
+            }
+            else
+            {
+                return Unauthorized("Invalid verification code.");
+            }
+        }
+
+        return Unauthorized("No verification code found for this user.");
+    }
+
+
+
 }
 
-public class VerificationRequest
-{
-    public string Username { get; set; }
-    public string Password { get; set; }
-}

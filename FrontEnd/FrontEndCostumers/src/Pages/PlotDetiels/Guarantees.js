@@ -16,7 +16,7 @@ function Guarantees() {
           voucherNumber: item.voucherNumber || "לא זמין",
           amount: item.amount || 0,
           isPaid: item.isPaid || false,
-          guaranteeIssued: item.guaranteeIssued || false,
+          guaranteeUssued: item.guaranteeUssued || false,
           note: item.note || "",
         }));
         setGuarantees(processedGuarantees);
@@ -48,8 +48,8 @@ function Guarantees() {
                   : "לא זמין"} </td>
               <td>{item.voucherNumber}</td>
               <td>{item.amount}</td>
-              <td>{item.isPaid ? ":white_check_mark:" : ":x:"}</td>
-              <td>{item.guaranteeUssued ?  ":white_check_mark:" : ":x:"}</td>
+              <td>{item.isPaid ? "✅" : "❌"}</td>
+              <td>{item.guaranteeUssued ? "✅" : "❌"}</td>
               <td>{item.note || " "}</td>
             </tr>
           ))}
