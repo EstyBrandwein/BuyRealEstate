@@ -2,6 +2,7 @@ import React, { useEffect, useReducer, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../CSS/UpdateProfile.css'; 
+import Header from './Header';
 
 const initialState = {
     id: 0,
@@ -82,7 +83,8 @@ const UpdateProfile = () => {
     };
 
     return (
-        <div className="container">
+        <div  dir="rtl" className="container" >
+            <Header></Header>
             {message && <div className="message">{message}</div>}
             <h2>עדכון פרופיל</h2>
             <form onSubmit={handleSubmit}>

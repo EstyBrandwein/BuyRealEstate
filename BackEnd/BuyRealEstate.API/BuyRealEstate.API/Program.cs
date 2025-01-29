@@ -36,8 +36,8 @@ builder.Services.AddScoped<IGuaranteesService, GuaranteesService>();
 
 var emailSettings = builder.Configuration.GetSection("EmailSettings").Get<EmailSettings>();
 builder.Services.AddSingleton(emailSettings);
-builder.Services.AddSingleton<IEmailService, EmailService>();
 
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 
 
