@@ -1,4 +1,5 @@
-﻿using BuyRealEstate.Domain.Interfaces;
+﻿using BuyRealEstate.Core.Interfaces;
+using BuyRealEstate.Domain.Interfaces;
 using Microsoft.Extensions.Configuration;
 using System.Net;
 using System.Net.Mail;
@@ -56,13 +57,13 @@ public class AuthService : IAuthService
     public async Task<string> GenerateVerificationCodeAsync(int userId)
     {
         var verificationCode = GenerateRandomCode();
-        var user = await _userRepository.GetByIdAsync(userId);
+        var user = await _userRepository.GetAsync(userId);
         if (user != null)
         {
             user.VerificationCode = verificationCode;
             user.VerificationCodeExpiry = DateTime.UtcNow.AddMinutes(10); // תוקף ל-10 דקות
             user.IsVerified = false; // סימון שלא אומת
-            await _userRepository.UpdateAsync(user);
+            await _userRepository.UpdateAsync(userId,user);
         }
 
         return verificationCode;
@@ -70,7 +71,7 @@ public class AuthService : IAuthService
 
     public async Task<bool> VerifyCodeAsync(int userId, string verificationCode)
     {
-        var user = await _userRepository.GetByIdAsync(userId);
+        var user = await _userRepository.GetAsync(userId);
         if (user == null || user.VerificationCode != verificationCode || user.VerificationCodeExpiry < DateTime.UtcNow)
         {
             return false;
@@ -80,7 +81,7 @@ public class AuthService : IAuthService
         user.IsVerified = true;
         user.VerificationCode = null; // מחיקת הקוד לאחר האימות
         user.VerificationCodeExpiry = null;
-        await _userRepository.UpdateAsync(user);
+        await _userRepository.UpdateAsync(userId,user);
 
         return true;
     }

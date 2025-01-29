@@ -7,6 +7,7 @@ namespace BuyRealEstate.Domain.Interfaces
     public interface IUserRepository
     {
         Task<User> GetAsync(int id); // חיפוש משתמש לפי id    
+        Task<User> GetUserAsync(string userName); // חיפוש משתמש לפי id    
         Task<IEnumerable<User>> GetAllAsync();
         Task AddAsync(User user);
         Task UpdateAsync(int id, User user);

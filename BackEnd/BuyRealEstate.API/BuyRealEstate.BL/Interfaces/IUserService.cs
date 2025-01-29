@@ -7,6 +7,7 @@ namespace BuyRealEstate.Core.Interfaces
     public interface IUserService
     {
         Task<UsersDTO> GetAsync(int id);
+        Task<UsersDTO> GetUserAsync(string userName);
         Task<IEnumerable<UsersDTO>> GetAllAsync();
         Task AddAsync(UsersDTO userDto);
         Task UpdateAsync(int id, UsersDTO userDto);
