@@ -1,20 +1,108 @@
-import React from "react";
+// import React from "react";
+// import "./Paymentsheet.css"; // Import CSS file
+
+// const Paymentsheet = ({ plot }) => {
+//   return (
+//     <div className="paymentsheet">
+//       <h1 className="title">תשלומים לחשבון הנאמנות</h1>
+//       <Table data={plot.paymentSheet} />
+      
+//       <h1 className="title">תשלומים לחברת לקנות נדלן</h1>
+//       <Table data={plot.paymentSheet} />
+      
+//       <h1 className="title">תשלומים נוספים</h1>
+//       <Table data={plot.paymentSheet} />
+//     </div>
+//   );
+// };
+
+// const Table = ({ data }) => (
+//   <table className="payment-table">
+//     <thead>
+//       <tr>
+//         <th>כותרת</th>
+//         <th>תנועה</th>
+//         <th>מנה</th>
+//         <th>ס"ת</th>
+//         <th>ת.אסמכתא</th>
+//         <th>ת.ערך</th>
+//         <th>אסמכתא</th>
+//         <th>פרטים</th>
+//         <th>חובה / זכות</th>
+//       </tr>
+//     </thead>
+//     <tbody>
+//       {data?.map((item, index) => (
+//         <tr key={index}>
+//           <td>{item.title}</td>
+//           <td>{item.movement}</td>
+//           <td>{item.manager}</td>
+//           <td>{item.summarized}</td>
+//           <td>{item.referenceDate}</td>
+//           <td>{item.valueDate}</td>
+//           <td>{item.reference}</td>
+//           <td>{item.details}</td>
+//           <td>{item.debitCredit}</td>
+//         </tr>
+//       ))}
+//     </tbody>
+//   </table>
+// );
+
+// export default Paymentsheet;
+
+
+import React, { useEffect, useState } from "react";
 import "./Paymentsheet.css"; // Import CSS file
 
-const Paymentsheet = ({ plot }) => {
+function Payments() {
+  const [payments, setPayments] = useState([]);
+
+  useEffect(() => {
+    const fetchPayments = async () => {
+      try {
+        const response = await fetch("https://localhost:7219/api/Payment"); // Change to http if no SSL
+        if (!response.ok) {
+          throw new Error(`Error fetching payments: ${response.statusText}`);
+        }
+        const data = await response.json();
+        console.log("Fetched Payments:", data);
+
+        const processedPayments = data.map(item => ({
+          title: item.Title || null,
+          movement: item.movement || null,
+          dose: item.dose || 0,
+          datereference: item.Datereference || null,
+          dataValue: item.DataValue || null,
+          details: item.details || null,
+          surplus: item.surplus || null,
+          amount: item.amount || null,
+          debitCredit: item.debitCredit || null, // Add missing field
+        }));
+
+        setPayments(processedPayments);
+      } catch (error) {
+        console.error("Error:", error.message);
+        alert("Failed to load payments.");
+      }
+    };
+
+    fetchPayments();
+  }, []);
+
   return (
-    <div className="paymentsheet">
+    <div className="payments">
       <h1 className="title">תשלומים לחשבון הנאמנות</h1>
-      <Table data={plot.paymentSheet} />
-      
+      <Table data={payments} />
+
       <h1 className="title">תשלומים לחברת לקנות נדלן</h1>
-      <Table data={plot.paymentSheet} />
-      
+      <Table data={payments} />
+
       <h1 className="title">תשלומים נוספים</h1>
-      <Table data={plot.paymentSheet} />
+      <Table data={payments} />
     </div>
   );
-};
+}
 
 const Table = ({ data }) => (
   <table className="payment-table">
@@ -23,7 +111,6 @@ const Table = ({ data }) => (
         <th>כותרת</th>
         <th>תנועה</th>
         <th>מנה</th>
-        <th>ס"ת</th>
         <th>ת.אסמכתא</th>
         <th>ת.ערך</th>
         <th>אסמכתא</th>
@@ -36,11 +123,10 @@ const Table = ({ data }) => (
         <tr key={index}>
           <td>{item.title}</td>
           <td>{item.movement}</td>
-          <td>{item.manager}</td>
-          <td>{item.summarized}</td>
-          <td>{item.referenceDate}</td>
-          <td>{item.valueDate}</td>
-          <td>{item.reference}</td>
+          <td>{item.dose}</td>
+          <td>{item.datereference}</td>
+          <td>{item.dataValue}</td>
+          <td>{item.details}</td>
           <td>{item.details}</td>
           <td>{item.debitCredit}</td>
         </tr>
@@ -49,4 +135,4 @@ const Table = ({ data }) => (
   </table>
 );
 
-export default Paymentsheet;
+export default Payments;
