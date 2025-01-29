@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-function FileListViewer() {
+function FileListViewer({ projectId }) {
   const [files, setFiles] = useState([]);
   useEffect(() => {
     const fetchFiles = async () => {
       try {
-        const response = await fetch("https://localhost:7219/api/Document");
+        const response = await fetch(`https://localhost:7219/api/Document/${projectId}`);
         if (!response.ok) {
           throw new Error(`Error fetching files: ${response.statusText}`);
         }
