@@ -17,10 +17,7 @@ namespace BuyRealEstate.Domain.Repositories
         {
             _context = context;
         }
-        public async Task<IEnumerable<Payment>> GetAllPaymentsAsync()
-        {
-            return await _context.Payments.ToListAsync();
-        }
+        public async Task<IEnumerable<Payment>> GetAllPaymentsAsync() => await _context.Payments.ToListAsync();
         public async Task AddPaymentAsync(Payment payment)
         {
             await _context.Payments.AddAsync(payment);

@@ -20,7 +20,7 @@ namespace BuyRealEstate.Core.DTos
         public string Detiels { get; set; }
         public int Surplus { get; set; }
         public double Amount { get; set; }
-        public Professional Professional { get; set; }
+        public Professional? Professional { get; set; }
         public int ProfessionalId { get; set; }
         public DateTime LastPaymentDate { get; set; }
         //  public Document PaymentConfirmation { get; set; }

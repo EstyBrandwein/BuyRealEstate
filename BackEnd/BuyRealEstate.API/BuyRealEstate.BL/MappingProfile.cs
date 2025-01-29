@@ -18,6 +18,8 @@ public class MappingProfile : Profile
         CreateMap<DocumentDTO, Document>();
         CreateMap<Guarantees, GuaranteesDTO>();
         CreateMap<GuaranteesDTO, Guarantees>();
+        CreateMap<Payment, PaymentDTO>();
+        CreateMap<PaymentDTO, Payment>();
 
         // Project and ProjectDTO mappings
         CreateMap<Project, ProjectDTO>()
