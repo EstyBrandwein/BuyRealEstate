@@ -7,23 +7,26 @@ const VerificationPage = () => {
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
-    const userId = location.state?.userId; 
+    // const userId = location.state?.userId; 
+    const storedUserId = localStorage.getItem('username');
+    const username = location.state?.userId || storedUserId;
+
 
     const handleVerification = async (e) => {
         e.preventDefault();
 
-        console.log("📢 שולח קוד אימות:", { userId, code });
+        console.log("📢 שולח קוד אימות:", { username, code });
 
         try {
-            const response = await axios.post('https://localhost:7219/api/Verification/CheckVerificationCode', {
-                userId,
+            const response = await axios.post('https://localhost:7219/api/Verification/VerifyCode', {
+                username,
                 code,
             });
 
             console.log("✅ תגובת שרת:", response.data);
 
             if (response.status === 200) {
-                navigate('/MainListPlot'); // נווט לעמוד הראשי
+                navigate('/MainListPlots'); // נווט לעמוד הראשי
             } else {
                 setMessage('קוד שגוי, נסה שוב.');
             }

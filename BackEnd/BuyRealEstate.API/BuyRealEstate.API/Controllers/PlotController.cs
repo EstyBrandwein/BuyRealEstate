@@ -23,12 +23,19 @@ namespace BuyRealEstate.API.Controllers
             var plots = await _plotService.GetAllPlotsAsync();
             return Ok(plots);
         }
-        [HttpGet("userplot")]
-        public async Task<IActionResult> GetAllPlots([FromBody] int userId)
+        //[HttpGet("userplot")]
+        //public async Task<IActionResult> GetAllPlots([FromBody] int userId)
+        //{
+        //    var plots = await _plotService.GetAllPlotByUserIdAsync(userId);
+        //    return Ok(plots);
+        //}
+        [HttpGet("userplot/{userId}")]
+        public async Task<IActionResult> GetAllPlots(int userId)
         {
             var plots = await _plotService.GetAllPlotByUserIdAsync(userId);
             return Ok(plots);
         }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPlot(int id)
         {

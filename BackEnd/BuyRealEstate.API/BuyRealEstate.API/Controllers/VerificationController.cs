@@ -46,7 +46,7 @@ public class VerificationController : ControllerBase
 
         await _emailService.SendEmailAsync(user.Email, "קוד אימות", message);
 
-        return Ok(new { message = "Verification code sent successfully." });
+        return Ok(new { message = "Verification code sent successfully.", userId =user.ID });
     }
 
     [HttpPost("VerifyCode")]

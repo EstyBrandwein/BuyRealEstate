@@ -3,16 +3,20 @@ import axios from "axios";
 import Sidebar from "../sideBarPage";
 import ProjectCard from "./ProjectCard";
 import "./ListPlots.css"
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import Header from "../Header";
 function MainListPlots() {
   const [plots, setPlots] = useState([]);
+  const location = useLocation();
+  // const userId = location.state?.userId; 
+  const storedUserId = localStorage.getItem('id');
+  const id = location.state?.id || storedUserId;
   useEffect(() => {
     const fetchPlots = async () => {
-      try {
+      try {        
         const response = await axios.get(
-          "https://localhost:7219/api/plot",
-          { id: 1 },
+          `https://localhost:7219/api/plot/userplot/${id}`,
+          // { id },
           { headers: { "Content-Type": "application/json" } }
         );
         setPlots(response.data);
