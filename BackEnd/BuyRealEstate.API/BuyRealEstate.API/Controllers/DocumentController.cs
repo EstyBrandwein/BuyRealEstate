@@ -27,13 +27,13 @@ namespace BuyRealEstate.API.Controllers
             });
             return Ok(response);
         }
-        [HttpGet("documentproject")]
-        public async Task<IActionResult> GetDocumentsByProjectID([FromQuery] int id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetDocumentsByProjectID(int id)
         {
             var documents = await _documentService.GetAllDocumentByProjectIdAsync(id);
             return Ok(documents);
         }
-        [HttpGet("{id}")]
+        //[HttpGet("{id}")]
         public async Task<IActionResult> GetDocument(int id)
         {
             var base64Data = await _documentService.GetDocumentBase64ByIdAsync(id);
