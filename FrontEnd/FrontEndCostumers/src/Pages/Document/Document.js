@@ -31,7 +31,6 @@ function FileListViewer({ projectId }) {
   }, []);
   return (
     <div>
-      <h1>רשימת קבצים</h1>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
         {files.map((file, index) => (
           <div  key={index} style={{border: "1px solid #ddd", borderRadius: "5px", padding: "10px", width: "200px",textAlign: "center",}}>

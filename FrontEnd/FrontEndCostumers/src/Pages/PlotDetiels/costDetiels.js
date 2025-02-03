@@ -5,7 +5,6 @@ const CostDetiels = ({ plot }) => {
   return (
     <div className="cost-details-container">
       <div className="cost-details-card">
-        <h3 className="cost-details-title">פירוט עלויות</h3>
         <table className="cost-details-table">
           <thead>
             <tr>

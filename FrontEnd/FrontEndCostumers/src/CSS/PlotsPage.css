@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -6,7 +6,6 @@ body {
     direction: rtl;
     text-align: right;
   }
-  /* Tabs Styling */
   .tabs {
     display: flex;
     border-bottom: 2px solid #ccc;
@@ -22,7 +21,6 @@ body {
   .tab.active {
     background-color: #D3D3D3;
   }
-  /* Forms */
   form {
     max-width: 400px;
     margin: auto;
@@ -53,7 +51,6 @@ body {
   form button:hover {
     background-color: #45A049;
   }
-  /* Tables */
   table {
     width: 100%;
     border-collapse: collapse;
@@ -67,18 +64,15 @@ body {
   table th {
     background-color: #F2F2F2;
   }
-  /* General sections */
   .section {
     padding: 10px;
   }
   .section h3 {
     margin-bottom: 15px;
   }
-  /* Error Message */
   .error-message {
     color: red;
   }
-  /* Content Loading */
   .loading {
     font-style: italic;
   }
@@ -91,4 +85,41 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
     flex-direction:  column;
     display: flex;
+  } */
+  h1{
+    color: #333;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 56px;
+    position: fixed !important;
+    top: 40px; /* התאמה לגובה ה-Header */
+    left: 0;  /* מקבע את הסרגל לקצה השמאלי */
+    right: 0; 
   }
+  .tabs-container {
+    position: fixed !important;
+    top: 140px; /* התאמה לגובה ה-Header */
+    left: 0;  /* מקבע את הסרגל לקצה השמאלי */
+    right: 0; 
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 2px solid #ccc;
+    padding: 10px 0;
+  }
+  
+  .active-tab {
+    font-weight: bold;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .content {
+    margin-top: 80px; /* כדי שלא יתחיל מאחורי הסרגל */
+    padding: 20px;
+  }
+  
+  
