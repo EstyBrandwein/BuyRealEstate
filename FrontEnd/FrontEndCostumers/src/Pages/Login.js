@@ -19,12 +19,17 @@ const Login = () => {
 
             if (response.status === 200) {
                 console.log("userName", username, "password", password);
-
+                //lockalstorage
                 // שליחת קוד האימות
                 const verificationSuccess = await handleVerification(username, password);
                 
                 if (verificationSuccess) {
-                    navigate('/VerifyPage', { state: { userId: response.data.Id } });
+                    localStorage.setItem('username', username);
+                    console.log(response.data);
+                    
+                   // localStorage.setItem('id', response.data.user.Id);
+                    navigate('/VerifyPage');
+                    //navigate('/VerifyPage', { state: { userId: response.data.Id } });
                 }
             }
         } catch (error) {
@@ -39,6 +44,9 @@ const Login = () => {
                 userName,
                 password,
             });
+            console.log("response",response.data.userId);
+            
+            localStorage.setItem('id', response.data.userId);
 
             if (response.status === 200) {
                 return true; // שליחת הקוד הצליחה
