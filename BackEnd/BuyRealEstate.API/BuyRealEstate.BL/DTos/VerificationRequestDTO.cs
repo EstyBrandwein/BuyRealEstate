@@ -13,5 +13,4 @@ namespace BuyRealEstate.Core.DTos
     }
 
 
-
 }
