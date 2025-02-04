@@ -38,6 +38,8 @@ const VerificationPage = () => {
 
     return (
         <div dir="rtl">
+            <h1>קוד אימות נשלח אליך כרגע למייל </h1>
+            <b>הקוד תקף ל10 דקות בלבד</b>
             <h2>אנא הכנס קוד אימות</h2>
             <form onSubmit={handleVerification}>
                 <input
