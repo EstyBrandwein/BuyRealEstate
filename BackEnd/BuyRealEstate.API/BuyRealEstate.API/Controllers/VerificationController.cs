@@ -27,7 +27,7 @@ public class VerificationController : ControllerBase
             return BadRequest("Username and password are required.");
         }
 
-        var user = await _userervice.GetUserAsync(verificationRequest.Username);
+        var user = await _userervice.GetUserAsync(verificationRequest. Username);
 
         if (user == null || !BCrypt.Net.BCrypt.Verify(verificationRequest.Password, user.Password))
         {

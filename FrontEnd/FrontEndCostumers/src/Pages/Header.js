@@ -5,6 +5,10 @@ import { FaUser, FaPhone, FaSignOutAlt } from "react-icons/fa"; // ספריית 
 import { Link } from "react-router-dom"; // ייבוא Link עבור ניווט
 
 const Header = () => {
+  const getout = () => {
+    localStorage.removeItem("id");
+    window.location.href = "/";
+  };
   return (
     <div className="header-container">
       <div className="header-right">
@@ -16,14 +20,14 @@ const Header = () => {
           <FaUser className="header-icon" />
         </Link>
         <Link to="/contact" className="header-icon-button" title="צור קשר">
+        
           <FaPhone className="header-icon" />
         </Link>
-        <Link to="/" className="header-icon-button" title="התנתק">
+        <button className="header-icon-button"onClick={getout} title="התנתק">
           <FaSignOutAlt className="header-icon" />
-        </Link>
+        </button>
       </div>
     </div>
   );
 };
-
 export default Header;
