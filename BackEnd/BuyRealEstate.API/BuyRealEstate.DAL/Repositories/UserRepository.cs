@@ -29,7 +29,9 @@ public class UserRepository : IUserRepository
     {
         var user = await GetAsync(username);
         if (user == null) return false;
-        return BCrypt.Net.BCrypt.Verify(password, user.Password); // אימות הסיסמה
+        bool isMatch = BCrypt.Net.BCrypt.Verify(password, user.Password);
+
+        return isMatch; // אימות הסיסמה
     }
 
 
@@ -41,7 +43,7 @@ public class UserRepository : IUserRepository
             throw new KeyNotFoundException($"User with ID {id} not found.");
         }
         user.ID = existingUser.ID;
-        user.Password = existingUser.Password;
+        //user.Password = existingUser.Password;
         _context.Entry(existingUser).CurrentValues.SetValues(user);
 
         await _context.SaveChangesAsync();
