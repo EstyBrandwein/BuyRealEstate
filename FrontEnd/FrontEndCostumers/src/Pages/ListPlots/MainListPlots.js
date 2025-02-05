@@ -15,9 +15,7 @@ function MainListPlots() {
     const fetchPlots = async () => {
       try {        
         const response = await axios.get(
-          `https://localhost:7219/api/plot/userplot/1`,
-          // {id}
-          // `,
+          `https://localhost:7219/api/plot/userplot/${id}`,
           // { id },
           { headers: { "Content-Type": "application/json" } }
         );
