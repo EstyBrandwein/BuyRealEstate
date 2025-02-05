@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import Header from "./Header";
@@ -11,6 +10,7 @@ import Paymentsheet from "./PlotDetiels/Paymentsheet";
 import DescriptionPlot from "./PlotDetiels/DescriptionPlot";
 import ProgressUpdate from "./PlotDetiels/ProgressUpdate";
 import Guarantees from "./PlotDetiels/Guarantees";
+import { fetchPlotById } from "../api/apiService"; // קריאה ל-API
 import "../CSS/PlotsPage.css";
 
 function PlotsPage() {
@@ -20,13 +20,17 @@ function PlotsPage() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios
-      .get(`https://localhost:7219/api/plot/${id}`)
-      .then((response) => setPlot(response.data))
-      .catch((err) => {
+    const loadPlot = async () => {
+      try {
+        const data = await fetchPlotById(id);
+        setPlot(data);
+      } catch (err) {
         setError("לא הצלחנו לטעון את נתוני המגרש.");
         console.error(err);
-      });
+      }
+    };
+
+    loadPlot();
   }, [id]);
 
   const tabComponents = {

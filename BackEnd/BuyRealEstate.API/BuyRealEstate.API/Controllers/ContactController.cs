@@ -20,10 +20,7 @@ public class ContactController : ControllerBase
             return BadRequest("All fields are required.");
         }
 
-        var message =
-        $@"
-        <p><strong></strong><br>{contactRequest.message}</p>";
-
+        var message = $@"<p><strong></strong><br>{contactRequest.message}</p>";
         await _emailService.SendEmailAsync("liknotnadlan@gmail.com", "הודעה חדשה מאתר ניהול לקוחות - צור קשר", message);
         return Ok();
     }

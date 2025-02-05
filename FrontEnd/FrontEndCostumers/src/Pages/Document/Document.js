@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { fetchFilesForProject } from "../../api/apiService"; // מיובא מהקובץ apiService
+import "./FileListViewer.css";
 
 function FileListViewer({ projectId, isRecipe }) {
   const [files, setFiles] = useState([]);
@@ -6,19 +8,11 @@ function FileListViewer({ projectId, isRecipe }) {
   useEffect(() => {
     const fetchFiles = async () => {
       try {
-        const response = await fetch(
-          `https://localhost:7219/api/Document/${projectId}?isRecipe=${encodeURIComponent(isRecipe)}`
-        );
-
-        if (!response.ok) {
-          throw new Error(`Error fetching files: ${response.statusText}`);
-        }
-
-        const data = await response.json();
+        const data = await fetchFilesForProject(projectId, isRecipe); // קריאה לשירות
         console.log("Fetched Files:", data); // Log response
 
         const processedFiles = data.map((file) => {
-          const base64Content = file.documentData; // Adjusted to match the DTO
+          const base64Content = file.documentData;
           const blob = base64Content
             ? new Blob([Uint8Array.from(atob(base64Content), (char) => char.charCodeAt(0))], { type: "application/pdf" })
             : null;
@@ -38,14 +32,14 @@ function FileListViewer({ projectId, isRecipe }) {
     };
 
     fetchFiles();
-  }, [projectId, isRecipe]); // Depend on projectId & isRecipe
+  }, [projectId, isRecipe]);
 
   return (
-    <div>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+    <div className="file-list-container">
+      <div className="file-grid">
         {files.map((file, index) => (
-          <div key={index} style={{ border: "1px solid #ddd", borderRadius: "5px", padding: "10px", width: "200px", textAlign: "center" }}>
-            <h3 style={{ fontSize: "16px", margin: "10px 0" }}>{file.name}</h3>
+          <div key={index} className="file-card">
+            <h3 className="file-name">{file.name}</h3>
             {file.thumbnail ? (
               <iframe src={file.thumbnail} width="100%" height="150px" title={`Thumbnail for ${file.name}`}></iframe>
             ) : (
@@ -53,15 +47,7 @@ function FileListViewer({ projectId, isRecipe }) {
             )}
             <button
               onClick={() => window.open(file.fullView, "_blank")}
-              style={{
-                marginTop: "10px",
-                padding: "5px 10px",
-                backgroundColor: "#007BFF",
-                color: "#fff",
-                border: "none",
-                borderRadius: "5px",
-                cursor: "pointer",
-              }}
+              className="view-button"
             >
               צפה בקובץ
             </button>
