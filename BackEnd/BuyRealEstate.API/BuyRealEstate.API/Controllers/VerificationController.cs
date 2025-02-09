@@ -26,6 +26,7 @@ public class VerificationController : ControllerBase
 
         var result = await _verificationService.SendVerificationCodeAsync(request.Username, request.Password);
 
+
         if (!result.IsSuccessful)
         {
             return Unauthorized(result.ErrorMessage);
