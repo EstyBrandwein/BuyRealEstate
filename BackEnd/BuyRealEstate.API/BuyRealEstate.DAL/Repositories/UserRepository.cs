@@ -29,7 +29,7 @@ public class UserRepository : IUserRepository
     {
         var user = await GetAsync(username);
         if (user == null) return false;
-        bool isMatch = BCrypt.Net.BCrypt.Verify(password, user.Password);
+        bool isMatch = BCrypt.Net.BCrypt.Verify(user.Password,password);
 
         return isMatch; // אימות הסיסמה
     }
