@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || "https://localhost:7219/api";
+const API_BASE_URL = process.env.REACT_APP_API_URL;
+//  || "https://localhost:7219/api";
 
 // פונקציות GET, POST, PUT כללים
 const fetchData = async (url, method = 'GET', data = null) => {
@@ -43,7 +44,7 @@ export const fetchFilesForProject = (projectId, isRecipe) =>
   
 export const sendContactForm = (formData) => fetchData('/contact', 'POST', formData);
 
-export const verifyCode = (username, code) => fetchData('/Verification/VerifyCode', 'POST', { username, code });
+export const verifyCode = (username, code) => fetchData('/api/Verification/VerifyCode', 'POST', { username, code });
 
 // פונקציה לבדוק אם יש User Authenticated (אם צריך להוסיף Token)
 export const getAuthHeader = () => {
