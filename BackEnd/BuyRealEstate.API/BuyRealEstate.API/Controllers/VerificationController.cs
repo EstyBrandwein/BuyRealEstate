@@ -9,72 +9,53 @@ using BuyRealEstate.Core.DTos;
 [ApiController]
 public class VerificationController : ControllerBase
 {
-    private readonly IEmailService _emailService;
-    private readonly IUserService _userervice;
+    private readonly IVerificationService _verificationService;
 
-    public VerificationController(IEmailService emailService, IUserService userService)
+    public VerificationController(IVerificationService verificationService)
     {
-        _emailService = emailService;
-        _userervice = userService;
+        _verificationService = verificationService;
     }
-    private static Dictionary<string, string> verificationCodes = new Dictionary<string, string>();
 
     [HttpPost("SendVerificationCode")]
-    public async Task<IActionResult> SendVerificationCode([FromBody] VerificationRequest verificationRequest)
+    public async Task<IActionResult> SendVerificationCode([FromBody] VerificationRequest request)
     {
-        if (verificationRequest == null || string.IsNullOrEmpty(verificationRequest.Username) || string.IsNullOrEmpty(verificationRequest.Password))
+        if (request == null || string.IsNullOrEmpty(request.Username) || string.IsNullOrEmpty(request.Password))
         {
             return BadRequest("Username and password are required.");
         }
 
-        var user = await _userervice.GetUserAsync(verificationRequest.Username);
+        var result = await _verificationService.SendVerificationCodeAsync(request.Username, request.Password);
 
-        if (user == null || !BCrypt.Net.BCrypt.Verify(verificationRequest.Password, user.Password))
+
+        if (!result.IsSuccessful)
         {
-            return Unauthorized("Invalid username or password");
+            return Unauthorized(result.ErrorMessage);
         }
-        //להעביר לCOMMON
-        var verificationCode = new Random().Next(100000, 999999).ToString();
 
-        // **שומר את הקוד במילון כדי להשתמש בו באימות**
-        verificationCodes[verificationRequest.Username] = verificationCode;
-
-        var message = $@"
-    <h3>קוד אימות לאפליקצית לקנות נדלן</h3>
-    <p>קוד האימות שלך הוא: <strong>{verificationCode}</strong></p>
-    <p>אנא אמת את קוד האימות</p>";
-
-        await _emailService.SendEmailAsync(user.Email, "קוד אימות", message);
-
-        return Ok(new { message = "Verification code sent successfully.", userId =user.ID });
+        return Ok(new
+        {
+            message = "Verification code sent successfully.",
+            userId = result.UserId
+        });
     }
 
-    [HttpPost("VerifyCode")]
-    public IActionResult VerifyCode([FromBody] VerifyCodeRequest verifyRequest)
+
+[HttpPost("VerifyCode")]
+    public IActionResult VerifyCode([FromBody] VerifyCodeRequest request)
     {
-        if (verifyRequest == null || string.IsNullOrEmpty(verifyRequest.Username) || string.IsNullOrEmpty(verifyRequest.Code))
+        if (request == null || string.IsNullOrEmpty(request.Username) || string.IsNullOrEmpty(request.Code))
         {
             return BadRequest("Username and code are required.");
         }
 
-        // **בודק האם המשתמש קיים במילון ואם הקוד תואם**
-        if (verificationCodes.TryGetValue(verifyRequest.Username, out var correctCode))
+        var success = _verificationService.VerifyCode(request.Username, request.Code);
+        if (!success)
         {
-            if (correctCode == verifyRequest.Code)
-            {
-                verificationCodes.Remove(verifyRequest.Username); // **מוחק את הקוד אחרי השימוש**
-                return Ok(new { message = "Verification successful." });
-            }
-            else
-            {
-                return Unauthorized("Invalid verification code.");
-            }
+            return Unauthorized("Invalid verification code.");
         }
 
-        return Unauthorized("No verification code found for this user.");
+        return Ok(new { message = "Verification successful." });
     }
-
-
-
 }
+
 

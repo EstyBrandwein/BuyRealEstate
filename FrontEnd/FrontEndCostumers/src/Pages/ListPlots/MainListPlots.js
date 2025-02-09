@@ -12,6 +12,7 @@ function MainListPlots() {
   const navigate = useNavigate();
 
   useEffect(() => {
+
     const getPlots = async () => {
       try {
         const data = await fetchUserPlots(id);
