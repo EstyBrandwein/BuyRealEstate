@@ -37,7 +37,8 @@ const Login = () => {
                 userName,
                 password,
             });
-
+            console.log(response.data.userId);
+            
             localStorage.setItem('id', response.data.userId);
             return response.status === 200;
         } catch (error) {
