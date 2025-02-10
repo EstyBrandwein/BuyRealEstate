@@ -55,19 +55,5 @@ namespace BuyRealEstate.Core.Services
             return _mapper.Map<UsersDTO>(user);
         }
 
-
-        //public async Task<User> LoginAsync(string username, string password)
-        //{
-        //    var user = await _userRepository.GetAsync(username);
-        //    if (user != null && VerifyPassword(user, password))
-        //    {
-        //        return _mapper.Map<User>(user); // מיפוי למידע שמתאים ל-DTO
-        //    }
-        //    return null;
-        //}
-        //private bool VerifyPassword(User user, string password)
-        //{
-        //    return user.Password == password; // Simplified password verification
-        //}
     }
 }
