@@ -59,6 +59,10 @@ public class AppDbContext : DbContext
         ConfigureOneToMany<User, Plot>(modelBuilder,c=> c.User,p=>p.plots,c => c.UserId);
         modelBuilder.SeedMockData();
 
+        modelBuilder.Entity<User>()
+         .HasIndex(u => u.Username)
+         .IsUnique();
+
         base.OnModelCreating(modelBuilder);
     }
     private static void ConfigureOneToMany<TParent, TChild>(

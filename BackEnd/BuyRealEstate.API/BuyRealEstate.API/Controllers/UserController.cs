@@ -53,6 +53,13 @@ public class UserController : ControllerBase
             return BadRequest(validationErrors);
         }
 
+        // בדוק אם שם המשתמש קיים כבר במערכת
+        var existingUser = await _userService.GetUserAsync(userDto.Username);
+        if (existingUser != null)
+        {
+            return Conflict("שם משתמש זה קיים כבר במערכת"); // החזר שגיאה אם שם המשתמש קיים
+        }
+
         await _userService.AddAsync(userDto);
         return CreatedAtAction(nameof(Get), new { id = userDto.ID }, userDto);
     }
