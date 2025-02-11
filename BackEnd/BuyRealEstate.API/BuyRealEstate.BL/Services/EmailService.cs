@@ -20,7 +20,11 @@ public class EmailService : IEmailService
         email.From.Add(new MailboxAddress(_emailSettings.SenderName, _emailSettings.SenderEmail));
         email.To.Add(MailboxAddress.Parse(recipientEmail));
         email.Subject = subject;
-        email.Body = new TextPart("html") { Text = message };
+        var bodyBuilder = new BodyBuilder
+        {
+            HtmlBody = message
+        };
+        email.Body = bodyBuilder.ToMessageBody();
 
         using var smtp = new SmtpClient();
         try

@@ -26,6 +26,7 @@ builder.Services.AddScoped<IImageRepository, ImageRepository>();
 builder.Services.AddScoped<IImageService, ImageService>();
 builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
+builder.Services.AddScoped<IVerificationService, VerificationService>();
 
 builder.Services.AddScoped<IGuaranteesRepository, GuaranteesRepository>();
 builder.Services.AddScoped<IGuaranteesService, GuaranteesService>();
